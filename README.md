@@ -32,6 +32,8 @@ Skills developed by [ThepExcel](https://www.thepexcel.com) in collaboration with
 | **skill-creator** | Guide for creating new Claude Code skills |
 | **business-management** | Business management frameworks hub (SWOT, OKR, Porter's, BCG, etc.) |
 | **business-model** | Business Model Canvas, Lean Canvas, Value Proposition Canvas |
+| **skill-extractor** | Extract domain expertise from experts and transform into Claude skills |
+| **power-query-coach** | Coach users to transform messy data using Power Query UI |
 
 ### Third-Party Skills
 
@@ -54,6 +56,8 @@ You can also invoke skills directly by describing what you need:
 - "Explain how recursion works" → uses concept-explainer
 - "Analyze SWOT for my business" → uses business-management
 - "Create a Lean Canvas for my startup idea" → uses business-model
+- "Help me create a skill from my expertise" → uses skill-extractor
+- "Coach me on fixing this messy Excel data" → uses power-query-coach
 - "Create a PowerPoint presentation" → uses pptx
 
 ## Structure
