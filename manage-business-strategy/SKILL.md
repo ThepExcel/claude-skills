@@ -87,7 +87,7 @@ For small-medium enterprises, focus on these high-impact, low-complexity framewo
 | Situation | Use This |
 |-----------|----------|
 | Annual planning | SWOT + OKR |
-| New product/service | Lean Canvas (→ business-model skill) |
+| New product/service | Lean Canvas (→ design-business-model skill) |
 | Choosing between options | Decision Matrix |
 | Understanding customers | Customer Persona |
 | Setting team goals | OKR (3 objectives max) |
@@ -124,9 +124,9 @@ When applying frameworks, structure outputs as:
 
 | When | Suggest |
 |------|---------|
-| Design/validate business model | `/business-model` - BMC, Lean Canvas, VPC |
+| Design/validate business model | `/design-business-model` - BMC, Lean Canvas, VPC |
 | Stuck, need structured thinking | `/problem-solving` - Polya, 5 Whys, Fishbone |
 | Trade-off / contradiction | `/triz` - systematic innovation |
-| Need creative ideas | `/creativity` - divergent thinking |
+| Need creative ideas | `/generate-creative-ideas` - divergent thinking |
 
-**Note:** These skills are optional. Business-management works standalone for strategic analysis.
+**Note:** These skills are optional. Manage-business-strategy works standalone for strategic analysis.

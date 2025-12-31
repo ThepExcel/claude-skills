@@ -37,7 +37,7 @@
 - Physics Free Body Diagram scripts
 - Excel/Data visualization templates
 - Thai labeling support
-- Integration with concept-explainer skill
+- Integration with explain-concepts skill
 - Function visualization for ThepExcel.com
 
 ---

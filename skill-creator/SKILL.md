@@ -200,7 +200,7 @@ Skip only when usage patterns are already clearly understood.
 - "Can you give examples of how this would be used?"
 - "What would a user say that should trigger this skill?"
 
-**Related skill**: For extracting expertise from domain experts, consider using `/skill-extractor` — it provides structured conversations to capture mental models, workflows, and best practices that can inform skill development.
+**Related skill**: For extracting expertise from domain experts, consider using `/extract-expertise` — it provides structured conversations to capture mental models, workflows, and best practices that can inform skill development.
 
 ### Step 2: Planning Reusable Contents
 
@@ -326,7 +326,7 @@ Before sharing a skill:
 
 | When | Suggest |
 |------|---------|
-| Extract expertise from domain expert | `/skill-extractor` — structured conversations to capture mental models |
+| Extract expertise from domain expert | `/extract-expertise` — structured conversations to capture mental models |
 | Research domain knowledge | `/deep-research` — gather facts before building skill |
 
 These skills are optional but highly valuable for skill development.

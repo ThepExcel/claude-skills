@@ -182,9 +182,9 @@ python3 tools/smart_publish.py --slugs left --program excel --allow
 
 | When | Suggest |
 |------|---------|
-| AI-generated images/videos (realistic, artistic) | `/ai-image-video-prompt` - prompt engineering |
-| Teaching concepts with visuals | `/concept-explainer` - ACES methodology |
+| AI-generated images/videos (realistic, artistic) | `/prompt-ai-image-video` - prompt engineering |
+| Teaching concepts with visuals | `/explain-concepts` - ACES methodology |
 | Need facts before visualizing | `/deep-research` - verify data |
 | Problem-solving context | `/problem-solving` - structured thinking |
 
-**Note:** Use `/visualization` for technical diagrams (FBD, plots, flowcharts). Use `/ai-image-video-prompt` for AI-generated realistic/artistic images and videos.
+**Note:** Use `/create-visualization` for technical diagrams (FBD, plots, flowcharts). Use `/prompt-ai-image-video` for AI-generated realistic/artistic images and videos.

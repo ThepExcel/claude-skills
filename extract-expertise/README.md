@@ -33,7 +33,7 @@ Everything packaged and ready to use!
 
 ## Installation
 
-1. Download the skill-extractor folder
+1. Download the extract-expertise folder
 2. Add it to your Claude skills directory
 3. Start a new conversation with Claude
 4. Say: "I want to extract my expertise into a skill"

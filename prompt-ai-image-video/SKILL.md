@@ -322,8 +322,8 @@ When user shows an image and wants to improve it:
 
 | When | Suggest |
 |------|---------|
-| Technical diagrams (physics, math, flowcharts) | `/visualization` - Matplotlib/Manim for STEM |
+| Technical diagrams (physics, math, flowcharts) | `/create-visualization` - Matplotlib/Manim for STEM |
 | Research visual references | `/deep-research` - find inspiration |
-| Creative ideation | `/creativity` - brainstorm concepts |
+| Creative ideation | `/generate-creative-ideas` - brainstorm concepts |
 
-**Note:** Use `/visualization` for technical diagrams (FBD, plots, flowcharts). Use this skill for AI-generated realistic/artistic images and videos.
+**Note:** Use `/create-visualization` for technical diagrams (FBD, plots, flowcharts). Use this skill for AI-generated realistic/artistic images and videos.

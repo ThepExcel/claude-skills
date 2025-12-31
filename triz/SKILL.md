@@ -145,8 +145,8 @@ See [ai-prompts.md](references/ai-prompts.md) for detailed prompts.
 | When | Suggest |
 |------|---------|
 | Problem not yet defined clearly | `/problem-solving` - ช่วย clarify ก่อน |
-| Need more creative options | `/creativity` - divergent thinking |
-| Business strategy context | `/business-management` - SWOT, Porter's |
-| Designing new business model | `/business-model` - BMC, Lean Canvas |
+| Need more creative options | `/generate-creative-ideas` - divergent thinking |
+| Business strategy context | `/manage-business-strategy` - SWOT, Porter's |
+| Designing new business model | `/design-business-model` - BMC, Lean Canvas |
 
 **Note:** These skills are optional. TRIZ works standalone for contradiction problems.

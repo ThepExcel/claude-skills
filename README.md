@@ -50,17 +50,17 @@ Skills developed by [ThepExcel](https://www.thepexcel.com) in collaboration with
 | Skill | Description |
 |-------|-------------|
 | **deep-research** | Comprehensive 8-phase research with Graph-of-Thoughts, source triangulation, and claim verification |
-| **creativity** | Creative thinking techniques and ideation frameworks |
+| **generate-creative-ideas** | Creative thinking techniques and ideation frameworks |
 | **problem-solving** | Structured problem-solving methodologies (5 Whys, Fishbone, Root Cause Analysis) |
 | **triz** | TRIZ (Theory of Inventive Problem Solving) with 40 principles and contradiction matrix |
-| **concept-explainer** | Master teaching methodology for explaining concepts with visualizations |
-| **visualization** | Data visualization, diagrams, and Manim animations |
-| **ai-image-video-prompt** | Professional AI image/video prompt engineering with visual artist's eye |
+| **explain-concepts** | Master teaching methodology for explaining concepts with visualizations |
+| **create-visualization** | Data visualization, diagrams, and Manim animations |
+| **prompt-ai-image-video** | Professional AI image/video prompt engineering with visual artist's eye |
 | **skill-creator** | Guide for creating new Claude Code skills |
-| **business-management** | Business management frameworks hub (SWOT, OKR, Porter's, BCG, etc.) |
-| **business-model** | Business Model Canvas, Lean Canvas, Value Proposition Canvas |
-| **skill-extractor** | Extract domain expertise from experts and transform into Claude skills |
-| **power-query-coach** | Coach users to transform messy data using Power Query UI |
+| **manage-business-strategy** | Business management frameworks hub (SWOT, OKR, Porter's, BCG, etc.) |
+| **design-business-model** | Business Model Canvas, Lean Canvas, Value Proposition Canvas |
+| **extract-expertise** | Extract domain expertise from experts and transform into Claude skills |
+| **power-query-coaching** | Coach users to transform messy data using Power Query UI |
 
 ### Third-Party Skills
 
@@ -80,13 +80,13 @@ Skills from external sources, included for convenience.
 Once installed, just describe what you need:
 
 - "Research the latest AI developments" → uses **deep-research**
-- "Help me think creatively about this problem" → uses **creativity**
-- "Explain how recursion works" → uses **concept-explainer**
-- "Analyze SWOT for my business" → uses **business-management**
-- "Create a Lean Canvas for my startup idea" → uses **business-model**
-- "Help me create a skill from my expertise" → uses **skill-extractor**
-- "Coach me on fixing this messy Excel data" → uses **power-query-coach**
-- "Create an image prompt for product photography" → uses **ai-image-video-prompt**
+- "Help me think creatively about this problem" → uses **generate-creative-ideas**
+- "Explain how recursion works" → uses **explain-concepts**
+- "Analyze SWOT for my business" → uses **manage-business-strategy**
+- "Create a Lean Canvas for my startup idea" → uses **design-business-model**
+- "Help me create a skill from my expertise" → uses **extract-expertise**
+- "Coach me on fixing this messy Excel data" → uses **power-query-coaching**
+- "Create an image prompt for product photography" → uses **prompt-ai-image-video**
 - "Create a PowerPoint presentation" → uses **pptx**
 
 ---

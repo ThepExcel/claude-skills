@@ -36,7 +36,7 @@
 
 - Master teaching persona and voice
 - Thai language adaptations
-- Integration with visualization skill
+- Integration with create-visualization skill
 - Session summary generation
 - Adaptive difficulty levels
 

@@ -81,8 +81,8 @@ description: Creative problem-solving and ideation using SCAMPER, First Principl
 |------|---------|
 | Technical contradiction / trade-off | `/triz` - systematic innovation |
 | Need structured problem-solving | `/problem-solving` - Polya, 5 Whys |
-| Business strategy context | `/business-management` - SWOT, Porter's |
-| Design new business model | `/business-model` - BMC, Lean Canvas |
+| Business strategy context | `/manage-business-strategy` - SWOT, Porter's |
+| Design new business model | `/design-business-model` - BMC, Lean Canvas |
 | Need current facts/research | `/deep-research` - comprehensive research |
 
-**Note:** These skills are optional. Creativity works standalone for ideation.
+**Note:** These skills are optional. Generate-creative-ideas works standalone for ideation.

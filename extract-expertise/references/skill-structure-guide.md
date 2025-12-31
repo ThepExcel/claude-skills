@@ -519,7 +519,7 @@ skill-name/
 This skill may benefit from:
 - **xlsx skill**: For advanced Excel file manipulation
 - **data-analysis skill**: For pattern recognition in datasets
-- **visualization skill**: For showing data transformation results
+- **create-visualization skill**: For showing data transformation results
 
 These are optional but recommended for best results.
 ```
@@ -699,9 +699,9 @@ learning-amplifier/
 
 ---
 
-### Example 2: Power Query Coach (Workflow + Coaching)
+### Example 2: Power Query Coaching (Workflow + Coaching)
 ```
-power-query-coach/
+power-query-coaching/
 ├── SKILL.md
 │   ├── Persona
 │   ├── Main workflow (4 phases)

@@ -123,10 +123,10 @@ Stop when **any 2** are true:
 
 | When | Suggest |
 |------|---------|
-| Cross-industry innovation | `/creativity` - Combinatorial Engine |
+| Cross-industry innovation | `/generate-creative-ideas` - Combinatorial Engine |
 | Technical contradiction found | `/triz` - systematic innovation |
-| Need to explain findings | `/concept-explainer` - teach concepts |
-| Strategic analysis needed | `/business-management` - SWOT, Porter's |
-| Business model research | `/business-model` - BMC, Lean Canvas |
+| Need to explain findings | `/explain-concepts` - teach concepts |
+| Strategic analysis needed | `/manage-business-strategy` - SWOT, Porter's |
+| Business model research | `/design-business-model` - BMC, Lean Canvas |
 
 **Note:** These skills are optional. Deep-research works standalone for fact-finding.

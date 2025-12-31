@@ -39,7 +39,7 @@
 - Canvas comparison and selection guide
 - ThepExcel-specific examples
 - Thai business context adaptations
-- Integration with business-management skill
+- Integration with manage-business-strategy skill
 
 ---
 

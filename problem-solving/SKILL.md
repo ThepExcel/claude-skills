@@ -122,10 +122,10 @@ When patterns suggest another skill would help, **suggest** (don't auto-invoke):
 | Pattern Detected | Skill | Suggestion Phrase |
 |-----------------|-------|-------------------|
 | Trade-off / "improve X but Y worsens" | `/triz` | "นี่ดูเหมือน contradiction - ลอง /triz ไหม?" |
-| Need ideas, divergent thinking | `/creativity` | "ถ้าอยากได้ไอเดียหลายๆ แบบ ลอง /creativity ดู" |
+| Need ideas, divergent thinking | `/generate-creative-ideas` | "ถ้าอยากได้ไอเดียหลายๆ แบบ ลอง /generate-creative-ideas ดู" |
 | Need current facts, research | `/deep-research` | "ต้องหาข้อมูลก่อน - ให้ผม /deep-research ไหม?" |
-| Business strategy, SWOT, competition | `/business-management` | "เรื่องกลยุทธ์ธุรกิจ ลอง /business-management" |
-| Startup, business model design | `/business-model` | "ออกแบบ business model ลอง /business-model" |
+| Business strategy, SWOT, competition | `/manage-business-strategy` | "เรื่องกลยุทธ์ธุรกิจ ลอง /manage-business-strategy" |
+| Startup, business model design | `/design-business-model` | "ออกแบบ business model ลอง /design-business-model" |
 
 **Note:** These skills are optional. If unavailable, continue with problem-solving frameworks above.
 

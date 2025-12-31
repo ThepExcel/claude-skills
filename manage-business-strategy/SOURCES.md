@@ -63,7 +63,7 @@ This skill was developed through exhaustive research (30+ sources) using the dee
 - Framework selection decision tree
 - SME-specific recommendations
 - Thai business context examples
-- Integration with business-model skill
+- Integration with design-business-model skill
 
 ---
 

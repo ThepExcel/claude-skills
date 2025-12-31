@@ -121,7 +121,7 @@ Need custom visual? → ASK USER FIRST → AI Generate
 
 ### Python Visualization (Recommended for STEM)
 
-→ **ใช้ visualization skill** — ดู `.claude/skills/visualization/SKILL.md`
+→ **ใช้ create-visualization skill** — ดู `.claude/skills/create-visualization/SKILL.md`
 
 **สรุปสั้นๆ:**
 - **Static diagrams** (FBD, graphs): Matplotlib
@@ -306,8 +306,8 @@ Need custom visual? → ASK USER FIRST → AI Generate
 | When | Suggest |
 |------|---------|
 | Need current facts/research | `/deep-research` - verify before explaining |
-| STEM diagrams, animations | `/visualization` - Matplotlib, Manim |
+| STEM diagrams, animations | `/create-visualization` - Matplotlib, Manim |
 | Problem not about understanding | `/problem-solving` - guide thinking process |
-| Generate creative analogies | `/creativity` - fresh perspectives |
+| Generate creative analogies | `/generate-creative-ideas` - fresh perspectives |
 
-**Note:** These skills are optional. Concept-explainer works standalone for teaching.
+**Note:** These skills are optional. Explain-concepts works standalone for teaching.

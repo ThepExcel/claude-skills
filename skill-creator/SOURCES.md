@@ -43,7 +43,7 @@ This skill incorporates the following from Anthropic's official best practices:
 This version includes additional improvements beyond the official documentation:
 
 ### Content Additions
-- Integration with `/skill-extractor` for domain expertise extraction
+- Integration with `/extract-expertise` for domain expertise extraction
 - Integration with `/deep-research` for knowledge gathering
 - Structured reference files organization
 - Quality checklist with actionable items

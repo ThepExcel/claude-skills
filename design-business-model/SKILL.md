@@ -174,9 +174,9 @@ When presenting canvas analysis:
 
 | When | Suggest |
 |------|---------|
-| Need strategic analysis (SWOT, Porter's) | `/business-management` |
+| Need strategic analysis (SWOT, Porter's) | `/manage-business-strategy` |
 | Stuck, need structured thinking | `/problem-solving` - Polya, 5 Whys |
 | Innovation breakthrough needed | `/triz` - contradiction solving |
-| Need creative ideas for value prop | `/creativity` - divergent thinking |
+| Need creative ideas for value prop | `/generate-creative-ideas` - divergent thinking |
 
-**Note:** These skills are optional. Business-model works standalone for canvas design.
+**Note:** These skills are optional. Design-business-model works standalone for canvas design.

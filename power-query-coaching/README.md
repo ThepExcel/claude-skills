@@ -78,7 +78,7 @@ This skill has been refined based on real-world usage feedback:
 ## File Structure
 
 ```
-power-query-coach/
+power-query-coaching/
 ├── SKILL.md                           # Main coaching workflow
 ├── README.md                          # This file
 └── references/
