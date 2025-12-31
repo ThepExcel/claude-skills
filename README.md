@@ -10,8 +10,8 @@ git clone https://github.com/ThepExcel/claude-skills.git
 
 # Create symlinks to make skills globally available
 mkdir -p ~/.claude/skills
-for skill in claude-skills/skills/*/; do
-    ln -s "$(pwd)/$skill" ~/.claude/skills/$(basename "$skill")
+for skill in claude-skills/*/; do
+    [[ -d "$skill" && ! "$skill" =~ ^\. ]] && ln -s "$(pwd)/$skill" ~/.claude/skills/$(basename "$skill")
 done
 ```
 
@@ -65,11 +65,15 @@ You can also invoke skills directly by describing what you need:
 ## Structure
 
 ```
-skills/
+claude-skills/
+├── README.md
 ├── skill-name/
 │   ├── SKILL.md           # Main skill definition
+│   ├── SOURCES.md         # Attribution & sources
 │   └── references/        # Supporting documents (optional)
 │       └── methodology.md
+└── another-skill/
+    └── ...
 ```
 
 ## License
