@@ -46,30 +46,25 @@ Before writing any prompt, answer:
 
 ### Step 2: COMPOSE (Apply visual fundamentals)
 
-| Element | Quick Decision |
-|---------|----------------|
-| **Composition** | Rule of thirds? Symmetry? Leading lines? |
-| **Color** | Warm/cool? Complementary? Monochrome? |
-| **Lighting** | Golden hour? Studio? Dramatic? |
-| **Lens** | Wide (context)? Tele (compression)? |
-| **Angle** | Eye level? Low (power)? High (vulnerable)? |
+| Element | Quick Decision | Reference |
+|---------|----------------|-----------|
+| **Composition** | Rule of thirds? Symmetry? Leading lines? | [visual-fundamentals.md](references/visual-fundamentals.md) |
+| **Color** | Warm/cool? Complementary? Monochrome? | [visual-fundamentals.md](references/visual-fundamentals.md) |
+| **Lighting** | Golden hour? Studio? Dramatic? | [visual-fundamentals.md](references/visual-fundamentals.md) |
+| **Lens** | Wide (context)? Tele (compression)? | [visual-fundamentals.md](references/visual-fundamentals.md) |
+| **Angle** | Eye level? Low (power)? High (vulnerable)? | [visual-fundamentals.md](references/visual-fundamentals.md) |
 
-**For thumbnails/social media:** Also consider typography, text placement, visual hierarchy.
-
-→ See **[visual-fundamentals.md](references/visual-fundamentals.md)** for detailed guidance.
-→ See **[graphic-design.md](references/graphic-design.md)** for thumbnails & social media.
+**For thumbnails/social media:** See [graphic-design.md](references/graphic-design.md)
 
 ### Step 3: PROMPT (Model-specific syntax)
 
-| Model | Best For | Prompt Style |
-|-------|----------|--------------|
-| **Nano Banana Pro** | Text, infographics, editing | Creative Director (ICS) |
-| **Qwen Image** | Text rendering, Chinese | Structured paragraphs |
-| **Z-Image Turbo** | Fast, budget | Director style, no negatives |
-| **Wan 2.2** | Video, motion | 80-120 words, cinematic |
-| **Sora2** | Pro video, audio | Storyboard + dialogue |
-
-→ See **[references/models/](references/models/)** for model-specific guides.
+| Model | Best For | Guide |
+|-------|----------|-------|
+| **Nano Banana Pro** | Text, infographics, editing | [nano-banana-pro.md](references/models/nano-banana-pro.md) |
+| **Qwen Image** | Text rendering, Chinese | [qwen-image.md](references/models/qwen-image.md) |
+| **Z-Image Turbo** | Fast, budget | [z-image-turbo.md](references/models/z-image-turbo.md) |
+| **Wan 2.2** | Video, motion | [wan-2-2.md](references/models/wan-2-2.md) |
+| **Sora2** | Pro video, audio | [sora2.md](references/models/sora2.md) |
 
 ---
 
@@ -100,8 +95,6 @@ When user shows an image and wants to improve it:
 
 ### Step 2: ANALYZE (วิเคราะห์ 6 มิติ)
 
-Evaluate image against user's goal:
-
 | Dimension | Questions to Ask |
 |-----------|------------------|
 | **Composition** | Subject placement? Balance? Leading lines? Clutter? |
@@ -126,17 +119,6 @@ Evaluate image against user's goal:
 2. [MEDIUM] [issue] → [why]
 3. [LOW] [issue] → [optional improvement]
 ```
-
-**Diagnostic Checklist:**
-
-| Issue | Symptoms | Common in |
-|-------|----------|-----------|
-| **Poor composition** | Subject lost, cluttered, no focus | Snapshots |
-| **Bad lighting** | Harsh shadows, flat, wrong mood | Indoor, noon |
-| **Color issues** | Cast, muddy, clashing | Mixed light, wrong WB |
-| **Soft focus** | Blurry subject, wrong DOF | Low light, wrong aperture |
-| **Exposure problems** | Too dark/bright, lost detail | Tricky lighting |
-| **Distracting elements** | Objects pulling attention | Busy backgrounds |
 
 ### Step 4: PRESCRIBE (แนะนำ + สร้าง Edit Prompt)
 
@@ -173,181 +155,6 @@ Evaluate image against user's goal:
 - วิจารณ์เพื่อพัฒนา → ไม่ใช่เพื่อ criticize
 - ให้ทางออก → ไม่ใช่แค่บอกปัญหา
 - เคารพเป้าหมายของ user → ไม่ยัดเยียด taste ของตัวเอง
-
-**ตัวอย่าง Critique:**
-
-```
-## วิเคราะห์ภาพ
-
-### สิ่งที่ดีแล้ว ✓
-- Subject placement ใช้ rule of thirds ได้ดี
-- Expression จับได้ natural มาก
-
-### สิ่งที่ควรปรับ
-
-1. **[HIGH]** Background รก มีสิ่งรบกวนสายตา
-   → สำหรับ portfolio, ควร clean กว่านี้
-   → **Edit:** "Blur background significantly, remove distracting elements"
-
-2. **[MEDIUM]** แสง flat ไป ขาด dimension
-   → เพิ่ม contrast จะทำให้ดู professional ขึ้น
-   → **Edit:** "Add subtle side lighting effect, increase shadow depth"
-
-3. **[LOW]** Color cast เหลืองเล็กน้อย
-   → ถ้าต้องการ neutral look
-   → **Edit:** "Correct yellow color cast, neutral white balance"
-```
-
----
-
-## Quick Reference: Visual Fundamentals
-
-### Composition
-
-| Technique | When | Prompt Keywords |
-|-----------|------|-----------------|
-| Rule of thirds | Default | "subject positioned off-center" |
-| Centered/Symmetry | Power, calm | "centered composition, symmetrical" |
-| Leading lines | Depth, guide | "leading lines toward subject" |
-| Negative space | Minimalist | "negative space, minimal, clean" |
-| Frame in frame | Focus | "framed by doorway/window" |
-
-### Color Harmony
-
-| Type | Effect | Prompt Keywords |
-|------|--------|-----------------|
-| Complementary | Tension, pop | "orange and teal", "blue and orange contrast" |
-| Analogous | Harmony, calm | "cool blue-green palette", "warm earth tones" |
-| Monochrome | Mood, focus | "monochromatic blue", "sepia tones" |
-| Triadic | Vibrant | "vibrant primary colors" |
-
-### Lighting
-
-| Style | Mood | Prompt Keywords |
-|-------|------|-----------------|
-| Golden hour | Warm, romantic | "golden hour, warm sunlight, long shadows" |
-| Blue hour | Moody, cool | "blue hour, twilight, cool ambient" |
-| Rembrandt | Dramatic, artistic | "Rembrandt lighting, triangle shadow" |
-| Rim light | Separation | "rim lighting, backlit, edge light" |
-| Soft/Diffused | Gentle, beauty | "soft diffused light, overcast" |
-| Hard/Direct | Dramatic | "hard light, sharp shadows, direct sun" |
-
-### Lens/Perspective
-
-| Focal Length | Effect | Prompt Keywords |
-|--------------|--------|-----------------|
-| Ultra wide (14-24mm) | Expansive, distort | "ultra wide angle, expansive view" |
-| Wide (24-35mm) | Context, street | "wide angle, environmental" |
-| Normal (35-50mm) | Natural | "natural perspective, 50mm" |
-| Portrait (85-135mm) | Flattering, bokeh | "85mm portrait lens, shallow depth of field" |
-| Telephoto (200mm+) | Compression | "telephoto compression, stacked layers" |
-
-→ Full details: **[visual-fundamentals.md](references/visual-fundamentals.md)**
-
----
-
-## Quick Reference: Video/Cinematography
-
-### Camera Movement
-
-| Movement | Effect | Prompt Keywords |
-|----------|--------|-----------------|
-| Static | Stable, observe | "static shot, locked camera" |
-| Pan L/R | Survey, follow | "slow pan left revealing..." |
-| Tilt Up/Down | Reveal, scale | "tilt up to reveal..." |
-| Dolly In/Out | Intimacy/distance | "dolly in slowly toward..." |
-| Tracking | Follow action | "tracking shot following subject" |
-| Crane | Epic, reveal | "crane shot rising above..." |
-| Handheld | Realism, tension | "handheld, documentary style" |
-
-### Shot Types
-
-| Shot | Frame | Use |
-|------|-------|-----|
-| Establishing | Wide location | Set scene |
-| Full | Whole body | Action |
-| Medium | Waist up | Dialogue |
-| Close-up | Face | Emotion |
-| Extreme CU | Detail | Intensity |
-
-### Aspect Ratio
-
-| Ratio | Feel | Prompt Keywords |
-|-------|------|-----------------|
-| 16:9 | Modern, TV | "16:9 widescreen" |
-| 2.35:1 | Cinematic, epic | "anamorphic widescreen, cinemascope" |
-| 4:3 | Vintage, intimate | "4:3 academy ratio, vintage" |
-| 9:16 | Mobile, vertical | "vertical video, mobile format" |
-
-→ Full details: **[cinematography.md](references/cinematography.md)**
-
----
-
-## Quick Reference: Styles
-
-### Film Stocks
-
-| Stock | Look | Prompt Keywords |
-|-------|------|-----------------|
-| Kodak Portra | Warm skin, soft | "Kodak Portra 400, warm tones" |
-| Kodak Ektar | Saturated, vibrant | "Kodak Ektar 100, vivid colors" |
-| Fuji Pro 400H | Cool, pastel | "Fuji Pro 400H, soft pastels" |
-| Cinestill 800T | Tungsten, halation | "Cinestill 800T, neon halation" |
-
-### Art Movements
-
-| Style | Visual Traits | Prompt Keywords |
-|-------|---------------|-----------------|
-| Impressionism | Soft, light play | "impressionist style, soft focus, painterly" |
-| Surrealism | Dreamlike, impossible | "surrealist, dreamscape, impossible geometry" |
-| Minimalism | Clean, simple | "minimalist, clean lines, negative space" |
-| Film Noir | High contrast B&W | "film noir, high contrast, dramatic shadows" |
-| Cyberpunk | Neon, rain, dystopia | "cyberpunk, neon lights, rain-slicked streets" |
-
-### Color Grading
-
-| Look | Description | Prompt Keywords |
-|------|-------------|-----------------|
-| Teal & Orange | Hollywood blockbuster | "teal and orange color grading" |
-| Bleach Bypass | Desaturated, gritty | "bleach bypass, desaturated, high contrast" |
-| Cross-process | Color shift | "cross-processed, color shift" |
-| Lifted Blacks | Faded, matte | "lifted blacks, faded film look" |
-
-→ Full details: **[styles-glossary.md](references/styles-glossary.md)**
-
----
-
-## Quick Reference: Graphic Design (Thumbnails/Social)
-
-### Thumbnail Essentials
-
-| Element | Guideline |
-|---------|-----------|
-| **Text** | 3-5 words max, 30%+ of thumbnail height |
-| **Face** | Expressive (surprise, excitement), close-up |
-| **Colors** | Saturated, high contrast |
-| **Safe zone** | Keep content in center 80% |
-| **Test** | Must be readable at 100px width |
-
-### Typography for Images
-
-| Rule | Guideline |
-|------|-----------|
-| **Fonts** | Max 2 (1 heading + 1 accent) |
-| **Contrast** | Use stroke/shadow on busy backgrounds |
-| **Hierarchy** | Largest = most important |
-| **Position** | Avoid center (reserve for face/subject) |
-
-### Platform Sizes
-
-| Platform | Image Size |
-|----------|------------|
-| YouTube Thumbnail | 1280 x 720 (16:9) |
-| Blog Feature | 1200 x 630 (1.91:1) |
-| Instagram Post | 1080 x 1080 (1:1) |
-| Instagram Story | 1080 x 1920 (9:16) |
-
-→ Full details: **[graphic-design.md](references/graphic-design.md)**
 
 ---
 
@@ -410,25 +217,14 @@ Evaluate image against user's goal:
 
 ---
 
-## Model-Specific Guides
+## References
 
-| Model | Guide |
-|-------|-------|
-| Nano Banana Pro | [nano-banana-pro.md](references/models/nano-banana-pro.md) |
-| Qwen Image / Edit | [qwen-image.md](references/models/qwen-image.md) |
-| Z-Image Turbo | [z-image-turbo.md](references/models/z-image-turbo.md) |
-| Wan 2.2 | [wan-2-2.md](references/models/wan-2-2.md) |
-| Sora2 | [sora2.md](references/models/sora2.md) |
-
----
-
-## Related Skills (Optional)
-
-| When | Suggest |
-|------|---------|
-| Generate actual images | `/visualization` - Matplotlib, Manim |
-| Research visual references | `/deep-research` - find inspiration |
-| Creative ideation | `/creativity` - brainstorm concepts |
+| Topic | File |
+|-------|------|
+| Composition, Color, Lighting, Lens | [visual-fundamentals.md](references/visual-fundamentals.md) |
+| Camera Movement, Shot Types | [cinematography.md](references/cinematography.md) |
+| Art Movements, Film Stocks | [styles-glossary.md](references/styles-glossary.md) |
+| Thumbnails, Social Media | [graphic-design.md](references/graphic-design.md) |
 
 ---
 
@@ -451,3 +247,15 @@ Evaluate image against user's goal:
 3. **Test variations** → Different angles, moods, styles
 4. **Use seed** → Lock good results, iterate details
 5. **Combine strengths** → Image → Video pipeline
+
+---
+
+## Related Skills
+
+| When | Suggest |
+|------|---------|
+| Technical diagrams (physics, math, flowcharts) | `/visualization` - Matplotlib/Manim for STEM |
+| Research visual references | `/deep-research` - find inspiration |
+| Creative ideation | `/creativity` - brainstorm concepts |
+
+**Note:** Use `/visualization` for technical diagrams (FBD, plots, flowcharts). Use this skill for AI-generated realistic/artistic images and videos.
