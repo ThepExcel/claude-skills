@@ -127,11 +127,11 @@ Before writing any prompt, answer:
 
 | Model | Best For | Guide |
 |-------|----------|-------|
-| **Nano Banana Pro** | Text, infographics, editing | [nano-banana-pro.md](references/models/nano-banana-pro.md) |
-| **Qwen Image** | Text rendering, Chinese | [qwen-image.md](references/models/qwen-image.md) |
-| **Z-Image Turbo** | Fast, budget | [z-image-turbo.md](references/models/z-image-turbo.md) |
-| **Wan 2.2** | Video, motion | [wan-2-2.md](references/models/wan-2-2.md) |
-| **Sora2** | Pro video, audio | [sora2.md](references/models/sora2.md) |
+| **Nano Banana Pro** | Text, infographics, editing | [nano-banana-pro.md](references/nano-banana-pro.md) |
+| **Qwen Image** | Text rendering, Chinese | [qwen-image.md](references/qwen-image.md) |
+| **Z-Image Turbo** | Fast, budget | [z-image-turbo.md](references/z-image-turbo.md) |
+| **Wan 2.2** | Video, motion | [wan-2-2.md](references/wan-2-2.md) |
+| **Sora2** | Pro video, audio | [sora2.md](references/sora2.md) |
 
 ---
 

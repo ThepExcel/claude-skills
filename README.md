@@ -62,9 +62,9 @@ Skills developed by [ThepExcel](https://www.thepexcel.com) in collaboration with
 | **extract-expertise** | Extract domain expertise from experts and transform into Claude skills |
 | **power-query-coaching** | Coach users to transform messy data using Power Query UI |
 
-### Third-Party Skills
+### Anthropic Official Skills (Pre-optimized)
 
-Skills from external sources, included for convenience.
+Skills from Anthropic's official repository. These follow Anthropic's best practices and are already optimized for token efficiency.
 
 | Skill | Description | Source |
 |-------|-------------|--------|
