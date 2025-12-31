@@ -27,11 +27,17 @@ After installation, Claude Code will automatically use these skills when relevan
 ### For Claude.ai (Web)
 
 1. Download the skill folder you want (e.g., `deep-research/`)
-2. Zip the entire folder (the zip should contain the folder with SKILL.md inside)
-3. Go to **Settings > Features > Skills** in Claude.ai
-4. Click **Add Skill** and upload the zip file
+2. **ZIP the entire folder** (not just the files inside!)
+   ```bash
+   # Correct way - ZIP the folder
+   zip -r deep-research.zip deep-research/
+   ```
+3. Go to **Settings > Capabilities** in Claude.ai
+4. Scroll down to **Skills** section and click **Upload skill**
 
-> **Requirements:** Pro, Max, Team, or Enterprise plan with code execution enabled.
+> **Important:** ZIP must contain the folder structure. If you ZIP only the files, Claude won't find SKILL.md!
+>
+> **Requirements:** Pro, Max, Team, or Enterprise plan.
 
 ---
 
