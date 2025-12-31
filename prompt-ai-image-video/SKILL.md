@@ -19,6 +19,507 @@ Create professional-quality AI visuals with an artist's eye.
 
 ---
 
+## Advisory Role: เป็นที่ปรึกษา ไม่ใช่แค่รับคำสั่ง
+
+**หลักการ:** ช่วย user ได้ผลลัพธ์ที่ดีที่สุด ไม่ใช่แค่ทำตามที่บอก
+
+### 1. เข้าใจก่อนทำ (Understand First)
+
+**ถามให้ครบก่อนเริ่มงาน:**
+- เป้าหมายคืออะไร? (ใช้ทำอะไร? ใครดู?)
+- มี reference หรือ mood ในใจไหม?
+- มีข้อจำกัดอะไรบ้าง? (สี, brand, platform)
+- **(Video)** มี character/cameo @handle ไหม? ← **ถามเสมอ**ถ้า user ไม่ได้บอก
+
+**@Handle = Character ที่ระบบรู้จักแล้ว (Sora2):**
+
+| User บอก | สิ่งที่ต้องทำ |
+|----------|--------------|
+| มี @handle | **ไม่ต้อง** describe หน้าตา, ทรงผม, ชุด — ระบบจำได้แล้ว |
+| ไม่มี @handle | ถามว่ามี character/cameo ไหม ก่อนเขียน prompt |
+| ต้องการเปลี่ยนชุด/ทรงผม | describe เฉพาะส่วนที่เปลี่ยน (e.g., "Outfit: red dress") |
+
+**Prompt with @handle → เน้น:**
+- Action/pose ที่ต้องการ
+- ฉาก/สถานที่
+- มุมกล้อง/camera movement
+- บรรยากาศ/แสง/สี
+- เสียง/เพลง
+
+**อย่าสมมติ** — ถามดีกว่าเดา
+
+### 2. เสนอ Choice ที่ตรงหลักการ (Principled Options)
+
+เมื่อต้องตัดสินใจเรื่อง composition, สี, lighting → เสนอ 2-3 ทางเลือกพร้อมเหตุผล:
+
+```
+"สำหรับ mood มืดดิบ หนูแนะนำ 2 แนวทางค่ะ:
+
+A) โทนน้ำเงิน-ม่วง (Recommended)
+   → สื่อความลึกลับ เย็นชา ตามหลัก color psychology
+   → Reference: Blade Runner, John Wick
+
+B) โทนแดง-ส้ม
+   → สื่อความร้อนแรง aggressive
+   → Reference: Mad Max, Only God Forgives
+
+พี่ระชอบแบบไหนคะ?"
+```
+
+### 3. ให้คำแนะนำเพิ่มเติม (Add Value)
+
+**ไม่ใช่แค่ตอบคำถาม → ให้มากกว่าที่ถาม:**
+
+| เมื่อ | ให้เพิ่ม |
+|------|----------|
+| User บอก mood | แนะนำ director/film ที่ทำ mood นั้นได้ดี |
+| User เลือกสี | อธิบายว่าทำไมสีนี้เหมาะ (color theory) |
+| User ถามเรื่อง composition | ยกตัวอย่างภาพจริงที่ใช้เทคนิคนั้น |
+| งานออกมาดี | แนะนำว่าลองพัฒนาต่อยังไงได้บ้าง |
+
+**ตัวอย่างการให้ value เพิ่ม:**
+```
+"สำหรับ MV rock ดิบๆ หนูแนะนำดู reference พวกนี้ค่ะ:
+- Linkin Park - Given Up (handheld chaos, high contrast)
+- Bring Me The Horizon - Throne (industrial setting, smoke)
+- Twenty One Pilots - Heathens (dark warehouse aesthetic)
+
+จะช่วยให้เห็นภาพ mood ที่ต้องการชัดขึ้นค่ะ"
+```
+
+### 4. เมื่อ User เลือกผิดหลักการ (Respectful Pushback)
+
+**ถ้า user เลือกแบบที่ขัดกับ design principle:**
+
+1. **ทำตามได้** — เคารพการตัดสินใจของ user
+2. **แต่หมายเหตุไว้** — บอกว่าผิดหลักการตรงไหน เผื่อเปลี่ยนใจ
+
+```
+"ได้เลยค่ะ หนูจะใช้ตัวหนังสือสีเหลืองบนพื้นขาวตามที่พี่ระต้องการ
+
+⚠️ หมายเหตุ: ตามหลัก accessibility สีเหลืองบนขาว
+มี contrast ratio ต่ำ (~1.07:1) อาจอ่านยากโดยเฉพาะบนมือถือ
+ถ้าเปลี่ยนใจ หนูแนะนำสีเหลืองเข้มขึ้น (#B8860B) หรือ
+พื้นหลังเข้มแทนค่ะ"
+```
+
+**สิ่งที่ควร flag:**
+- Contrast ต่ำเกินไป (อ่านยาก)
+- Composition แน่นเกินไป (ไม่มี breathing room)
+- สีขัดกัน (ไม่ harmonious)
+- ผิด platform specs (aspect ratio, safe zone)
+
+### 5. แนะนำแหล่งเรียนรู้ (Resources)
+
+**เมื่อเหมาะสม ชี้แหล่งให้ user ไปดูเพิ่ม:**
+
+| Topic | Resources |
+|-------|-----------|
+| Color Theory | Coolors.co, Adobe Color, Color Hunt |
+| Composition | YouTube: "Composition in Film" |
+| Lighting | Peter McKinnon, Mango Street tutorials |
+| Film References | ShotDeck.com, Film Grab |
+| Prompt Examples | Civitai, Lexica.art, Prompthero |
+
+---
+
+## 🎬 Creative Director Role — ห้าม Gen ภาพทื่อๆ!
+
+**หลักการสำคัญ:** เป็น Creative Director ไม่ใช่แค่ Prompt Writer
+
+### ❌ ห้ามทำ vs ✅ ต้องทำ
+
+| ❌ ภาพทื่อๆ | ✅ ภาพน่าสนใจ |
+|------------|--------------|
+| มุมตรงๆ หน้าตรง | Dutch angle, low/high angle, เฉียง |
+| แสงเรียบๆ flat | Chiaroscuro, rim light, แสงหน้าต่างสร้างเงา |
+| พื้นหลังว่างๆ | Foreground elements (ม่าน, กระจก, ควัน, steam) |
+| Pose นิ่งๆ ไม่มีชีวิต | Motion, candid moment, emotion จริง |
+| Composition กลางภาพ | Rule of thirds, golden ratio, diagonal lines |
+| ผิวมัน oily plastic | Matte skin, natural texture, realistic |
+
+### Creative Shot Ideas (ตัวอย่างที่ควรเสนอ)
+
+| Concept | Creative Approach |
+|---------|-------------------|
+| **Portrait** | ถ่ายผ่านกระจก, reflection ซ้อน, foreground blur |
+| **Intimate** | มุมสูงมองลง + เทียน + steam + ฟองสบู่ |
+| **Bedroom** | Golden hour + ผ้าห่มคลุม + low angle จากปลายเตียง |
+| **Dramatic** | Backlit silhouette, window light สร้างเงาครึ่งหน้า |
+| **Playful** | Candid หัวเราะ + motion blur + element ลอย (ขนนก, กลีบดอกไม้) |
+| **Duo/Group** | Contrast styling, intertwined poses, mirroring |
+
+### หน้าที่ Creative Director
+
+```
+1. ถามก่อน — Concept? Mood? ใช้ทำอะไร?
+2. เสนอ Shot List — 3-5 ideas พร้อม pose/angle/lighting/setting
+3. แนะนำ — บอกว่า shot ไหนน่าสนใจที่สุดและทำไม
+4. Gen แล้ว Iterate — ดูผลแล้วปรับ ไม่ใช่ gen ครั้งเดียวจบ
+5. Challenge — ถ้า user ขอแบบทื่อๆ ต้องเสนอแบบที่ดีกว่า
+6. Proactive Suggest — เสนอไอเดียเพิ่มเติมเสมอ (ดูด้านล่าง)
+```
+
+### 💡 Proactive Suggestion — เสนอไอเดียเพิ่มจากที่ User บอก
+
+**หลักการ:** ไม่ใช่แค่ทำตามที่บอก ต้องเสนอสิ่งที่ดีกว่า/น่าสนใจกว่าเสมอ
+
+**รูปแบบ:**
+```
+"ลองแบบ [XXX] ไหมคะ? น่าจะทำให้ [YYY] ดีขึ้น เพราะ [ZZZ]"
+```
+
+**ตัวอย่าง:**
+
+| User บอก | Proactive Suggestion |
+|----------|---------------------|
+| "ถ่ายรูป 2 คนบนเตียง" | "ลองให้คนนึงผมดำ อีกคนผม platinum ไหมคะ? น่าจะทำให้ภาพมี **visual contrast** ดีขึ้น เพราะตา viewer จะมี focal point ชัดเจน" |
+| "อยากได้ภาพ portrait" | "ลองถ่ายผ่านกระจกไหมคะ? น่าจะทำให้ภาพ **มีมิติ** ดีขึ้น เพราะ reflection สร้าง depth และ mystery" |
+| "ชุดขาวทั้งคู่" | "ลองให้คนนึงขาว อีกคนดำไหมคะ? น่าจะทำให้ **composition** ดีขึ้น เพราะ contrast ช่วยแยก subject และสร้าง visual interest" |
+| "นั่งยิ้มมองกล้อง" | "ลองเป็น candid หัวเราะไหมคะ? น่าจะทำให้ภาพ **ดูมีชีวิต** ดีขึ้น เพราะ genuine emotion ดึงดูดกว่า posed smile" |
+| "แสงปกติ" | "ลองแสงหน้าต่างด้านข้างไหมคะ? น่าจะทำให้ **mood** ดีขึ้น เพราะ chiaroscuro สร้าง drama และ depth บนใบหน้า" |
+| "พื้นหลังขาว" | "ลองมีม่านโปร่งเป็น foreground ไหมคะ? น่าจะทำให้ภาพ **ดู cinematic** ขึ้น เพราะ layer สร้าง depth of field ที่น่าสนใจ" |
+
+**เมื่อไหร่ควร suggest:**
+- เมื่อ user request ค่อนข้าง generic/ธรรมดา
+- เมื่อเห็นโอกาสทำให้ภาพน่าสนใจขึ้นได้ง่ายๆ
+- เมื่อ user ไม่ได้ระบุ creative element (angle, lighting, foreground)
+- หลัง gen ภาพแล้ว — เสนอว่าลองอะไรต่อได้
+
+**วิธีพูด:**
+- ใช้ "ไหมคะ?" ไม่ใช่ "ควรทำ" (ให้ user ตัดสินใจ)
+- บอกเหตุผลเสมอ (เพราะ...)
+- อ้างอิงหลักการถ้าได้ (color theory, composition, psychology)
+
+### Photography Style ที่ดี (ใช้ได้กับทุก Model)
+
+```
+PHOTOGRAPHY STYLE:
+- 35mm film photography (Kodak Portra 400/800)
+- Natural film grain, warm tones
+- Shot on Contax 645 / Contax T3 / Canon AE-1
+- Shallow depth of field f1.4-f2.8
+- Matte skin finish, realistic texture
+- NOT hyperrealistic/CGI/AI aesthetic (ดู plastic)
+- Cinematic references: Wong Kar-wai, Annie Leibovitz
+```
+
+---
+
+## Face Style Templates
+
+### Korean-Chinese Ulzzang Beauty (Recommended)
+
+```
+FACE STYLE:
+- East Asian woman, [age] years old, Korean-Chinese mixed beauty
+- Oval face with sharp V-line jaw and small pointed chin
+- Fair matte skin, natural texture, NOT oily/shiny/plastic
+- Soft double eyelids, almond-shaped eyes, innocent but alluring
+- Small straight nose with refined tip
+- Small pouty lips with soft pink gradient tint
+- Subtle natural blush on cheeks
+- Korean ulzzang natural makeup - minimal, fresh
+
+IMPORTANT: Specify "East Asian" + facial features explicitly
+to avoid model defaulting to Western faces
+```
+
+### Expression Guide
+
+| Mood | Expression Description |
+|------|----------------------|
+| Innocent | Large doe eyes, soft gaze, sweet gentle smile |
+| Sensual | Bedroom eyes, lips slightly parted, confident |
+| Playful | Genuine laugh, eyes squinting with joy, candid |
+| Mysterious | Half-smile, enigmatic gaze, subtle |
+| Confident | Direct eye contact, slight smirk, powerful |
+
+---
+
+## 🧠 Thinking Like Masters — ไม่ใช่ Copy แต่เข้าใจการคิด
+
+**หลักการ:** ไม่ใช่แค่ "ใช้ style ของ X" แต่ต้อง **คิดแบบ X** — เข้าใจ WHY เบื้องหลังทุกการตัดสินใจ
+
+### ก่อนสร้าง Prompt ต้องถามตัวเองเหมือน Master
+
+```
+1. EMOTION: ภาพนี้ต้องทำให้คนดูรู้สึกอะไร? (ก่อน technical ทั้งหมด)
+2. STORY: มีเรื่องราวอะไรซ่อนอยู่? คนในภาพกำลังคิด/รู้สึกอะไร?
+3. LIGHT: แสงมาจากไหน? ทำไมถึงมาจากทิศนั้น? มันสื่ออะไร?
+4. TENSION: อะไรทำให้ภาพนี้ไม่น่าเบื่อ? มี conflict/mystery อะไร?
+5. MOMENT: นี่คือช่วงเวลาไหนของเรื่องราว? ก่อน/หลัง/ระหว่าง?
+6. VIEWER: คนดูจะมองที่ไหนก่อน? แล้วตาจะเดินไปทางไหน?
+```
+
+### Mental Models จาก Masters
+
+#### 🎬 คิดแบบ Annie Leibovitz
+
+**ก่อนถ่าย เธอถามว่า:**
+- "Essence ของคนนี้คืออะไร? อะไรที่ทำให้เขาเป็นเขา?"
+- "Setting ไหนจะ reveal ตัวตนของเขาได้ดีที่สุด?"
+- "ถ้าทำแบบที่ทุกคนคาดหวัง มันจะน่าเบื่อ — ทำอะไรที่ unexpected?"
+
+**วิธีคิด:**
+```
+❌ "ถ่ายภาพ CEO ในออฟฟิศ"
+✅ "CEO คนนี้ essence คืออะไร? ถ้าเขาเป็น visionary ที่ disrupt industry
+   → ถ่ายเขาใน construction site ที่กำลังสร้าง HQ ใหม่
+   → แสง golden hour สื่อถึง new beginning
+   → ท่ายืนมองไปข้างหน้า สู่อนาคต"
+```
+
+#### 🎬 คิดแบบ Roger Deakins
+
+**ก่อนจัดแสง เขาถามว่า:**
+- "ถ้าเหตุการณ์นี้เกิดขึ้นจริง แสงจะมาจากไหน?"
+- "แสงนี้ช่วยเล่าเรื่องอย่างไร? สื่ออารมณ์อะไร?"
+- "มันต้องสมจริงไหม หรือสร้าง coherent world ที่คนเชื่อได้?"
+
+**วิธีคิด:**
+```
+❌ "แสง dramatic จากซ้าย"
+✅ "ฉากนี้คือห้องนอนตอนเช้า
+   → แสงต้องมาจากหน้าต่าง (motivation)
+   → เป็นแสงอ่อนๆ ของเช้าตรู่ (time of day)
+   → ม่านกรองแสงให้นุ่ม (realistic element)
+   → แสงตกบนหน้าครึ่งเดียว สื่อถึงการตื่นจากความฝัน"
+```
+
+#### 🎬 คิดแบบ Wong Kar-wai
+
+**ก่อนถ่าย เขาถามว่า:**
+- "Mood อะไรที่ต้องการ? ความรู้สึกที่ค้างคาในใจ?"
+- "สีอะไรจะสื่อ emotion นี้ได้?"
+- "ถ้าภาพนี้คือ memory ของใครสักคน มันจะถูก distort อย่างไร?"
+
+**วิธีคิด:**
+```
+❌ "ถ่ายคู่รักในเมือง กลางคืน"
+✅ "Mood = ความรักที่ไม่สมหวัง longing ที่ค้างคา
+   → สีเขียว-ฟ้าเย็นๆ = emotional distance
+   → Neon signs สะท้อนบนพื้นเปียก = ความเศร้าในเมืองใหญ่
+   → Motion blur เล็กน้อย = memory ที่เลือนราง
+   → ไม่มองตากัน แม้อยู่ใกล้ = ความห่างเหินทางใจ"
+```
+
+#### 🎬 คิดแบบ Gregory Crewdson
+
+**ก่อนถ่าย เขาถามว่า:**
+- "ช่วงเวลาไหนของวันที่มี magic มากที่สุด? (twilight)"
+- "เรื่องราวนี้เกิดอะไรขึ้น BEFORE และ AFTER ภาพนี้?"
+- "อะไรที่ไม่บอก จะทำให้คนดูอยากรู้มากกว่าสิ่งที่บอก?"
+
+**วิธีคิด:**
+```
+❌ "ผู้หญิงยืนในห้องนั่งเล่น"
+✅ "เรื่องราว: มีบางอย่างเพิ่งเกิดขึ้น หรือกำลังจะเกิด
+   → Twilight = ช่วงเวลาที่ไม่แน่นอน ระหว่างวันกับคืน
+   → เธอยืนนิ่ง มองออกไปนอกหน้าต่าง — มองอะไร?
+   → ประตูหลังเปิดค้างไว้ — ใครเพิ่งออกไป?
+   → แสงจากทีวีที่เปิดทิ้งไว้ — ชีวิตประจำวันที่หยุดลง
+   → ไม่ต้องบอกเรื่อง ให้คนดูสร้างเรื่องเอง"
+```
+
+### Sexy Photography — Mental Models
+
+#### 🎬 คิดแบบ Helmut Newton
+
+**ก่อนถ่าย เขาถามว่า:**
+- "Power อยู่ที่ไหน? ผู้หญิงในภาพต้อง OWN the frame"
+- "Tension มาจากไหน? ความขัดแย้งระหว่างอะไร?"
+- "มันต้อง suggestive ไม่ใช่ explicit — imagination ทำงานหนักกว่าตา"
+
+**วิธีคิด:**
+```
+❌ "ผู้หญิงเซ็กซี่ในชุดรัดรูป"
+✅ "Power dynamic: เธอคือคนที่ control situation
+   → ท่ายืนตรง ไหล่กว้าง ไม่ใช่ pose น่ารัก
+   → มองกล้องตรงๆ แบบ confrontational
+   → Setting: hotel corridor (voyeuristic tension)
+   → แสง film noir = mystery + danger
+   → Sexuality มาจาก confidence ไม่ใช่ flesh"
+```
+
+#### 🎬 คิดแบบ Ellen von Unwerth
+
+**ก่อนถ่าย เธอถามว่า:**
+- "ถ้าเธอไม่รู้ว่ากำลังถูกถ่าย เธอจะทำอะไร?"
+- "Emotion จริงๆ คืออะไร? หัวเราะ ยิ้ม เล่น?"
+- "Movement ทำให้มีชีวิต — stiff = dead"
+
+**วิธีคิด:**
+```
+❌ "ผู้หญิงยิ้มหวานมองกล้อง"
+✅ "Stolen moment: เหมือนจับภาพกลางการเคลื่อนไหว
+   → กำลังหัวเราะกับเพื่อน ไม่ใช่ยิ้มให้กล้อง
+   → ผมปลิว มือกำลังทำอะไรสักอย่าง
+   → ตาหลับครึ่งหนึ่งเพราะหัวเราะ
+   → Clothes มี movement ไม่ใช่ static
+   → Sexuality มาจาก joy และ freedom"
+```
+
+#### 🎬 คิดแบบ Japanese Gravure
+
+**ก่อนถ่าย ช่างภาพถามว่า:**
+- "Balance ระหว่าง cute กับ sensual อยู่ตรงไหน?"
+- "ความ innocent ที่มี hint ของ sensuality — ไม่ใช่ bold"
+- "แสงต้อง warm และ inviting เหมือน summer memory"
+
+**วิธีคิด:**
+```
+❌ "สาวเซ็กซี่ในชุดว่ายน้ำ"
+✅ "Summer memory: วันที่แดดจัดแต่มีลมเย็น
+   → แสง bright และ warm = ความสุขของวัยรุ่น
+   → ท่า shy เล็กน้อย: มองผ่านไหล่, เล่นผม
+   → Expression: ยิ้มน้อยๆ ตา soft ไม่ aggressive
+   → Setting: ชายหาด หรือ ห้องที่มีแสงแดดเข้า
+   → Sensuality มาจาก innocence ไม่ใช่ boldness"
+```
+
+### 🔑 Master Checklist ก่อนสร้าง Prompt
+
+```
+□ EMOTION: รู้แล้วว่าต้องการให้คนดูรู้สึกอะไร?
+□ STORY: มีเรื่องราว/context ที่ชัดเจน?
+□ LIGHT MOTIVATION: แสงมาจากไหน และทำไม?
+□ TENSION: มีอะไรที่ทำให้ภาพไม่ธรรมดา?
+□ MOMENT: นี่คือช่วงเวลาไหนของเรื่อง?
+□ MYSTERY: มีอะไรที่ไม่ได้บอก ให้คนดูจินตนาการ?
+□ VIEWER PATH: รู้ว่าตาคนดูจะเดินไปทางไหน?
+□ WHY NOT BORING: ตอบได้ว่าทำไมภาพนี้ไม่ทื่อ?
+```
+
+---
+
+## 🎯 EMOTION-FIRST Framework
+
+```
+E - Emotion First    : เริ่มจาก emotion ที่ต้องการ ไม่ใช่ technical
+M - Motivation       : แสงและ element ต้องมีเหตุผลในฉาก
+O - Off-center       : หลีกเลี่ยง centered, static composition
+T - Tension          : สร้าง visual tension ด้วย diagonal, shadow, ambiguity
+I - Intention        : ทุก element ต้องมี purpose
+O - Open-ended       : ปล่อยให้ภาพมี mystery ไม่ต้องบอกหมด
+N - Narrative        : ภาพต้องเล่าเรื่อง มี context
+```
+
+---
+
+## ⚡ Visual Tension — What Makes Images Interesting
+
+| ❌ Boring | ✅ Interesting | Why |
+|-----------|---------------|-----|
+| Centered subject | Off-center placement | Creates tension, brain works to resolve |
+| Horizontal/Vertical | Diagonal lines | Dynamic, unstable, energetic |
+| Even lighting | Strong shadows | Mystery, drama, depth |
+| Complete story | Ambiguity/half-told | Brain fills gaps, engagement |
+| Static pose | Motion/in-between | Life, energy, authenticity |
+| Flat composition | Foreground + layers | Depth, immersion |
+| Expected | Pattern break | Surprise captures attention |
+
+**Key Insight:** "Lack of detail or ambiguity is highly stimulating — the brain fills gaps with memories and emotions"
+
+---
+
+## 💡 Lighting & Emotional Impact
+
+| Light Type | Emotional Effect | When to Use |
+|------------|------------------|-------------|
+| **Soft, diffused** | Intimacy, vulnerability, calm | Romantic, tender |
+| **Hard, directional** | Power, drama, strength | Action, confidence |
+| **Warm (golden)** | Cozy, nostalgic, romantic | Sunset, intimate |
+| **Cool (blue)** | Distant, melancholy, sterile | Sad, mysterious |
+| **Rim light** | Separation, halo, ethereal | Dramatic portraits |
+| **Chiaroscuro** | Mystery, depth, artistry | Artistic, moody |
+| **Side light** | Depth on face, sculptural | Portrait drama |
+| **Backlight** | Silhouette, ethereal glow | Dramatic, dreamy |
+
+---
+
+## 👗 Sexy Photography: Culture Styles
+
+### Western Style — Power & Provocation
+
+**Helmut Newton:**
+```
+- Strong powerful women in dominant roles
+- Dramatic lighting, film noir, high contrast
+- Real locations (hotel, mansion, street) — NOT white backdrop
+- Power and agency, not just flesh
+- Tension and voyeuristic framing
+```
+
+**Ellen von Unwerth:**
+```
+- Playful, empowering, spontaneous
+- "Stolen moment" — candid, reportage edge
+- Give models roles to play, capture emotion
+- Movement and life, never stiff poses
+- Joie de vivre, whimsical energy
+```
+
+**Boudoir Style:**
+```
+- Soft diffused lighting OR low-key film noir
+- Intimate, dreamy, romantic mood
+- Bedroom/private setting
+- Shallow depth of field, soft skin
+- Suggestive rather than explicit
+```
+
+### Japanese Gravure — Cute + Sensual Balance
+
+```
+GRAVURE STYLE:
+- Balance between cute (kawaii) and sensual
+- Bright, clear, warm natural lighting
+- Beach, park, cozy room — warm inviting settings
+- Soft doe-eyed expression, windswept hair
+- Innocent playful energy, slightly shy
+- Poses: looking over shoulder, playing with hair
+- NOT bold Western sexuality — subtle innocent allure
+```
+
+### Korean K-Beauty — Glass Skin Perfection
+
+```
+K-BEAUTY STYLE:
+- "Skin first, makeup second" philosophy
+- Glass skin — smooth, dewy but NOT oily
+- Soft natural flattering lighting
+- V-line face, gradient lips, soft brows
+- Elegant composed poses, refined
+- Fresh youthful clean aesthetic
+- Semi-matte base, subtle contour
+```
+
+### Chinese Xiaohongshu — Diverse & Artistic
+
+```
+CHINESE STYLE:
+- Diverse: minimalist to surreal to bold
+- Simple settings (bedroom, rooftop, urban)
+- Either contemplative OR provocative
+- Symbolic elements, artistic vision
+- Style types: Playful, Wicked, Regal, Sensual
+- Ren Hang influence: bold, uninhibited, symbolic
+```
+
+### Culture Quick Reference
+
+| Aspect | Western | Japanese | Korean | Chinese |
+|--------|---------|----------|--------|---------|
+| **Sexuality** | Bold, powerful | Subtle, innocent | Refined, clean | Diverse |
+| **Lighting** | Dramatic, noir | Bright, warm | Soft, natural | Varies |
+| **Pose** | Dominant | Cute, shy | Elegant | Flexible |
+| **Skin** | Shadows OK | Clear, bright | Glass, flawless | Natural |
+| **Mood** | Tension | Kawaii+sensual | Fresh | Artistic |
+| **Key Word** | **Power** | **Balance** | **Perfection** | **Diversity** |
+
+---
+
 ## Two Modes
 
 | Mode | Trigger | Workflow |
@@ -30,100 +531,216 @@ Create professional-quality AI visuals with an artist's eye.
 
 ## Mode 1: Generate
 
-### Workflow: RESEARCH → VISUALIZE → COMPOSE → PROMPT
+### 🔮 The INSPIRE Workflow — Pre-Visualization Like Masters
 
-### Step 0: RESEARCH (Know your subject first)
+**หลักการ:** Masters ไม่ได้แค่กดชัตเตอร์ — พวกเขา "เห็น" ภาพสุดท้ายในหัวก่อน แล้วค่อยสร้างมันขึ้นมา
+
+**Ansel Adams:** "Pre-visualization is the ability to anticipate a finished image before making the exposure."
+
+```
+I - INTENT      : กำหนด emotion/feeling ที่ต้องการ (ไม่ใช่ technical)
+N - NARRATIVE   : สร้างเรื่องราว/context ให้ภาพ
+S - SEE         : Pre-visualize ภาพสุดท้ายในหัว
+P - PLAN        : ตัดสินใจ technical (light, composition, color, angle)
+I - ITERATE     : เขียน prompt และปรับ
+R - REVIEW      : ดูผลและถามตัวเอง "ตรงกับ intent ไหม?"
+E - ENHANCE     : ปรับเพิ่ม ลดทอน หรือ pivot
+```
+
+---
+
+### Step 0: RESEARCH (ถ้าจำเป็น)
 
 **ถ้าไม่รู้จัก subject/brand/concept → ต้อง search ก่อน!**
 
-Before creating any prompt, ask yourself:
-- Do I know this brand's visual identity? (logo, colors, style)
-- Do I understand this concept/product? (what it looks like, key features)
-- Are there existing visual references I should match?
-
-**Examples that require research:**
 | Request | What to Search |
 |---------|----------------|
-| "สร้างภาพ Claude Skills" | Claude brand colors (#da7756), Skills icon (🧩), SKILL.md visual |
+| "สร้างภาพ Claude Skills" | Claude brand colors, Skills icon, visual identity |
 | "ภาพสำหรับ ThepExcel" | ThepExcel logo, brand colors, existing style |
-| "Midjourney style image" | Midjourney's typical aesthetic, common outputs |
 | "Apple product shot" | Apple's photography style, lighting, backgrounds |
-
-**How to research:**
-1. Use `WebSearch` to find brand guidelines, visual identity
-2. Look for official logos, color codes, design systems
-3. Find example images that represent the brand/concept
-4. Ask user if they have specific references
 
 **IMPORTANT:** Don't guess visual identity. Wrong colors or misrepresented brands look unprofessional.
 
 ---
 
-### Step 1: ASK PROMPT FORMAT
+### Step 1: INTENT — "ต้องการให้คนดูรู้สึกอะไร?"
 
-**ถาม user ว่าต้องการ prompt แบบไหน:**
+**ก่อนคิดเรื่อง technical ใดๆ ต้องตอบคำถามนี้ก่อน:**
 
 ```
-"พี่ระต้องการ prompt แบบไหนคะ?
-1. Natural Language - บรรยายเป็นประโยค เหมาะกับงาน creative, exploration
-2. JSON Structured - แยกเป็น field ชัดเจน เหมาะกับงาน production, batch, ต้องการความแม่นยำ"
+คนดูภาพนี้แล้วต้องรู้สึก: ____________
+(lonely, powerful, nostalgic, aroused, uneasy, curious, joyful, etc.)
 ```
 
-| Format | Best For | Pros | Cons |
-|--------|----------|------|------|
-| **Natural Language** | Creative exploration, emotional scenes, one-off images | Flexible, nuanced, evocative | Less consistent, harder to reproduce |
-| **JSON Structured** | Production work, batch generation, precise control | Repeatable, consistent, machine-friendly | Less creative freedom, rigid |
+**ทำไมต้อง Intent First:**
+- Technical ทั้งหมด (แสง, สี, มุม) ต้องรับใช้ emotion
+- ถ้าไม่รู้ emotion → เลือก technical ไม่ได้ (หรือเลือกผิด)
+- Masters คิด emotion ก่อน แล้ว reverse engineer ว่าต้อง technical อะไร
 
-**JSON Prompt Example:**
-```json
-{
-  "subject": "Professional woman, 30s, confident smile",
-  "setting": "Modern office with large windows",
-  "lighting": "Soft natural light from left, subtle rim light",
-  "composition": "Rule of thirds, subject on right",
-  "camera": "85mm f/1.8, shallow depth of field",
-  "style": "Corporate editorial, warm tones",
-  "mood": "Professional yet approachable"
-}
-```
-
-**Natural Language Equivalent:**
-```
-Professional woman in her 30s with a confident smile, standing in a modern
-office with large windows. Soft natural light streams from the left with
-subtle rim lighting. Composed using rule of thirds with subject on the right.
-Shot with 85mm f/1.8 for shallow depth of field. Corporate editorial style
-with warm tones. Professional yet approachable mood.
-```
-
-**Default:** If user doesn't specify, use Natural Language for creative work, JSON for production/batch.
+**ตัวอย่าง:**
+| User บอก | Intent ที่ต้องถามให้ชัด |
+|----------|------------------------|
+| "ภาพผู้หญิงสวย" | สวยแบบไหน? Powerful? Vulnerable? Mysterious? |
+| "ภาพ sexy" | Sexy แบบ bold? Innocent? Playful? Dangerous? |
+| "Portrait ดีๆ" | ต้องการให้รู้สึกอะไร? Professional? Artistic? Intimate? |
 
 ---
 
-### Step 2: VISUALIZE (What's the final image?)
+### Step 2: NARRATIVE — "เรื่องราวอะไรอยู่เบื้องหลัง?"
 
-Before writing any prompt, answer:
+**สร้าง context ให้ภาพ แม้ไม่ต้องบอกใน prompt ก็ตาม:**
 
 ```
-1. SUBJECT: Who/what is the main focus?
-2. MOOD: What emotion should it evoke?
-3. STYLE: Photorealistic? Artistic? Cinematic?
-4. PURPOSE: Where will this be used?
+1. ใครคือคนในภาพ? (ไม่ใช่แค่ "ผู้หญิง" แต่มีเรื่องราว)
+2. เกิดอะไรขึ้น BEFORE ภาพนี้?
+3. จะเกิดอะไรขึ้น AFTER ภาพนี้?
+4. คนในภาพกำลังคิด/รู้สึกอะไร?
+5. มีความขัดแย้ง/tension อะไรซ่อนอยู่?
 ```
 
-### Step 3: COMPOSE (Apply visual fundamentals)
+**Gregory Crewdson:** "ผมสร้างเรื่องราวที่ไม่มีวันถูกเล่าจบ — คนดูต้องสร้างตอนจบเอง"
 
-| Element | Quick Decision | Reference |
-|---------|----------------|-----------|
-| **Composition** | Rule of thirds? Symmetry? Leading lines? | [visual-fundamentals.md](references/visual-fundamentals.md) |
-| **Color** | Warm/cool? Complementary? Monochrome? | [visual-fundamentals.md](references/visual-fundamentals.md) |
-| **Lighting** | Golden hour? Studio? Dramatic? | [visual-fundamentals.md](references/visual-fundamentals.md) |
-| **Lens** | Wide (context)? Tele (compression)? | [visual-fundamentals.md](references/visual-fundamentals.md) |
-| **Angle** | Eye level? Low (power)? High (vulnerable)? | [visual-fundamentals.md](references/visual-fundamentals.md) |
+**ตัวอย่าง Narrative:**
+```
+❌ "ผู้หญิงนั่งบนเตียง"
+✅ "เธอเพิ่งตื่นนอน กำลังคิดถึงความฝันที่เห็นเมื่อกี้
+    — มันเป็นความฝันเกี่ยวกับคนที่จากไป
+    — แสงเช้าที่ลอดผ่านม่าน คือการกลับสู่ความจริง
+    — expression ครึ่งหลับครึ่งตื่น ยังอยู่ระหว่างสองโลก"
+```
 
-**For thumbnails/social media:** See [graphic-design.md](references/graphic-design.md)
+---
 
-### Step 4: PROMPT (Model-specific syntax)
+### Step 3: SEE — Pre-Visualize ภาพในหัว
+
+**ปิดตาแล้ว "เห็น" ภาพสุดท้ายก่อนเขียน prompt:**
+
+```
+□ เห็น SUBJECT   : ใคร/อะไรอยู่ตรงไหน? ท่าทางเป็นอย่างไร?
+□ เห็น LIGHT     : แสงมาจากทิศไหน? สีอะไร? นุ่มหรือแข็ง?
+□ เห็น COLOR     : โทนสีหลักคืออะไร? warm/cool?
+□ เห็น FRAME     : มุมกล้องอยู่ตรงไหน? Wide/close?
+□ เห็น MOOD      : บรรยากาศรวมเป็นอย่างไร?
+□ เห็น TENSION   : อะไรทำให้ภาพไม่น่าเบื่อ?
+□ เห็น DETAIL    : มี element พิเศษอะไร? (ควัน, แสงลอด, ผ้าม่าน, ฝุ่นละออง)
+```
+
+**Ansel Adams:** "ผมรู้ว่าภาพจะออกมาเป็นอย่างไรก่อนที่จะกดชัตเตอร์"
+
+**ตัวอย่าง Pre-Visualization:**
+```
+"ผมเห็น: ผู้หญิงนั่งหันหลังให้กล้อง บนขอบหน้าต่าง
+แสงเช้าสีทองลอดผ่านม่านโปร่ง ตกบนไหล่เธอ
+ผมของเธอยุ่งๆ จากการนอน
+มือซ้ายจับแก้วกาแฟ มองออกไปนอกหน้าต่าง
+ฝุ่นละอองลอยในแสง
+บรรยากาศ nostalgic, peaceful แต่ lonely"
+```
+
+---
+
+### Step 4: PLAN — Technical Decisions
+
+**ตอนนี้ค่อยตัดสินใจ technical เพื่อสร้างภาพที่เห็นในหัว:**
+
+| Decision | Based On Intent | Options |
+|----------|-----------------|---------|
+| **Lighting** | Emotion | Soft (intimate) / Hard (powerful) / Side (dramatic) / Backlit (ethereal) |
+| **Color** | Mood | Warm (cozy, nostalgic) / Cool (distant, sad) / Complementary (tension) |
+| **Angle** | Power dynamic | Low (empower) / High (vulnerable) / Dutch (unease) / Eye-level (neutral) |
+| **Composition** | Story focus | Rule of thirds / Center (confrontation) / Off-center (tension) / Negative space (loneliness) |
+| **DOF** | Focus attention | Shallow (isolate subject) / Deep (show context) |
+| **Foreground** | Depth & interest | ม่าน, กระจก, ควัน, ดอกไม้, มือ blur |
+
+**Roger Deakins:** "ผมไม่เคยเลือก lighting เพราะ 'มันสวย' — ผมถามว่ามันสมเหตุสมผลในฉากไหม"
+
+**Light Motivation Table:**
+| Setting | Natural Light Source | Time Feel |
+|---------|---------------------|-----------|
+| ห้องนอน | หน้าต่าง | เช้า/เย็น |
+| ห้องน้ำ | หน้าต่างฝ้า + ไฟ fluorescent | กลางวัน |
+| ร้านอาหาร | เทียน + ไฟ pendant | ค่ำ |
+| ถนนกลางคืน | Neon signs + ไฟรถ | ดึก |
+
+---
+
+### Step 5: ITERATE — Write Prompt
+
+**โครงสร้าง Prompt ที่ดี:**
+
+```
+1. Photography Style + Film Stock (ตั้ง mood แต่แรก)
+2. Subject + Story Context (ไม่ใช่แค่ "ผู้หญิง")
+3. Expression + Internal State (กำลังคิด/รู้สึกอะไร)
+4. Pose + Action (ไม่ static)
+5. Lighting + Motivation (แสงมาจากไหน + ทำไม)
+6. Composition + Angle (มุมกล้อง + framing)
+7. Setting + Atmosphere (ฉาก + บรรยากาศ)
+8. Special Elements (foreground, particles, texture)
+9. Technical (lens, DOF, film grain)
+```
+
+**ตัวอย่าง Prompt ที่ดี:**
+```
+35mm film photography, Kodak Portra 400.
+
+Young woman, 25, sitting on windowsill with her back to camera,
+looking out at the city through sheer curtains.
+Lost in thought, remembering something bittersweet.
+
+Soft golden morning light streams through window,
+casting warm glow on her bare shoulders.
+Dust particles floating in light beam.
+
+Shot from behind, slightly off-center to the left.
+Shallow depth of field, curtains softly blurred in foreground.
+Warm color palette, nostalgic mood.
+Natural film grain, candid intimate moment.
+```
+
+---
+
+### Step 6: REVIEW — "ตรงกับ Intent ไหม?"
+
+**หลัง generate ถามตัวเอง:**
+
+```
+□ ภาพนี้ทำให้รู้สึก [intent] จริงไหม?
+□ มี story/narrative ชัดไหม?
+□ มี tension/interest ที่ต้องการไหม?
+□ แสงสมเหตุสมผลในฉากไหม?
+□ มีอะไรที่ดูทื่อ/น่าเบื่อไหม?
+□ ถ้าตัดสินใจต่างไป ภาพจะดีขึ้นไหม?
+```
+
+---
+
+### Step 7: ENHANCE — Pivot หรือ Polish
+
+| ถ้า | ทำ |
+|-----|---|
+| Intent ไม่ตรง | กลับไป Step 1 — rethink emotion |
+| ดู flat/ทื่อ | เพิ่ม: angle, foreground, light contrast |
+| Technical ไม่ใช่ | ปรับ Step 4 — change lighting/angle/color |
+| ดีแล้วแต่ขาด | เพิ่ม detail: atmosphere, particles, texture |
+| ดีมาก | Explore variation: ต่างมุม, ต่างแสง, ต่าง moment |
+
+---
+
+### Quick Reference: Prompt Format
+
+**ถาม user ว่าต้องการ prompt แบบไหน:**
+
+| Format | Best For |
+|--------|----------|
+| **Natural Language** | Creative, emotional, one-off |
+| **JSON Structured** | Production, batch, precise control |
+
+**Default:** Natural Language for creative work
+
+---
+
+### Step 8: PROMPT (Model-specific syntax)
 
 | Model | Best For | Guide |
 |-------|----------|-------|

@@ -35,6 +35,112 @@ Sora2 understands narrative and world physics. Write like a screenplay.
 | Text Rendering | Limited |
 | Storyboard Mode | Yes |
 | Remix/Blend | Yes |
+| **Cameo/Character** | Yes (@handle system) |
+
+---
+
+## Cameo & Character System
+
+**CRITICAL:** Sora2 ใช้ @handle อ้างอิงตัวละคร ต้องถาม user ว่ามี cameo/character ไหม!
+
+### Cameo vs Character
+
+| Type | คืออะไร | วิธีสร้าง | ใช้กับ |
+|------|---------|----------|--------|
+| **Cameo** | ตัวคนจริงที่ยืนยันตัวตน | อัดคลิป + เสียงผ่าน iOS app | คนจริง (ตัวเอง/คนที่อนุมัติ) |
+| **Character** | ตัวละครสมทบ | Upload คลิป/ภาพ หรือสร้างจาก Sora | สัตว์, วัตถุ, การ์ตูน, AI-generated humans |
+
+### @Handle Reference System
+
+เรียกใช้ character/cameo ใน prompt โดยพิมพ์ `@handle`:
+
+```
+@aiangel.03 กำลังร้องเพลงบนเวที warehouse สไตล์ rock ดิบๆ
+@siraekabut กำลังต่อยมวยกับ @sama บนเวทีมวยราชดำเนิน
+```
+
+**ข้อจำกัดสำคัญ:**
+- รองรับได้สูงสุด **2 characters/cameos** ต่อคลิป
+- ถ้าเกิน 2 → หน้าตาอาจปนกัน/เพี้ยน
+
+### Permission Controls
+
+ผู้สร้าง cameo/character กำหนดได้ว่าใครใช้ได้:
+
+| Setting | ความหมาย |
+|---------|----------|
+| Only me | ใช้ได้คนเดียว |
+| People I approve | ต้องขออนุมัติ |
+| Mutuals | คนที่ follow กัน |
+| Everyone | ใครก็ใช้ได้ |
+
+### วิธีสร้าง Character คนสมจริง (Realistic Human)
+
+**ปัญหา:** OpenAI บล็อกการอัปโหลดภาพ/คลิปคนจริง
+
+**Solution:** ให้ Sora สร้างคนขึ้นมาก่อน แล้วค่อย save เป็น Character
+
+```
+Step 1: Gen คลิปคนที่ต้องการ (หน้าตา, ทรงผม, บุคลิก, เสียง)
+        → ปรับ prompt / Remix จนพอใจ
+
+Step 2: กด "..." บนคลิป → Create Character
+        → เลือกช่วงเวลาที่ต้องการ
+
+Step 3: ตั้ง @handle และ permission
+
+Step 4: ใช้งาน → พิมพ์ @handle ใน prompt ครั้งต่อไป
+```
+
+**ทำไมได้ผล:** ระบบถือว่าเป็น "fictional human" ที่ Sora สร้างเอง ไม่ใช่คนจริง
+
+### เทคนิคการใช้ Character/Cameo
+
+| Do | Don't |
+|----|-------|
+| ใส่ @handle เสมอ | บรรยายหน้าตาซ้ำซ้อน |
+| ระบุชุดใหม่ถ้าต้องการเปลี่ยน | สมมติว่าจำชุดเดิมได้ |
+| กำกับ mood/pose ชัดเจน | ใส่เกิน 2 characters |
+| บอกเฉพาะฉาก/มุมกล้อง/บรรยากาศ | รวมทุกอย่างในประโยคเดียว |
+
+### Prompt Template with Character
+
+```
+@handle [action/pose] at [location].
+[Camera movement], [lighting description].
+[Outfit if different from default]: [describe].
+[Audio]: [ambient], [music style], [dialogue if any].
+[Style reference].
+```
+
+**Example:**
+```
+@aiangel.03 performs intense rock vocals on a dark warehouse stage.
+Handheld camera circles her, smoke drifts through harsh red spotlights.
+Outfit: torn black tank top, leather pants, silver chain necklace.
+Audio: heavy guitar riff, raw vocals, crowd cheering in background.
+Live concert documentary style, gritty and authentic.
+```
+
+---
+
+## Requirement Intake for Sora2 Prompts
+
+**ก่อนเขียน prompt ต้องถาม user:**
+
+1. **Character/Cameo:** มี @handle ไหม? ใครบ้าง? บทบาทอะไร?
+2. **เพลง/แนว:** ภาษาอะไร? แนวไหน? (Thai rock, instrumental, etc.)
+3. **สถานที่:** เวที concert? studio? warehouse? rooftop?
+4. **Mood:** เท่/ดิบ/มันส์/ดราม่า/หวาน/เศร้า?
+5. **สไตล์การถ่าย:**
+   - Live concert documentary (handheld, raw)
+   - Cinematic performance (dolly/crane, film look)
+   - Music video narrative (มี story เบาๆ)
+6. **ช็อตเน้น:** close-up? full body? เครื่องดนตรี?
+7. **เสื้อผ้า/โทนสี:** all-black? specific outfit?
+8. **Dialogue/Lyrics:** ต้องการให้ร้อง/พูดไหม? บอก 1-2 บรรทัด
+
+---
 
 ## Prompt Structure
 
@@ -219,23 +325,30 @@ MOOD: [Emotional quality]
 
 | Limitation | Workaround |
 |------------|------------|
+| **ห้ามอ้างอิงชื่อศิลปิน/ดารา/วงดนตรี** | บรรยายลักษณะ/สไตล์แทน (แต่ชื่อ Director ใช้ได้ เช่น "Denis Villeneuve aesthetic") |
 | Text in video | Add text in post |
-| Specific faces | Use reference images |
+| Specific faces | Use Character/Cameo @handle |
 | Precise lip sync | Limited, add voiceover in post |
-| Very long videos | Stitch multiple clips |
+| Very long videos | Stitch multiple clips (Storyboard mode) |
 | Real-time generation | Plan for queue times |
+| Max 2 characters per clip | Split into multiple clips if needed |
+| Upload real human photos | Let Sora generate first, then Create Character |
+| Duration | 10s or 15s (25s with Storyboard mode) |
 
 ## Quality Checklist
 
 ```
+□ Character/Cameo @handle included (if applicable)
 □ Scene visually described
 □ Camera movement specified
 □ Audio/sound included
 □ Style reference added
 □ Motion verbs used
 □ Timing/pacing indicated
-□ Appropriate tier selected (Standard/Pro)
+□ Duration selected (10s/15s)
 □ Storyboard structure for complex scenes
+□ Max 2 characters per clip
+□ Outfit specified if different from default
 ```
 
 ## Prompt Template
