@@ -267,3 +267,12 @@ Both references contain essential methodologies and should be consulted at appro
 - Always get expert approval before finalizing
 - Test the generated skill with real scenarios when possible
 - Iterate based on feedback
+
+## Related Skills (Optional)
+
+| When | Suggest |
+|------|---------|
+| Creating/packaging skill | `/skill-creator` - skill development guide |
+| Research domain first | `/deep-research` - gather facts before extraction |
+
+**Note:** These skills are optional. Skill-extractor works standalone for expertise extraction.

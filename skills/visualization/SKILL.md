@@ -183,3 +183,13 @@ python3 tools/smart_publish.py --slugs left --program excel --allow
 3. **View output** — `explorer.exe output.png` or use image viewer
 
 **Tip:** Use `run_in_background=true` for viewers to avoid blocking conversation.
+
+## Related Skills (Optional)
+
+| When | Suggest |
+|------|---------|
+| Teaching concepts with visuals | `/concept-explainer` - ACES methodology |
+| Need facts before visualizing | `/deep-research` - verify data |
+| Problem-solving context | `/problem-solving` - structured thinking |
+
+**Note:** These skills are optional. Visualization works standalone for diagrams.

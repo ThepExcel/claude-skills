@@ -301,3 +301,14 @@ Need custom visual? → ASK USER FIRST → AI Generate
 - Learner บอกว่า "เข้าใจแล้ว"
 - จบ topic ใหญ่หนึ่งเรื่อง
 - Learner ขอให้สรุป
+
+## Related Skills (Optional)
+
+| When | Suggest |
+|------|---------|
+| Need current facts/research | `/deep-research` - verify before explaining |
+| STEM diagrams, animations | `/visualization` - Matplotlib, Manim |
+| Problem not about understanding | `/problem-solving` - guide thinking process |
+| Generate creative analogies | `/creativity` - fresh perspectives |
+
+**Note:** These skills are optional. Concept-explainer works standalone for teaching.

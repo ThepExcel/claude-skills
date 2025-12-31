@@ -118,3 +118,15 @@ Stop when **any 2** are true:
 | [report_template.md](./assets/report_template.md) | Thai report structure + output format |
 | `source_evaluator.py` | Credibility scoring (0-100) |
 | `validate_report.py` | 9-check quality validation |
+
+## Related Skills (Optional)
+
+| When | Suggest |
+|------|---------|
+| Cross-industry innovation | `/creativity` - Combinatorial Engine |
+| Technical contradiction found | `/triz` - systematic innovation |
+| Need to explain findings | `/concept-explainer` - teach concepts |
+| Strategic analysis needed | `/business-management` - SWOT, Porter's |
+| Business model research | `/business-model` - BMC, Lean Canvas |
+
+**Note:** These skills are optional. Deep-research works standalone for fact-finding.
