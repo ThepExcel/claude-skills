@@ -77,15 +77,19 @@ skill-name/
 
 Use **action-oriented names** that clearly describe what the skill does. Lowercase letters, numbers, and hyphens only.
 
-**Acceptable patterns:**
-- **Verb-noun:** `prompt-ai-image-video`, `design-business-model`, `extract-expertise`
-- **Verb-ing noun:** `power-query-coaching`, `problem-solving`
-- **Recognized terms:** `triz`, `deep-research` (if widely known)
+**Multiple patterns are acceptable — ask user preference if unclear:**
+
+| Pattern | Examples | When to Use |
+|---------|----------|-------------|
+| **Gerund (verb-ing)** | `processing-pdfs`, `analyzing-data` | Traditional, widely used |
+| **Verb-noun** | `prompt-ai-image-video`, `design-business-model` | Clear action + object |
+| **Noun-verb-ing** | `power-query-coaching`, `problem-solving` | Domain + activity |
+| **Recognized terms** | `triz`, `deep-research` | Widely known concepts |
 
 | Good | Avoid |
 |------|-------|
 | `prompt-ai-image-video` | `pdf` (too vague) |
-| `manage-business-strategy` | `helper`, `utils` |
+| `processing-pdfs` | `helper`, `utils` |
 | `create-visualization` | `anthropic-*`, `claude-*` |
 
 ### Writing Effective Descriptions
