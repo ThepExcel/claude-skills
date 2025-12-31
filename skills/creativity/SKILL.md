@@ -75,3 +75,15 @@ description: |
 - **Step-by-step guides**: [techniques.md](references/techniques.md)
 - **AI methodology & research**: [methodology.md](references/methodology.md)
 - **Random word bank**: [random-words.md](references/random-words.md)
+
+## Related Skills (Optional)
+
+| When | Suggest |
+|------|---------|
+| Technical contradiction / trade-off | `/triz` - systematic innovation |
+| Need structured problem-solving | `/problem-solving` - Polya, 5 Whys |
+| Business strategy context | `/business-management` - SWOT, Porter's |
+| Design new business model | `/business-model` - BMC, Lean Canvas |
+| Need current facts/research | `/deep-research` - comprehensive research |
+
+**Note:** These skills are optional. Creativity works standalone for ideation.
