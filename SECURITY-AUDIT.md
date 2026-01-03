@@ -35,7 +35,6 @@ This document provides a security audit of all scripts in this repository. All s
 
 | Script | Purpose | Safety Notes |
 |--------|---------|--------------|
-| `scripts/source_evaluator.py` | Score source credibility (0-100) | Pure Python, no external calls |
 | `scripts/validate_report.py` | Validate research report quality | Pure Python, no external calls |
 
 ### docx

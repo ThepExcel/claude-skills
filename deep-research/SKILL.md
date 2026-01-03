@@ -92,7 +92,6 @@ curl -s --max-time 60 "https://r.jina.ai/https://example.com"
 
 | Script | Purpose |
 |--------|---------|
-| `scripts/source_evaluator.py` | Credibility scoring (0-100) |
 | `scripts/validate_report.py` | 9-check quality validation |
 
 ## Related Skills
