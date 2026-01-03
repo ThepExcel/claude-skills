@@ -19,6 +19,14 @@ This skill was inspired by and adapted from community deep-research implementati
 | Intensity Tiers (Quick/Standard/Deep/Exhaustive) | Adapted from community implementations |
 | Creative Mode (Cross-industry) | Developed by ThepExcel + Claude |
 
+## Human-Like Research Frameworks (2025)
+
+| Framework | Origin | Inspiration |
+|-----------|--------|-------------|
+| QUEST Matrix (Query Generation) | Developed by ThepExcel + Claude | 5W1H journalism, stakeholder analysis |
+| COMPASS Checklist (Perspective Audit) | Developed by ThepExcel + Claude | Journalism coverage standards, MECE principle |
+| THINK Protocol (Researcher Metacognition) | Developed by ThepExcel + Claude | Metacognitive learning research, epistemic humility |
+
 ## Modifications by ThepExcel
 
 - Thai language report templates

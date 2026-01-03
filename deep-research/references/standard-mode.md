@@ -45,6 +45,16 @@
 | **Constraints** | Banned sources, required sources |
 | **Definition of Done** | Measurable completion criteria |
 
+### THINK Step: Take Stock (T)
+
+Before searching, clarify prior knowledge. See [researcher-thinking.md](./researcher-thinking.md).
+
+```markdown
+- What I know with confidence: [List]
+- What I think I know (needs verification): [List]
+- What I know I don't know: [List]
+```
+
 **Gate**: Scope + definition of done explicit.
 
 ---
@@ -73,19 +83,33 @@
 
 1. Identify 5-10 primary sources
 2. List 5-10 secondary/backup sources
-3. Create 10-15 search query variations
+3. Create 15-25 search query variations using QUEST Matrix
 4. Plan triangulation approach
 
-**Search Query Patterns:**
+### QUEST Matrix: Systematic Query Generation
 
-| Pattern | Example |
-|---------|---------|
-| Category + timeframe | "AI coding assistants December 2025" |
-| Comparison + latest | "Claude vs GPT comparison 2025" |
-| Limitations + problems | "[topic] limitations challenges" |
-| Academic | "[topic] research paper arxiv" |
+Use [query-framework.md](./query-framework.md) for comprehensive query coverage.
 
-**Gate**: Each subquestion has 3+ queries and 2+ source classes.
+| Dimension | Purpose | Min Queries |
+|-----------|---------|-------------|
+| **Q** - Questions (5W1H) | Ensure completeness | 4-6 |
+| **U** - Universes (Stakeholders) | Multi-viewpoint | 3-4 |
+| **E** - Expansions (Synonyms) | Semantic breadth | 2-3 |
+| **S** - Scopes (Geo/Time/Scale) | Boundary exploration | 2-3 |
+| **T** - Types (Source types) | Source diversity | 3-4 |
+
+### THINK Step: Hunt Direction (H)
+
+Decompose the core question into prioritized sub-questions:
+
+```markdown
+- Factual questions (What is?): [List with priority]
+- Causal questions (Why?): [List with priority]
+- Evaluative questions (How good?): [List with priority]
+- Dependencies: [Which questions must come first?]
+```
+
+**Gate**: Each subquestion has 3+ queries and 2+ source classes. QUEST checklist ≥80% complete.
 
 ---
 
@@ -153,13 +177,40 @@ After initial retrieval, assess:
 - ❌ Questions unanswered
 - Claims needing more evidence
 
+### COMPASS Checklist: Perspective Coverage Audit
+
+Use [perspective-checklist.md](./perspective-checklist.md) to verify comprehensive coverage.
+
+| Category | Check | Status |
+|----------|-------|--------|
+| **C** - Contrast | Pro/Con, Benefits/Risks | [ ] |
+| **O** - Outlook | Past/Present/Future | [ ] |
+| **M** - Modes | Theory vs Practice | [ ] |
+| **P** - Perspectives | Mainstream vs Alternative | [ ] |
+| **A** - Arena | Local vs Global | [ ] |
+| **S** - Scale | Individual/Org/Systemic | [ ] |
+| **S** - Sources | Primary/Secondary/Diverse | [ ] |
+
+**Min Coverage:** Quick 3/7, Standard 4/7, Deep 5/7, Exhaustive 6/7
+
+### THINK Step: Inspect Gaps (I)
+
+Reflect on what's still missing:
+
+```markdown
+- Information gathered so far: [Summary]
+- Contradictions found: [List with resolution approach]
+- Most concerning gap: [What + Why it matters + How to address]
+- Follow-up queries: [Specific queries to fill gaps]
+```
+
 **Iteration Rules:**
 - Quick tier: 0-1 iterations
 - Standard: 1-2 iterations
 - Deep: 2-3 iterations
 - Exhaustive: Until diminishing returns
 
-**Gate**: Gap analysis completed; follow-up queries executed.
+**Gate**: Gap analysis + COMPASS audit completed; follow-up queries executed.
 
 ---
 
@@ -218,7 +269,22 @@ For every major finding, answer:
 - **ถ้าเป็นอย่างนี้ต่อ:** [Scenario]
 ```
 
-**Gate**: Every recommendation links to C1/C2 claims.
+### THINK Step: Notice Assumptions (N)
+
+Before drawing conclusions, surface hidden assumptions. See [researcher-thinking.md](./researcher-thinking.md).
+
+```markdown
+- My hidden assumptions: [List with "if wrong" impact]
+- Source assumptions: [What my sources assume]
+- Missing perspectives: [Whose voice is absent?]
+```
+
+| Assumption | Evidence For | Evidence Against | Risk if Wrong |
+|------------|--------------|------------------|---------------|
+| [A1] | | | |
+| [A2] | | | |
+
+**Gate**: Every recommendation links to C1/C2 claims. Assumptions surfaced.
 
 ---
 
@@ -239,6 +305,21 @@ Search for:
 - Present counterarguments at their STRONGEST
 - Include "What would change our mind" triggers
 - Section title: "ข้อจำกัดและหลักฐานที่ขัดแย้ง"
+
+### THINK Step: Know Limits (K)
+
+Practice epistemic humility. See [researcher-thinking.md](./researcher-thinking.md).
+
+```markdown
+- What I could be wrong about: [Top 3 claims + why might be wrong]
+- Evidence that would change my mind: [For each conclusion]
+- Honest confidence: Overall [HIGH/MEDIUM/LOW]
+  - Most certain: [Claim]
+  - Least certain: [Claim]
+```
+
+**Limitations Statement (for final report):**
+"This analysis has the following limitations: [List 2-3 key limitations and their impact]"
 
 ---
 

@@ -87,6 +87,9 @@ curl -s --max-time 60 "https://r.jina.ai/https://example.com"
 | Agent prompts | [agent-templates.md](./references/agent-templates.md) | `grep -n "^## "` |
 | Progress/recovery | [progress-recovery.md](./references/progress-recovery.md) | — |
 | Report template | [report_template.md](./assets/report_template.md) | — |
+| **Query generation** | [query-framework.md](./references/query-framework.md) | QUEST Matrix |
+| **Perspective audit** | [perspective-checklist.md](./references/perspective-checklist.md) | COMPASS Checklist |
+| **Researcher thinking** | [researcher-thinking.md](./references/researcher-thinking.md) | THINK Protocol |
 
 ## Scripts
 
