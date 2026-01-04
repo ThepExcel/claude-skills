@@ -1,4 +1,5 @@
 {
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "thepexcel-skills",
   "owner": {
     "name": "ThepExcel",
@@ -11,103 +12,103 @@
       "name": "deep-research",
       "version": "1.0.0",
       "description": "Web research with Graph-of-Thoughts for fast-changing topics. Features hypothesis testing, source triangulation, claim verification, and gap analysis.",
-      "source": "../deep-research"
+      "source": "./plugins/deep-research"
     },
     {
       "name": "explain-concepts",
       "version": "1.0.0",
       "description": "Explains difficult concepts using Feynman, Socratic, Cognitive Load, and Dual Coding methodologies.",
-      "source": "../explain-concepts"
+      "source": "./plugins/explain-concepts"
     },
     {
       "name": "problem-solving",
       "version": "1.0.0",
       "description": "Systematic problem-solving with Good Teacher mode. AI guides through questions inspired by Polya's 'How to Solve It'.",
-      "source": "../problem-solving"
+      "source": "./plugins/problem-solving"
     },
     {
       "name": "triz",
       "version": "1.0.0",
       "description": "TRIZ systematic innovation methodology with AI-enhanced prompts for technical contradictions and cross-industry solutions.",
-      "source": "../triz"
+      "source": "./plugins/triz"
     },
     {
       "name": "generate-creative-ideas",
       "version": "1.0.0",
       "description": "Creative problem-solving using SCAMPER, First Principles, Random Word, and AI-optimized techniques.",
-      "source": "../generate-creative-ideas"
+      "source": "./plugins/generate-creative-ideas"
     },
     {
       "name": "design-business-model",
       "version": "1.0.0",
       "description": "Business model design using Business Model Canvas, Lean Canvas, and Value Proposition Canvas.",
-      "source": "../design-business-model"
+      "source": "./plugins/design-business-model"
     },
     {
       "name": "manage-business-strategy",
       "version": "1.0.0",
       "description": "Business management frameworks for strategic analysis, decision making, and organizational change.",
-      "source": "../manage-business-strategy"
+      "source": "./plugins/manage-business-strategy"
     },
     {
       "name": "extract-expertise",
       "version": "1.0.0",
       "description": "Extracts expertise from domain experts and transforms it into working Claude skills.",
-      "source": "../extract-expertise"
+      "source": "./plugins/extract-expertise"
     },
     {
       "name": "skill-creator",
       "version": "1.0.0",
       "description": "Guide for creating effective Claude skills with specialized knowledge and tool integrations.",
-      "source": "../skill-creator"
+      "source": "./plugins/skill-creator"
     },
     {
       "name": "optimize-prompt",
       "version": "1.0.0",
       "description": "Prompt optimization consultant for Claude API, OpenAI API, Gemini API, CLAUDE.md, ChatGPT, and n8n.",
-      "source": "../optimize-prompt"
+      "source": "./plugins/optimize-prompt"
     },
     {
       "name": "prompt-ai-image-video",
       "version": "1.0.0",
       "description": "Creates professional AI image/video prompts with artist's eye for composition, color, lighting, and cinematography.",
-      "source": "../prompt-ai-image-video"
+      "source": "./plugins/prompt-ai-image-video"
     },
     {
       "name": "create-visualization",
       "version": "1.0.0",
       "description": "Creates diagrams and animations for STEM education using Matplotlib and Manim (3Blue1Brown-style).",
-      "source": "../create-visualization"
+      "source": "./plugins/create-visualization"
     },
     {
       "name": "power-query-coaching",
       "version": "1.0.0",
       "description": "Coaches users to transform messy data into clean formats using Power Query UI.",
-      "source": "../power-query-coaching"
+      "source": "./plugins/power-query-coaching"
     },
     {
       "name": "xlsx",
       "version": "1.0.0",
       "description": "Comprehensive spreadsheet creation, editing, and analysis with formulas, formatting, and visualization.",
-      "source": "../xlsx"
+      "source": "./plugins/xlsx"
     },
     {
       "name": "docx",
       "version": "1.0.0",
       "description": "Document creation, editing, and analysis with tracked changes, comments, and formatting preservation.",
-      "source": "../docx"
+      "source": "./plugins/docx"
     },
     {
       "name": "pptx",
       "version": "1.0.0",
       "description": "Presentation creation, editing, and analysis with layouts, comments, and speaker notes.",
-      "source": "../pptx"
+      "source": "./plugins/pptx"
     },
     {
       "name": "pdf",
       "version": "1.0.0",
       "description": "PDF manipulation toolkit for extracting text/tables, creating PDFs, merging/splitting, and handling forms.",
-      "source": "../pdf"
+      "source": "./plugins/pdf"
     }
   ]
 }

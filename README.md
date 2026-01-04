@@ -34,7 +34,7 @@ The easiest way to install skills. Add this marketplace once, then install any s
 Install a specific skill directly without adding the marketplace:
 
 ```bash
-/plugin add ThepExcel/claude-skills/deep-research
+/plugin add ThepExcel/claude-skills/plugins/deep-research
 ```
 
 #### Method 3: Manual Clone + Symlink
@@ -48,8 +48,8 @@ cd claude-skills
 
 # Create symlinks to make skills globally available
 mkdir -p ~/.claude/skills
-for skill in */; do
-    [[ -d "$skill" && ! "$skill" == .* ]] && ln -s "$(pwd)/$skill" ~/.claude/skills/$(basename "$skill")
+for skill in plugins/*/; do
+    ln -s "$(pwd)/$skill" ~/.claude/skills/$(basename "$skill")
 done
 ```
 
@@ -63,15 +63,15 @@ Choose one of these methods:
 
 | Method | How |
 |--------|-----|
-| **Download entire repo** | Click green **Code** button → **Download ZIP** → Extract → Find the skill folder you want |
-| **Use download tool** | Go to [download-directory.github.io](https://download-directory.github.io/) → Paste folder URL (e.g., `https://github.com/ThepExcel/claude-skills/tree/main/deep-research`) |
-| **Git clone** | `git clone https://github.com/ThepExcel/claude-skills.git` → Copy the folder you want |
+| **Download entire repo** | Click green **Code** button → **Download ZIP** → Extract → Find the skill folder in `plugins/` |
+| **Use download tool** | Go to [download-directory.github.io](https://download-directory.github.io/) → Paste folder URL (e.g., `https://github.com/ThepExcel/claude-skills/tree/main/plugins/deep-research`) |
+| **Git clone** | `git clone https://github.com/ThepExcel/claude-skills.git` → Copy the folder from `plugins/` |
 
 **Step 2: ZIP the folder**
 
 ```bash
 # ZIP the entire folder (not just the files inside!)
-zip -r deep-research.zip deep-research/
+zip -r deep-research.zip plugins/deep-research/
 ```
 
 **Step 3: Upload to Claude.ai**
@@ -94,19 +94,19 @@ Skills developed by [ThepExcel](https://www.thepexcel.com) in collaboration with
 
 | Skill | Description |
 |-------|-------------|
-| [**create-visualization**](create-visualization/) | Data visualization, diagrams, and Manim animations |
-| [**deep-research**](deep-research/) | Comprehensive 8-phase research with Graph-of-Thoughts, source triangulation, and claim verification |
-| [**design-business-model**](design-business-model/) | Business Model Canvas, Lean Canvas, Value Proposition Canvas |
-| [**explain-concepts**](explain-concepts/) | Master teaching methodology for explaining concepts with visualizations |
-| [**extract-expertise**](extract-expertise/) | Extract domain expertise from experts and transform into Claude skills |
-| [**generate-creative-ideas**](generate-creative-ideas/) | Creative thinking techniques and ideation frameworks |
-| [**manage-business-strategy**](manage-business-strategy/) | Business management frameworks hub (SWOT, OKR, Porter's, BCG, etc.) |
-| [**power-query-coaching**](power-query-coaching/) | Coach users to transform messy data using Power Query UI |
-| [**optimize-prompt**](optimize-prompt/) | Prompt optimization consultant for Claude API, OpenAI, Gemini, CLAUDE.md, ChatGPT, n8n |
-| [**problem-solving**](problem-solving/) | Structured problem-solving methodologies (5 Whys, Fishbone, Root Cause Analysis) |
-| [**prompt-ai-image-video**](prompt-ai-image-video/) | Professional AI image/video prompt engineering with visual artist's eye |
-| [**skill-creator**](skill-creator/) | Guide for creating new Claude Code skills |
-| [**triz**](triz/) | TRIZ (Theory of Inventive Problem Solving) with 40 principles and contradiction matrix |
+| [**create-visualization**](plugins/create-visualization/) | Data visualization, diagrams, and Manim animations |
+| [**deep-research**](plugins/deep-research/) | Comprehensive 8-phase research with Graph-of-Thoughts, source triangulation, and claim verification |
+| [**design-business-model**](plugins/design-business-model/) | Business Model Canvas, Lean Canvas, Value Proposition Canvas |
+| [**explain-concepts**](plugins/explain-concepts/) | Master teaching methodology for explaining concepts with visualizations |
+| [**extract-expertise**](plugins/extract-expertise/) | Extract domain expertise from experts and transform into Claude skills |
+| [**generate-creative-ideas**](plugins/generate-creative-ideas/) | Creative thinking techniques and ideation frameworks |
+| [**manage-business-strategy**](plugins/manage-business-strategy/) | Business management frameworks hub (SWOT, OKR, Porter's, BCG, etc.) |
+| [**power-query-coaching**](plugins/power-query-coaching/) | Coach users to transform messy data using Power Query UI |
+| [**optimize-prompt**](plugins/optimize-prompt/) | Prompt optimization consultant for Claude API, OpenAI, Gemini, CLAUDE.md, ChatGPT, n8n |
+| [**problem-solving**](plugins/problem-solving/) | Structured problem-solving methodologies (5 Whys, Fishbone, Root Cause Analysis) |
+| [**prompt-ai-image-video**](plugins/prompt-ai-image-video/) | Professional AI image/video prompt engineering with visual artist's eye |
+| [**skill-creator**](plugins/skill-creator/) | Guide for creating new Claude Code skills |
+| [**triz**](plugins/triz/) | TRIZ (Theory of Inventive Problem Solving) with 40 principles and contradiction matrix |
 
 ### Anthropic Official Skills (Pre-optimized)
 
@@ -114,10 +114,10 @@ Skills from Anthropic's official repository. These follow Anthropic's best pract
 
 | Skill | Description | Source |
 |-------|-------------|--------|
-| [**docx**](docx/) | Word document creation, editing, and analysis | [Anthropic Official](https://github.com/anthropics/skills) |
-| [**pdf**](pdf/) | PDF text extraction and form filling | [Anthropic Official](https://github.com/anthropics/skills) |
-| [**pptx**](pptx/) | PowerPoint presentation creation and editing | [Anthropic Official](https://github.com/anthropics/skills) |
-| [**xlsx**](xlsx/) | Excel spreadsheet creation with formulas and formatting | [Anthropic Official](https://github.com/anthropics/skills) + ThepExcel |
+| [**docx**](plugins/docx/) | Word document creation, editing, and analysis | [Anthropic Official](https://github.com/anthropics/skills) |
+| [**pdf**](plugins/pdf/) | PDF text extraction and form filling | [Anthropic Official](https://github.com/anthropics/skills) |
+| [**pptx**](plugins/pptx/) | PowerPoint presentation creation and editing | [Anthropic Official](https://github.com/anthropics/skills) |
+| [**xlsx**](plugins/xlsx/) | Excel spreadsheet creation with formulas and formatting | [Anthropic Official](https://github.com/anthropics/skills) + ThepExcel |
 
 > **Note:** xlsx enhanced by ThepExcel with Power Query routing to `/power-query-coaching`.
 
@@ -151,7 +151,7 @@ Once installed, invoke skills directly with `/skill-name` for guaranteed activat
 Each skill is just a folder with at least one file: `SKILL.md`
 
 ```
-my-skill/
+plugins/my-skill/
 ├── SKILL.md          # Main file (required)
 ├── scripts/          # Executable code (optional)
 ├── references/       # Reference docs (optional)
