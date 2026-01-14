@@ -57,31 +57,14 @@ mkdir -p .claude/skills
 ln -s "$(pwd)/claude-skills/deep-research" .claude/skills/deep-research
 ```
 
-### Method 3: Single Skill (Sparse Checkout)
+### Method 3: Single Skill Only
 
-Clone only the skill you need:
-
-```bash
-# Clone with sparse checkout
-git clone --filter=blob:none --sparse https://github.com/ThepExcel/claude-skills.git
-cd claude-skills
-git sparse-checkout set deep-research
-
-# Then symlink
-ln -s "$(pwd)/deep-research" ~/.claude/skills/deep-research
-```
-
-### Method 4: Direct Copy (No Git)
-
-Download and copy without maintaining git connection:
+Clone, copy the skill you need, then delete the rest:
 
 ```bash
-# Download specific skill
-curl -L https://github.com/ThepExcel/claude-skills/archive/main.tar.gz | tar xz
-cp -r claude-skills-main/deep-research ~/.claude/skills/
-
-# Cleanup
-rm -rf claude-skills-main
+git clone https://github.com/ThepExcel/claude-skills.git
+cp -r claude-skills/deep-research ~/.claude/skills/
+rm -rf claude-skills
 ```
 
 ### Installation Scopes
