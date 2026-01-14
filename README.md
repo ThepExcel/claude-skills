@@ -760,9 +760,9 @@ hooks:
 # Install plugin (user scope by default)
 /plugin install plugin-name@marketplace-name
 
-# Install with scope (use --scope, not -s)
-/plugin install plugin-name@marketplace-name --scope project
-/plugin install plugin-name@marketplace-name --scope user
+# Install with scope (-s or --scope)
+/plugin install plugin-name@marketplace-name -s project
+/plugin install plugin-name@marketplace-name -s user
 
 # Enable/disable plugins
 /plugin enable plugin-name@marketplace-name
