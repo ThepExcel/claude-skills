@@ -22,6 +22,7 @@ This installs from the [thepexcel-claude-plugins](https://github.com/ThepExcel/t
 
 ### Method 2: Manual Installation
 
+**User-level (all projects):**
 ```bash
 git clone https://github.com/ThepExcel/agent-skills.git
 mkdir -p ~/.claude/skills
@@ -29,7 +30,13 @@ cp -r agent-skills/deep-research ~/.claude/skills/
 rm -rf agent-skills
 ```
 
-Copy any skills you want. Use `~/.claude/skills/` for all projects, or `.claude/skills/` for current project only.
+**Project-level (current project only):**
+```bash
+git clone https://github.com/ThepExcel/agent-skills.git
+mkdir -p .claude/skills
+cp -r agent-skills/deep-research .claude/skills/
+rm -rf agent-skills
+```
 
 ### Installation Scopes
 
