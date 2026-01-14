@@ -22,28 +22,85 @@ This installs from the [thepexcel-claude-plugins](https://github.com/ThepExcel/t
 
 ### Method 2: Manual Installation
 
-**User-level (all projects):**
+These skills follow the [Open Agent Skills](https://openagentskills.dev) specification and work with multiple AI coding agents.
+
+#### Claude Code
+
 ```bash
+# User-level (all projects)
 git clone https://github.com/ThepExcel/agent-skills.git
 mkdir -p ~/.claude/skills
 cp -r agent-skills/deep-research ~/.claude/skills/
 rm -rf agent-skills
-```
 
-**Project-level (current project only):**
-```bash
+# Project-level (current project only)
 git clone https://github.com/ThepExcel/agent-skills.git
 mkdir -p .claude/skills
 cp -r agent-skills/deep-research .claude/skills/
 rm -rf agent-skills
 ```
 
+#### OpenAI Codex CLI
+
+```bash
+# User-level (all projects)
+git clone https://github.com/ThepExcel/agent-skills.git
+mkdir -p ~/.codex/skills
+cp -r agent-skills/deep-research ~/.codex/skills/
+rm -rf agent-skills
+
+# Project-level (current project only)
+git clone https://github.com/ThepExcel/agent-skills.git
+mkdir -p .codex/skills
+cp -r agent-skills/deep-research .codex/skills/
+rm -rf agent-skills
+```
+
+#### Google Gemini CLI
+
+> **Note:** Agent Skills in Gemini CLI is experimental. Enable it first: `/settings` → search "Skills" → toggle on.
+
+```bash
+# User-level (all projects)
+git clone https://github.com/ThepExcel/agent-skills.git
+mkdir -p ~/.gemini/skills
+cp -r agent-skills/deep-research ~/.gemini/skills/
+rm -rf agent-skills
+
+# Project-level (current project only)
+git clone https://github.com/ThepExcel/agent-skills.git
+mkdir -p .gemini/skills
+cp -r agent-skills/deep-research .gemini/skills/
+rm -rf agent-skills
+```
+
+#### Install Multiple Skills at Once
+
+```bash
+git clone https://github.com/ThepExcel/agent-skills.git
+
+# Claude Code
+mkdir -p ~/.claude/skills
+cp -r agent-skills/deep-research agent-skills/triz agent-skills/problem-solving ~/.claude/skills/
+
+# Codex CLI
+mkdir -p ~/.codex/skills
+cp -r agent-skills/deep-research agent-skills/triz agent-skills/problem-solving ~/.codex/skills/
+
+# Gemini CLI
+mkdir -p ~/.gemini/skills
+cp -r agent-skills/deep-research agent-skills/triz agent-skills/problem-solving ~/.gemini/skills/
+
+rm -rf agent-skills
+```
+
 ### Installation Scopes
 
-| Scope | Location | Availability |
-|-------|----------|--------------|
-| **User** | `~/.claude/skills/` | All your projects |
-| **Project** | `.claude/skills/` | Current project only |
+| CLI | User Scope | Project Scope |
+|-----|------------|---------------|
+| **Claude** | `~/.claude/skills/` | `.claude/skills/` |
+| **Codex** | `~/.codex/skills/` | `.codex/skills/` |
+| **Gemini** | `~/.gemini/skills/` | `.gemini/skills/` |
 
 ---
 
