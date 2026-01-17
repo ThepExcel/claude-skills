@@ -319,6 +319,47 @@ python scripts/generate.py line-divider --color "#D4A84B" --width 800
 3. Gen รูปผ่าน /comfyui-user หรือ cloud API
 ```
 
+### AI Slide Backgrounds (Best Practices)
+
+**Workflow ที่ได้ผลดี:**
+
+```
+1. ขอดู REFERENCE — ให้ user แชร์ตัวอย่าง slides ที่ชอบ
+2. วิเคราะห์ PATTERNS — สรุป style (colors, elements, layout)
+3. Gen ทั้ง BACKGROUND — ไม่แยกชิ้น, ไม่มี text
+4. ITERATE — ปรับ size/position ตาม feedback
+5. User วาง TEXT เอง — ยืดหยุ่นกว่า
+```
+
+**✅ Do:**
+
+| Technique | Why |
+|-----------|-----|
+| Gen complete background | ได้ภาพ cohesive สวยกว่าแยกชิ้น |
+| ใช้ `--edit` กับ logo เป็น ref | AI เห็น shape จริง ไม่ต้องเดา |
+| บอก "NO TEXT" | Text จาก AI มักผิด/ไม่สวย |
+| White background | Nano Banana Pro ทำ transparent ไม่ได้ |
+| เริ่ม simple | Logo เล็กมุมเดียว ดีกว่าเยอะทุกมุม |
+
+**❌ Don't:**
+
+| Technique | Problem |
+|-----------|---------|
+| "TRANSPARENT BACKGROUND" | ได้ checkerboard ปลอม |
+| อธิบาย logo shape เอง | AI ตีความผิด ใช้ --edit แทน |
+| Gen แยกชิ้นแล้วประกอบ | Elements ไม่ match กัน |
+| Decoration เยอะ | รกเกินไป ไม่ professional |
+
+**Prompt Template:**
+```
+Professional presentation [TYPE] slide background,
+16:9 aspect ratio. NO TEXT. [STYLE] STYLE.
+BACKGROUND: [color, grid, gradient]
+DECORATIVE: [small/subtle elements, specific corners]
+LAYOUT: Leave [area] empty for [content]
+COLORS: [hex codes]
+```
+
 ### /comfyui-user — Local Image Generation
 
 สำหรับ gen รูปในเครื่องผ่าน ComfyUI:
