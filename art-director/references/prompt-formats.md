@@ -126,13 +126,23 @@ For best results, consider:
 
 ## Model-Specific Notes
 
-| Model | JSON Support | Recommendation |
-|-------|--------------|----------------|
-| **Nano Banana Pro** | Excellent | Either format works well |
-| **DALL-E 3** | Good | Natural language preferred |
-| **Midjourney** | Limited | Natural language with parameters |
-| **Stable Diffusion** | Varies | Depends on interface |
-| **Sora** | Good | Structured descriptions help |
+| Model | Recommended Format | Why |
+|-------|-------------------|-----|
+| **Grok Imagine** | **Natural language** | FLUX.1 architecture — trained on natural descriptions, not tags |
+| **Z-Image / FLUX** | **Natural language** | Same FLUX.1 base — natural language > keyword stacking |
+| **Qwen Image** | **Natural language** | LLM-based — understands paragraphs better than tags |
+| **Nano Banana Pro** | Either | Handles both well |
+| **Sora 2 / Wan 2.2** | **Natural language** | Video models need scene descriptions, not keyword lists |
+| **Stable Diffusion (old)** | Keywords/tags | Older UNet models trained on tag-style prompts |
+| **Midjourney** | Natural language + params | Natural with `--ar`, `--style` flags |
+
+### 2026 Trend: Natural Language เป็น Default
+
+Model รุ่นใหม่ (FLUX, Qwen, Grok) ทั้งหมดชอบ natural language:
+- เขียนเหมือน **บรรยายฉากให้ช่างภาพฟัง** ไม่ใช่ tag รูป
+- ระบุ camera/lens เป็น context ("shot on Hasselblad X2D") ไม่ใช่ keyword
+- อธิบาย emotion/story เป็นประโยค ไม่ใช่ comma-separated adjectives
+- **Keyword stacking ใช้เฉพาะ** Stable Diffusion 1.5/XL หรือ ComfyUI ที่ใช้ CLIP encoder เก่า
 
 ---
 

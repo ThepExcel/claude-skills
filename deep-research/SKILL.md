@@ -103,9 +103,9 @@ When research reveals **interesting GitHub repositories** that could provide dee
    "เจอ repo ที่น่าสนใจ: [repo-name] — ต้องการให้ clone มาศึกษา code โดยละเอียดไหมคะ?"
    ```
 
-2. **If user agrees, clone to study folder:**
+2. **If user agrees, clone to dedicated research folder:**
    ```bash
-   cd /mnt/d && git clone [repo-url] [repo-name]-study
+   mkdir -p /mnt/d/githubresearch && cd /mnt/d/githubresearch && git clone [repo-url]
    ```
 
 3. **Key files to read:**

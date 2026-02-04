@@ -18,37 +18,53 @@ Research-backed guidance for AI-augmented ideation.
 
 | Finding | Implication |
 |---------|-------------|
+| Ask AI HOW to think, not WHAT to think (Nature 2026) | Process prompts >> product prompts |
 | Incubation breaks prevent AI self-anchoring | Pause between idea bursts |
 | Parallel personas > sequential > single | Use Multi-Persona Parallel |
 | Mild constraints boost novelty (Goldilocks) | Use Constraint Injection |
 | Combinatorial framework +7-10% novelty | Use for breakthrough tasks |
 | Human steering required for analogies | Don't let AI run alone |
 | Combining 2+ techniques > single | Stack techniques |
+| Tree of Thoughts: 74% vs CoT 49% on creative tasks | Use ToT for complex ideation |
+| Multi-LLM collaboration enhances originality | Vary approaches and techniques |
+| Human-first ideation preserves diversity (Wharton) | User brainstorms first, AI expands |
 
 ### Risks to Mitigate
 
 | Risk | Mitigation |
 |------|------------|
 | **Fixation amplification** - AI strengthens biases if used too early | Use AI AFTER initial human ideation |
-| **Collective homogenization** - Individual ↑ but group diversity ↓ | Use Divergence Guard |
+| **Collective homogenization** (g ~ -0.86) - Individual ↑ but group diversity ↓ | Use Divergence Guard |
 | **Over-early AI use** - Weakens deep thinking | Human ideates first, then AI expands |
 | **Authorship erosion** - Loss of ownership feeling | Balance AI contribution |
+| **Creative Scar** - Creativity drops when AI withdrawn, stays low months later | Don't outsource all creative thinking |
+| **Narrow vocabulary** - AI uses ~850 words vs 50,000 in human language | Push past "greatest hits" outputs |
 
 ### Optimal AI Role
 
-- **Best as:** Exploration partner, constraint enforcer, analogy finder
+- **Best as:** Exploration partner, constraint enforcer, analogy finder, elaborator
 - **Avoid:** Sole ideation source, final decision maker
 - **Timing:** After initial human ideation, not before
+- **Override rate:** Maintain 15-25% human override for optimal outcomes
 
-### LLM Creativity Ceiling
+### LLM Creativity Ceiling (Updated 2025-2026)
 
-Research suggests LLMs max out at "little-c" creativity (amateur level). For "Pro-c" (professional/expert), human guidance is essential. AI is a tool, not a replacement.
+- LLMs match the **52nd percentile** of human creativity (ScienceDirect 2025)
+- Only **0.28%** of LLM responses reach top 10% of human creativity
+- No evidence of improvement over 18-24 months; GPT-4 may perform worse than before
+- AI excels at **elaboration** but struggles with **originality**
+- The "jagged frontier": AI helps inside (synthesis, elaboration) but hurts outside (Eureka moments)
+- LLMs should be regarded as **complementary amplifiers**, not replacements
 
 **Sources:**
+- [Nature Jan 2026 - Ask AI HOW to think](https://www.nature.com/articles/d41586-026-00049-2)
 - [HBR 2025](https://hbr.org/2025/12/research-when-used-correctly-llms-can-unlock-more-creative-ideas)
 - [arXiv 2024 - Combinatorial](https://arxiv.org/abs/2412.14141)
-- [Science Advances 2024](https://www.science.org/doi/10.1126/sciadv.adn5290)
-- [PMC 2024 - Homogenization](https://pmc.ncbi.nlm.nih.gov/articles/PMC11244532/)
+- [Science Advances 2024 - Homogenization](https://www.science.org/doi/10.1126/sciadv.adn5290)
+- [Wharton - AI shapes creativity](https://ai.wharton.upenn.edu/updates/how-ai-shapes-creativity-expanding-potential-or-narrowing-possibilities/)
+- [ScienceDirect 2025 - LLM creativity peaked](https://www.sciencedirect.com/science/article/pii/S2713374525000202)
+- [ScienceDirect 2025 - Creative Scar](https://www.sciencedirect.com/science/article/abs/pii/S0160791X25002775)
+- [HBS - Jagged Frontier](https://www.hbs.edu/faculty/Pages/item.aspx?num=64700)
 
 ---
 
@@ -123,6 +139,25 @@ Give each 2-3 distinct ideas.
 4. **COMBINE** — Create novel configurations
    - Principle A + B applied to problem
 5. **INSTANTIATE** — Make concrete for context
+
+### Tree of Thoughts (ToT)
+
+**Problem:** Standard prompting explores one path; creative tasks need branching exploration.
+
+**Protocol:**
+1. Define the problem clearly
+2. Explore 3-4 distinct reasoning paths simultaneously:
+   - Path A: Conventional approach
+   - Path B: Contrarian approach
+   - Path C: Adjacent problem approach
+   - Path D: Moonshot approach
+3. Develop 2-3 ideas per path
+4. Evaluate which ideas from different paths can be combined
+5. Select and refine the most promising combinations
+
+**Results:** 74% success vs CoT's 49% on creative tasks. Significantly better coherence in creative writing.
+
+**Variant:** Tree of Uncertain Thoughts (TouT, 2025) integrates uncertainty quantification to assess reliability of each decision path.
 
 ### TRIZ-AI Quick Method
 

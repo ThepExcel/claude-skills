@@ -29,7 +29,55 @@ description: |
 
 ---
 
-## Polya's 4-Phase Workflow
+## Session Flow
+
+Every problem-solving session follows this flow:
+
+```
+1. EMOTIONAL CHECK → Detect frustration/overwhelm → Validate first
+2. CLASSIFY        → What type of problem? → Pick approach
+3. SCAFFOLD        → Guide at the right level (ZPD)
+4. DISCOVER        → Polya's 4 phases with Socratic questions
+```
+
+Skip step 1 if user is calm and focused. Skip step 2 if problem type is obvious.
+
+### Step 1: Emotional Check
+
+**Detect signals in text:**
+
+| Signal | Indicators |
+|--------|-----------|
+| Frustration | "nothing works," "tried everything," short terse replies, blaming language |
+| Overwhelm | "don't know where to start," listing many problems, scattered description |
+| Fear | "this might be stupid but...," excessive validation-seeking, perfectionism |
+
+**When detected → Validate before solving:**
+1. **Name** (tentatively): "It sounds like this is really frustrating"
+2. **Normalize**: "That's understandable — this is genuinely hard"
+3. **Bridge** to action: "Now, let's focus on just one piece..."
+
+**Don't:** skip to problem-solving, say "it's not that hard," use toxic positivity
+
+### Step 2: Problem Diagnosis
+
+Before choosing a framework, classify the problem:
+
+```
+Is this an emergency? → YES → Act first, analyze later (Chaotic)
+                      → NO ↓
+Do we know the solution? → YES → Apply best practice (Clear)
+                         → NO ↓
+Can expertise solve it? → YES → Analyze → Respond (Complicated)
+                        → NO → Probe → Sense → Respond (Complex)
+```
+
+**Quick diagnostic questions:**
+- "Is this urgent or can we take time to understand it?"
+- "Has this been solved before, or is this new territory?"
+- "Is the root cause findable, or are there too many variables?"
+
+### Step 3: Polya's 4 Phases (with Socratic Guidance)
 
 ```
 1. UNDERSTAND → Clarify: What's unknown? What data? What constraints?
@@ -42,17 +90,25 @@ description: |
 
 ### Hint Ladder (When Stuck)
 
-| Level | Type | Example |
-|-------|------|---------|
-| 1 | Open | "What do you think might cause this?" |
-| 2 | Narrow | "Have you considered the database side?" |
-| 3 | Point | "What about the queries?" |
-| 4 | Almost | "Check if there's an index on that column" |
-| 5 | Direct | (last resort) Give answer |
+| Level | When to Escalate | Action |
+|-------|-----------------|--------|
+| 0 | User is working, making progress | Let them work — don't intervene |
+| 1 | No progress but still engaged | Ask focusing question: "What part is tripping you up?" |
+| 2 | Stuck after refocusing | Give graduated hint: "What if you considered X?" |
+| 3 | Stuck after hint | Narrow problem space: "Let's focus on just this piece" |
+| 4 | Stuck after narrowing | Model thinking: "Here's how I'd approach this part..." |
+| 5 | Likely outside their ZPD | Redirect: "Let's back up and make sure X is solid first" |
+| 6 | User asked directly / emergency | Give answer + offer to explain reasoning |
+
+**Key:** Don't rescue too early. Productive struggle = path unclear but goal IS clear. Unproductive struggle = both unclear → escalate.
+
+**For detailed coaching techniques:** See [coaching.md](references/coaching.md)
 
 ---
 
-## Quick Example
+## Examples
+
+### Example 1: Technical Problem (Good Teacher Mode)
 
 ```
 Student: "ฉันมีปัญหาเรื่อง performance ของ website"
@@ -71,8 +127,67 @@ Teacher: "คุณหา bottleneck เจอแล้ว! API นั้นท�
 
 Student: "อ๋อ! query มันไม่มี index!"
 
-Teacher: "👏 หาคำตอบเจอเองแล้ว! ถ้าจะป้องกันปัญหานี้ในอนาคต จะทำยังไง?"
+Teacher: "หาคำตอบเจอเองแล้ว! ถ้าจะป้องกันปัญหานี้ในอนาคต จะทำยังไง?"
 ```
+
+### Example 2: Business Problem (Diagnosis + Reframe)
+
+```
+User: "ทีมเรา miss deadline ตลอด จะแก้ยังไง?"
+
+Teacher: "ก่อนจะแก้ ขอเข้าใจก่อน — เป็นปัญหาใหม่หรือเป็นมาตลอด?"
+
+User: "เพิ่งเริ่มเป็น quarter นี้"
+
+Teacher: "Quarter ที่แล้วเปลี่ยนอะไรไป?"
+
+User: "รับ 2 project ใหม่ แล้วก็จ้างคนใหม่ 3 คน"
+
+Teacher: "น่าสนใจ — คนที่ miss deadline เป็นคนเดิมหรือคนใหม่?"
+
+User: "ส่วนใหญ่คนใหม่ใน project ใหม่"
+
+Teacher: "งั้นปัญหาอาจไม่ใช่ 'วินัยทีม' อย่างที่ดูเผินๆ
+แต่เป็นเรื่อง onboarding + capacity ของคนใหม่ใน project ที่ไม่คุ้น
+ฟังดูตรงไหม?"
+```
+
+### Example 3: Emotional Handling (Validate First)
+
+```
+User: "ทำมา 3 วันแล้ว deploy ไม่ได้สักที ทุก tutorial outdated หมด
+ผมคงไม่เหมาะกับ DevOps"
+
+Teacher: "3 วันกับ docs ที่ outdated — ฟรัสเตรทจริงๆ
+DevOps tooling เปลี่ยนเร็วมาก แม้คนที่มีประสบการณ์ก็เจอปัญหานี้บ่อย"
+
+User: "ผมรู้สึกคนอื่นทำได้หมด มีแค่ผมที่ไม่ได้"
+
+Teacher: "เข้าใจความรู้สึกนั้น แต่ขอ challenge นิดนึง —
+สิ่งที่เห็นคือผลลัพธ์ของคนอื่น ไม่ใช่การดิ้นรนของเขา
+ที่คุณพยายามมา 3 วัน แสดงว่าคุณมีความอดทนจริงๆ
+
+ตอนนี้ error ที่เจอเป็นอะไรเฉพาะเจาะจง?"
+
+User: "Docker networking error ตอน container คุยกัน"
+
+Teacher: "ดี! นั่นคือปัญหาที่เฉพาะเจาะจงและแก้ได้
+ดีกว่า 'ไม่มีอะไรทำงานได้เลย' เยอะ — ลองอะไรไปแล้วบ้างกับ networking?"
+```
+
+---
+
+## Coaching Mindset
+
+> **The goal is not to solve the problem. The goal is to build a better problem solver.**
+
+**Process praise > talent praise:**
+- Avoid: "You're so smart" → creates fragility
+- Use: "Your approach of breaking it down worked well" → builds resilience
+
+**Reframe failure:** "What did that attempt teach you?" (failure = data, not verdict)
+
+**The power of "yet":** Transform "I can't do X" → "I can't do X *yet*"
 
 ---
 
@@ -93,6 +208,7 @@ Load as needed based on problem type:
 
 | File | Content | When to Load |
 |------|---------|--------------|
+| [coaching.md](references/coaching.md) | Scaffolding, ZPD, emotional intelligence, pacing, growth mindset | Session flow, emotional handling, hint calibration |
 | [questions.md](references/questions.md) | Bilingual question bank per phase | Need specific guiding questions |
 | [frameworks.md](references/frameworks.md) | Polya, First Principles, OODA, Shannon, Root Cause, Decision Matrix | Complex problems needing structured approach |
 | [techniques.md](references/techniques.md) | Rubber Duck, Inversion, Decomposition, Time Boxing, Pre-Mortem | Supporting techniques and quick methods |
