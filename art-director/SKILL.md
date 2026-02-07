@@ -529,9 +529,8 @@ Scene description: 3-5 ประโยค (แสง มุมกล้อง at
 
 ## Related Skills
 
-| When | Suggest |
-|------|---------|
-| Execute prompt (gen/edit image) | `/comfyui-user` |
-| Technical diagrams | `/create-visualization` |
-| Research references | `/deep-research` |
-| Creative ideation | `/generate-creative-ideas` |
+- `/gen-image-video` — Generate images from your prompts via fal.ai cloud
+- `/comfyui-user` — Generate images via local ComfyUI or Comfy Cloud
+- `/sira-image-prefer` — Apply Sira's selection criteria to outputs
+- `/image-analysis` — Analyze generated image quality and metadata
+- `/graphic-designer` — For layout/design work (art-director = photography/cinema)

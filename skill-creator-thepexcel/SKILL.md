@@ -322,7 +322,7 @@ Before sharing a skill:
 - [ ] Tested with target models (Haiku/Sonnet/Opus)
 - [ ] Tested with real usage scenarios
 
-## Related Skills
+## Integration Skills
 
 | When | Suggest |
 |------|---------|
@@ -333,8 +333,46 @@ These skills are optional but highly valuable for skill development.
 
 ---
 
+## Enhancement Mode
+
+Use when **improving an existing skill** (not creating from scratch).
+
+### Route Decision
+
+| Condition | Path |
+|-----------|------|
+| Quick fix (typo, missing example, small gap) | Direct edit → skip research |
+| Significant upgrade (coverage gaps, depth issues) | Full enhancement pipeline below |
+
+### Full Enhancement Pipeline
+
+1. **AUDIT** — Read target skill → score with [audit rubric](references/audit-rubric.md) (Coverage/Depth/Structure/Actionability/Examples, each 1-5) → identify gaps → confirm with user
+2. **RESEARCH** — Use `/deep-research` or `/extract-expertise` to fill knowledge gaps → save findings
+3. **INTEGRATE** — Classify findings → prioritize by impact → merge using [integration patterns](references/integration-patterns.md) → apply merge checklist
+4. **OPTIMIZE** — Apply skill-creator standards (progressive disclosure, conciseness, references/)
+5. **VALIDATE** — Before/after comparison → show diff summary → log in [enhancement log](references/enhancement-log.md) → suggest test
+
+### Rules
+- Research BEFORE writing — don't guess domain knowledge
+- Preserve what works — enhance, don't rewrite from scratch
+- One dimension at a time — don't try to fix everything at once
+- Show evidence — link findings to changes made
+
+---
+
 **References:**
 - [workflows.md](references/workflows.md) — Sequential, conditional, feedback loops
 - [output-patterns.md](references/output-patterns.md) — Templates, examples, terminology
 - [anti-patterns.md](references/anti-patterns.md) — Common mistakes to avoid
 - [evaluation.md](references/evaluation.md) — Evaluation-driven development, Claude A/B pattern
+- [audit-rubric.md](references/audit-rubric.md) — Skill quality scoring (Coverage/Depth/Structure/Actionability/Examples)
+- [integration-patterns.md](references/integration-patterns.md) — How to merge research findings into skills
+- [enhancement-log.md](references/enhancement-log.md) — History of skill enhancements
+
+---
+
+## Related Skills
+
+- `/extract-expertise` — Extract expert knowledge for skills
+- `/deep-research` — Research domain for skill content
+- `/optimize-prompt` — Optimize skill system prompts

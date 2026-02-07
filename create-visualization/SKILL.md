@@ -178,13 +178,10 @@ python3 tools/smart_publish.py --slugs left --program excel --allow
 
 **Tip:** Use `run_in_background=true` for viewers to avoid blocking conversation.
 
-## Related Skills (Optional)
+---
 
-| When | Suggest |
-|------|---------|
-| AI-generated images/videos (realistic, artistic) | `/prompt-ai-image-video` - prompt engineering |
-| Teaching concepts with visuals | `/explain-concepts` - ACES methodology |
-| Need facts before visualizing | `/deep-research` - verify data |
-| Problem-solving context | `/problem-solving` - structured thinking |
+## Related Skills
 
-**Note:** Use `/create-visualization` for technical diagrams (FBD, plots, flowcharts). Use `/prompt-ai-image-video` for AI-generated realistic/artistic images and videos.
+- `/explain-concepts` — Visualize concepts being taught
+- `/thepexcel-brand-guidelines` — Brand-themed visualizations
+- `/pptx` — Embed visualizations in presentations

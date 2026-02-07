@@ -370,7 +370,7 @@ COLORS: [hex codes]
 3. ได้รูปพร้อมใช้ใน slides
 ```
 
-### Related Skills
+### Integration Skills
 
 | Need | Skill | When to Use |
 |------|-------|-------------|
@@ -391,3 +391,12 @@ COLORS: [hex codes]
 | Layouts | [references/layouts.md](references/layouts.md) |
 | Presentation design | [references/presentation-design.md](references/presentation-design.md) |
 | Gestalt principles | [references/gestalt.md](references/gestalt.md) |
+
+---
+
+## Related Skills
+
+- `/geometric-elements` — Generate decorative assets for designs
+- `/thepexcel-brand-guidelines` — Apply brand colors and typography
+- `/art-director` — For photography/cinema prompts (not layout)
+- `/pptx` — Design presentation slides

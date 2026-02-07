@@ -120,13 +120,9 @@ When applying frameworks, structure outputs as:
 [What to do with this analysis]
 ```
 
-## Related Skills (Optional)
+## Related Skills
 
-| When | Suggest |
-|------|---------|
-| Design/validate business model | `/design-business-model` - BMC, Lean Canvas, VPC |
-| Stuck, need structured thinking | `/problem-solving` - Polya, 5 Whys, Fishbone |
-| Trade-off / contradiction | `/triz` - systematic innovation |
-| Need creative ideas | `/generate-creative-ideas` - divergent thinking |
-
-**Note:** These skills are optional. Manage-business-strategy works standalone for strategic analysis.
+- `/design-business-model` — Business model as strategy foundation
+- `/boost-intel` — Strategic thinking and decision frameworks
+- `/deep-research` — Research industry trends and benchmarks
+- `/problem-solving` — Solve strategic challenges systematically

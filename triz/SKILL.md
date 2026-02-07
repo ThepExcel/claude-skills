@@ -140,13 +140,9 @@ See [ai-prompts.md](references/ai-prompts.md) for detailed prompts.
 | AI | [methodology.md](references/methodology.md) | TRIZ + LLM integration |
 | Examples | [examples.md](references/examples.md) | Case studies (Samsung, SpaceX, Netflix) |
 
-## Related Skills (Optional)
+## Related Skills
 
-| When | Suggest |
-|------|---------|
-| Problem not yet defined clearly | `/problem-solving` - ช่วย clarify ก่อน |
-| Need more creative options | `/generate-creative-ideas` - divergent thinking |
-| Business strategy context | `/manage-business-strategy` - SWOT, Porter's |
-| Designing new business model | `/design-business-model` - BMC, Lean Canvas |
-
-**Note:** These skills are optional. TRIZ works standalone for contradiction problems.
+- `/generate-creative-ideas` — Complement with broader brainstorming
+- `/deep-research` — Research cross-industry solutions (FOS/MOS)
+- `/boost-intel` — Evaluate trade-offs systematically
+- `/problem-solving` — Structure the problem before applying TRIZ

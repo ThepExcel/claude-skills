@@ -261,3 +261,13 @@ When patterns suggest another skill would help, **suggest** (don't auto-invoke):
 - Problem is simple (solvable with Polya alone)
 - Already mid-way through problem-solving (would disrupt flow)
 - User is learning (suggesting too early robs discovery)
+
+---
+
+## Related Skills
+
+- `/boost-intel` — Apply mental models during problem analysis
+- `/deep-research` — Research context and solutions
+- `/generate-creative-ideas` — Creative approaches to problems
+- `/triz` — Systematic innovation for technical contradictions
+- `/explain-concepts` — Teach problem-solving methodology

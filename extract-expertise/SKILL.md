@@ -268,11 +268,9 @@ Both references contain essential methodologies and should be consulted at appro
 - Test the generated skill with real scenarios when possible
 - Iterate based on feedback
 
-## Related Skills (Optional)
+---
 
-| When | Suggest |
-|------|---------|
-| Creating/packaging skill | `/skill-creator` - skill development guide |
-| Research domain first | `/deep-research` - gather facts before extraction |
+## Related Skills
 
-**Note:** These skills are optional. Skill-extractor works standalone for expertise extraction.
+- `/skill-creator-thepexcel` — Build skill from extracted expertise
+- `/deep-research` — Research to prepare interview questions

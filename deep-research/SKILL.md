@@ -150,9 +150,7 @@ research/[topic-slug]-[YYYY-MM-DD].md
 
 ## Related Skills
 
-| When | Skill |
-|------|-------|
-| Cross-industry innovation | `/generate-creative-ideas` |
-| Technical contradiction | `/triz` |
-| Explain findings | `/explain-concepts` |
-| Strategic analysis | `/manage-business-strategy` |
+- `/boost-intel` — Apply critical thinking to research findings
+- `/generate-creative-ideas` — Creative Mode for cross-industry innovation
+- `/skill-creator-thepexcel` — Research domain expertise for skill creation
+- `/extract-expertise` — Research to prepare expert interviews

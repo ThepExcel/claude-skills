@@ -322,3 +322,11 @@ If headers span multiple rows:
 - Always offer to help user set up query in separate workbook for portability
 - If user's real source requires complex ETL, acknowledge limitations and suggest alternatives (manual prep at source, Python preprocessing, etc.)
 - **Loading data with multi-row headers**: ALWAYS instruct "DO NOT tick 'My table has headers'" and delete auto steps first
+
+---
+
+## Related Skills
+
+- `/explain-concepts` — Explain PQ concepts clearly
+- `/xlsx` — Work with spreadsheet files
+- `/problem-solving` — Guide through data transformation challenges

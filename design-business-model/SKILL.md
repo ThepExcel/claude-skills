@@ -170,13 +170,10 @@ When presenting canvas analysis:
 - [ ] [Customer interview focus]
 ```
 
-## Related Skills (Optional)
+## Related Skills
 
-| When | Suggest |
-|------|---------|
-| Need strategic analysis (SWOT, Porter's) | `/manage-business-strategy` |
-| Stuck, need structured thinking | `/problem-solving` - Polya, 5 Whys |
-| Innovation breakthrough needed | `/triz` - contradiction solving |
-| Need creative ideas for value prop | `/generate-creative-ideas` - divergent thinking |
-
-**Note:** These skills are optional. Design-business-model works standalone for canvas design.
+- `/manage-business-strategy` — Strategic context for business model
+- `/boost-intel` — Mental models for business analysis
+- `/deep-research` — Research market and competitors
+- `/generate-creative-ideas` — Innovate business model components
+- `/triz` — Resolve business model contradictions

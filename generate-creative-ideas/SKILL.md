@@ -293,12 +293,10 @@ Details: [methodology.md](references/methodology.md) | [prompt-templates.md](ref
 
 ---
 
-## Related Skills (Optional)
+## Related Skills
 
-| When | Suggest |
-|------|---------|
-| Technical contradiction / trade-off | `/triz` - systematic innovation |
-| Need structured problem-solving | `/problem-solving` - Polya, 5 Whys |
-| Business strategy context | `/manage-business-strategy` - SWOT, Porter's |
-| Design new business model | `/design-business-model` - BMC, Lean Canvas |
-| Need current facts/research | `/deep-research` - comprehensive research |
+- `/triz` — Systematic innovation methodology (complements brainstorming)
+- `/deep-research` — Research inspiration and cross-industry solutions
+- `/boost-intel` — Critical evaluation of generated ideas
+- `/design-business-model` — Apply creative ideas to business models
+- `/problem-solving` — Structure the problem before ideating

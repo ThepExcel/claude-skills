@@ -189,3 +189,10 @@ Good: "What's the bottleneck? Let me profile first."
 | [techniques.md](references/techniques.md) | Core optimization techniques |
 | [checklist.md](references/checklist.md) | Scoring checklist by platform |
 | [model-comparison.md](references/model-comparison.md) | Model-specific behaviors |
+
+---
+
+## Related Skills
+
+- `/deep-research` — Research best practices for prompts
+- `/skill-creator-thepexcel` — Optimize skill system prompts

@@ -119,3 +119,11 @@ User can send reference images for Claude to analyze and recreate:
 2. **High DPI** — Use `--size` 2x for retina displays
 3. **Gradients** — Combine `--gradient linear` with `--color` and `--color2`
 4. **Brand colors** — Always confirm with user or their brand guidelines first
+
+---
+
+## Related Skills
+
+- `/graphic-designer` — Use elements in graphic designs
+- `/thepexcel-brand-guidelines` — Brand colors for elements
+- `/pptx` — Decorative elements for presentations
