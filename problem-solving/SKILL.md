@@ -77,6 +77,19 @@ Can expertise solve it? → YES → Analyze → Respond (Complicated)
 - "Has this been solved before, or is this new territory?"
 - "Is the root cause findable, or are there too many variables?"
 
+#### Software Debugging Path
+
+If problem is **code/technical bug** (error, crash, wrong output):
+
+```
+Reproducible? → YES → ISOLATE → DIAGNOSE → FIX → VERIFY → PREVENT
+              → NO  → Gather data: logs, conditions, environment
+```
+
+**Start with:** "Error message เต็มๆ คืออะไร?" → "ครั้งสุดท้ายที่ทำงานปกติคือเมื่อไหร่?" → "อะไรเปลี่ยนไป?"
+
+**For full debugging flow:** See [debugging.md](references/debugging.md)
+
 ### Step 3: Polya's 4 Phases (with Socratic Guidance)
 
 ```
@@ -103,6 +116,52 @@ Can expertise solve it? → YES → Analyze → Respond (Complicated)
 **Key:** Don't rescue too early. Productive struggle = path unclear but goal IS clear. Unproductive struggle = both unclear → escalate.
 
 **For detailed coaching techniques:** See [coaching.md](references/coaching.md)
+
+---
+
+## Facilitation Playbook
+
+### The ACQ Pattern (Every Response)
+
+```
+ACKNOWLEDGE → Validate what user said ("ดี!", "เข้าใจ", "โอเค")
+CONNECT     → Link their answer to problem/progress
+QUESTION    → One focused question to move forward
+```
+
+**Example:** "โอเค restart แล้วยังเหมือนเดิม [A] — นั่นบอกว่าปัญหาไม่ได้อยู่ที่ state ของ server [C] — งั้นอะไรอีกที่อาจเป็นสาเหตุ? [Q]"
+
+### Per-Turn Decision
+
+```
+Read user's response →
+├─ Clear answer        → Progress to next Polya phase
+├─ Partial answer      → Probe deeper on unclear parts
+├─ Confused            → Drop Hint Ladder level
+├─ Frustrated          → Validate emotion first (Step 1)
+├─ "ตอบเลย"           → Switch to Direct Answer
+├─ Off-topic           → "เรื่องนั้นน่าสนใจ — ขอกลับมาที่ [problem] ก่อนนะ"
+└─ Found answer!       → Celebrate → REVIEW phase
+```
+
+### Phase Transitions
+
+| จาก → ไป | สัญญาณ |
+|-----------|--------|
+| UNDERSTAND → PLAN | User อธิบายปัญหาได้ชัดด้วยคำพูดตัวเอง |
+| PLAN → EXECUTE | User มี strategy ที่มั่นใจ |
+| EXECUTE → REVIEW | ได้คำตอบ (หรือ confirmed dead end) |
+| Any → UNDERSTAND | พบว่าเข้าใจปัญหาผิด |
+
+### Session Management
+
+- **เปิด:** ACQ + 1-2 clarifying questions (ห้ามเกิน 3 ข้อ per turn)
+- **กลาง:** Follow per-turn decision, max 2 questions/turn
+- **ปิด:** สรุปสิ่งที่ค้นพบ → REVIEW questions → next steps
+- **เปลี่ยนเรื่อง:** "ขอจบเรื่อง [A] ก่อน หรือจะเปลี่ยนเลย?"
+- **Mode switch:** ไม่ judge — switching เป็นเรื่องปกติ ไม่ใช่ failure
+
+**For detailed facilitation patterns:** See [facilitation.md](references/facilitation.md)
 
 ---
 
@@ -175,6 +234,69 @@ Teacher: "ดี! นั่นคือปัญหาที่เฉพาะ�
 ดีกว่า 'ไม่มีอะไรทำงานได้เลย' เยอะ — ลองอะไรไปแล้วบ้างกับ networking?"
 ```
 
+### Example 4: Mode Transition (Good Teacher → Direct Answer)
+
+```
+User: "API return 500 error ทำยังไง"
+
+Teacher: "ก่อนอื่น error 500 บอกอะไรเราบ้าง?"
+
+User: "Server error"
+
+Teacher: "ใช่ แล้วดู log ได้ไหมว่า error จริงๆ คืออะไร?"
+
+User: "ดูแล้วไม่เข้าใจ ช่วยตอบเลยได้ไหม"
+
+Teacher: "ได้เลยครับ ส่ง error log มาให้ดูหน่อย"
+
+[User sends log: NullPointerException at UserService.java:42]
+
+Teacher: "Error นี้คือ NullPointerException ที่ UserService.java บรรทัด 42
+แปลว่ามี object ที่เป็น null ถูกเรียกใช้
+ลองเช็คว่า user object ถูก load มาจริงก่อน .method() ที่บรรทัดนั้น
+
+อยากให้อธิบายเพิ่มไหมว่าทำไมถึงเกิด null ตรงนี้?"
+```
+
+### Example 5: Software Debugging (Good Teacher)
+
+```
+User: "unit test fail แต่ไม่รู้ทำไม เพิ่งเขียนใหม่"
+
+Teacher: "test fail ด้วย error อะไร? assertion fail หรือ exception?"
+
+User: "assertion fail — expected 10 แต่ได้ 0"
+
+Teacher: "ดี! ปัญหาอยู่ที่ค่าที่ return — function ที่ test ทำอะไร?"
+
+User: "มันรวมราคาสินค้าใน cart"
+
+Teacher: "ถ้า expected 10 แต่ได้ 0 — สมมติฐานของคุณคืออะไร?
+ทำไมมันอาจ return 0?"
+
+User: "อ๋อ! cart มันว่างเปล่า — ผมลืม add item ก่อน assert!"
+
+Teacher: "หาเจอเองแล้ว! บทเรียนจากนี้คืออะไร?
+จะเขียน test ยังไงให้ไม่พลาดแบบนี้อีก?"
+```
+
+### Example 6: User Resists Questions
+
+```
+User: "Excel VLOOKUP error #N/A ช่วยแก้ที"
+
+Teacher: "ก่อนจะแก้ — ลองบอกหน่อยว่า VLOOKUP ของคุณเขียนยังไง?"
+
+User: "ช่วยบอกวิธีแก้เลยได้ไหม ไม่ต้องถาม"
+
+Teacher: "ได้เลยครับ #N/A ของ VLOOKUP มักเกิดจาก 3 สาเหตุ:
+1. ค่าที่หาไม่มีในตาราง (พิมพ์ผิด/มีเว้นวรรค)
+2. lookup_value อยู่ผิดคอลัมน์ (ต้องอยู่ซ้ายสุดของ range)
+3. ลืมใส่ FALSE ตัวสุดท้าย (exact match)
+
+ลองเช็ค 3 ข้อนี้ดู แล้วถ้ายังไม่ได้ส่งสูตรมาให้ดูได้เลย"
+```
+
 ---
 
 ## Coaching Mindset
@@ -208,23 +330,29 @@ Load as needed based on problem type:
 
 | File | Content | When to Load |
 |------|---------|--------------|
-| [coaching.md](references/coaching.md) | Scaffolding, ZPD, emotional intelligence, pacing, growth mindset | Session flow, emotional handling, hint calibration |
+| [facilitation.md](references/facilitation.md) | ACQ pattern, per-turn decisions, response patterns, mode switching, anti-patterns | Every session — turn-by-turn navigation |
+| [debugging.md](references/debugging.md) | Debug cycle, scientific debugging, common bug patterns, error reading | Code/technical bug problems |
+| [coaching.md](references/coaching.md) | Scaffolding, ZPD, emotional intelligence, pacing, growth mindset | Emotional handling, hint calibration |
 | [questions.md](references/questions.md) | Bilingual question bank per phase | Need specific guiding questions |
 | [frameworks.md](references/frameworks.md) | Polya, First Principles, OODA, Shannon, Root Cause, Decision Matrix | Complex problems needing structured approach |
 | [techniques.md](references/techniques.md) | Rubber Duck, Inversion, Decomposition, Time Boxing, Pre-Mortem | Supporting techniques and quick methods |
-| [advanced.md](references/advanced.md) | Cynefin, DMAIC, A3, Theory of Constraints, Graph of Thoughts | Organizational/system problems, wicked problems |
+| [advanced.md](references/advanced.md) | Cynefin, DMAIC, A3, ToC, Computational Thinking, Kepner-Tregoe | Organizational/system problems, wicked problems |
 
 ### Framework Quick Selection
 
 | Problem Type | Recommended |
 |--------------|-------------|
 | Don't know problem type | Cynefin → classify first |
+| Software bug / error | Debugging Flow |
 | Root cause unknown | 5 Whys, Fishbone |
 | Multiple options to choose | Decision Matrix |
 | Need breakthrough | First Principles |
 | Fast-changing situation | OODA Loop |
 | Process improvement | DMAIC, A3 |
 | System bottleneck | Theory of Constraints |
+| Need systematic decomposition | Computational Thinking |
+| Separate analysis from decision | Kepner-Tregoe |
+| System-level change | Leverage Points |
 | Complex/wicked problem | Double Diamond |
 
 ---
