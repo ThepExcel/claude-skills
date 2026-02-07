@@ -1,378 +1,367 @@
 ---
 name: skill-creator-thepexcel
-description: Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Claude's capabilities with specialized knowledge, workflows, or tool integrations.
+description: Guide for creating and enhancing skills. Use when users want to create a new skill, update/improve an existing skill, or audit skill quality. Supports both creation from scratch and enhancement of existing skills with audit rubric scoring.
 license: Apache 2.0 (see LICENSE.txt)
 ---
 
 # Skill Creator (ThepExcel Edition)
 
-> **Based on [Anthropic's official skill-creator](https://github.com/anthropics/skills)** — Licensed under Apache 2.0. Enhanced by ThepExcel with additional best practices and practical insights from real-world skill development.
+> Based on [Anthropic's official skill-creator](https://github.com/anthropics/skills) (Apache 2.0). Enhanced with ThepExcel deployment workflow and enhancement pipeline.
 
-This skill provides comprehensive guidance for creating effective skills that Claude can discover and use successfully.
+## Quick Start
 
-## About Skills
+| ต้องการ | ใช้ Mode | ไปที่ |
+|---------|---------|------|
+| สร้าง skill ใหม่ | **Create** | → [Creation Process](#creation-process) |
+| ปรับปรุง skill เดิม | **Enhance** | → [Enhancement Mode](#enhancement-mode) |
+| ตรวจคุณภาพ | **Audit only** | → [Audit Rubric](references/audit-rubric.md) |
 
-Skills are modular, self-contained packages that extend Claude's capabilities by providing specialized knowledge, workflows, and tools. Think of them as "onboarding guides" for specific domains—they transform Claude from a general-purpose agent into a specialized agent equipped with procedural knowledge.
-
-### What Skills Provide
-
-1. **Specialized workflows** — Multi-step procedures for specific domains
-2. **Tool integrations** — Instructions for working with specific file formats or APIs
-3. **Domain expertise** — Company-specific knowledge, schemas, business logic
-4. **Bundled resources** — Scripts, references, and assets for complex and repetitive tasks
+---
 
 ## Core Principles
 
 ### Concise is Key
 
-The context window is a public good. Skills share the context window with everything else Claude needs: system prompt, conversation history, other Skills' metadata, and the actual user request.
+Context window เป็นทรัพยากรที่แชร์กัน — ทุกบรรทัดต้องจ่ายค่า token
 
-**Default assumption: Claude is already very smart.** Only add context Claude doesn't already have. Challenge each piece of information:
-- "Does Claude really need this explanation?"
-- "Can I assume Claude knows this?"
-- "Does this paragraph justify its token cost?"
+**Claude ฉลาดอยู่แล้ว** → ใส่เฉพาะสิ่งที่ Claude ไม่รู้:
+- "Claude ต้องการคำอธิบายนี้จริงไหม?"
+- "ย่อหน้านี้คุ้มค่า token ไหม?"
 
-Prefer concise examples over verbose explanations.
+### Degrees of Freedom
 
-### Set Appropriate Degrees of Freedom
+| Level | เมื่อไหร่ | ตัวอย่าง |
+|-------|----------|---------|
+| **High** (text) | หลายวิธีถูกได้ | Code review guidelines |
+| **Medium** (pseudocode) | มี pattern ที่ prefer | Report template |
+| **Low** (scripts) | ต้องการ consistency | Database migrations |
 
-Match the level of specificity to the task's fragility and variability:
+### Test with All Models
 
-| Freedom Level | When to Use | Example |
-|---------------|-------------|---------|
-| **High** (text instructions) | Multiple approaches valid, context-dependent | Code review guidelines |
-| **Medium** (pseudocode/params) | Preferred pattern exists, some variation OK | Report generation template |
-| **Low** (specific scripts) | Fragile operations, consistency critical | Database migrations |
+| Model | Check |
+|-------|-------|
+| **Haiku** | ให้ guidance พอไหม? |
+| **Sonnet** | ชัดเจนและ efficient? |
+| **Opus** | ไม่ over-explain? |
 
-**Analogy**: A narrow bridge with cliffs needs specific guardrails (low freedom), while an open field allows many routes (high freedom).
-
-### Test with All Target Models
-
-Skills effectiveness depends on the underlying model. Test with all models you plan to use:
-
-| Model | Consideration |
-|-------|---------------|
-| **Haiku** | Does the skill provide enough guidance? |
-| **Sonnet** | Is the skill clear and efficient? |
-| **Opus** | Does the skill avoid over-explaining? |
-
-What works for Opus might need more detail for Haiku. Aim for instructions that work across models.
+---
 
 ## Skill Structure
 
-### Anatomy of a Skill
-
 ```
 skill-name/
-├── SKILL.md (required)
-│   ├── YAML frontmatter (name, description)
-│   └── Markdown instructions
-└── Bundled Resources (optional)
-    ├── scripts/      — Executable code (Python/Bash)
-    ├── references/   — Documentation loaded as needed
-    └── assets/       — Files used in output (templates, images)
+├── SKILL.md (required)     ← < 500 lines
+│   ├── YAML frontmatter    ← name + description only
+│   └── Markdown body       ← loaded when triggered
+├── scripts/                ← deterministic code
+├── references/             ← loaded as needed (one level deep)
+└── assets/                 ← templates, not loaded into context
 ```
 
-### Naming Conventions
-
-Use **action-oriented names** that clearly describe what the skill does. Lowercase letters, numbers, and hyphens only.
-
-**Multiple patterns are acceptable — ask user preference if unclear:**
-
-| Pattern | Examples | When to Use |
-|---------|----------|-------------|
-| **Gerund (verb-ing)** | `processing-pdfs`, `analyzing-data` | Traditional, widely used |
-| **Verb-noun** | `prompt-ai-image-video`, `design-business-model` | Clear action + object |
-| **Noun-verb-ing** | `power-query-coaching`, `problem-solving` | Domain + activity |
-| **Recognized terms** | `triz`, `deep-research` | Widely known concepts |
-
-| Good | Avoid |
-|------|-------|
-| `prompt-ai-image-video` | `pdf` (too vague) |
-| `processing-pdfs` | `helper`, `utils` |
-| `create-visualization` | `anthropic-*`, `claude-*` |
-
-### Writing Effective Descriptions
-
-The `description` field enables skill discovery. **Always write in third person.**
-
-| Good | Avoid |
-|------|-------|
-| "Processes Excel files and generates reports" | "I can help you process Excel files" |
-| "Extracts text from PDF documents" | "You can use this to extract PDF text" |
-
-Include both **what** the skill does and **when** to use it:
-
-```yaml
-description: Extract text and tables from PDF files, fill forms, merge documents. Use when working with PDF files or when the user mentions PDFs, forms, or document extraction.
-```
-
-### SKILL.md Components
-
-#### YAML Frontmatter (required)
+### Frontmatter Rules
 
 | Field | Rules |
 |-------|-------|
-| `name` | Max 64 chars, lowercase + numbers + hyphens only |
-| `description` | Max 1024 chars, non-empty, third person |
+| `name` | Max 64 chars, lowercase + numbers + hyphens |
+| `description` | Max 1024 chars, third person, what + when |
 
-No other fields in frontmatter.
+### Description Best Practices
 
-#### Body (Markdown)
+```yaml
+# Good: what + when + triggers
+description: Extract text and tables from PDF files, fill forms, merge documents.
+  Use when working with PDF files or when the user mentions PDFs or document extraction.
 
-Instructions and guidance for using the skill. Only loaded AFTER the skill triggers.
+# Bad: first person, vague
+description: I can help you with PDFs.
+```
 
-**Important**: "When to Use" sections in the body are useless — Claude only sees the description when deciding to trigger.
+**"When to Use" in body = useless** — Claude only sees description when deciding to trigger.
+
+### Naming Conventions
+
+| Pattern | Examples |
+|---------|----------|
+| **Verb-noun** | `design-business-model`, `create-visualization` |
+| **Noun-verb-ing** | `power-query-coaching`, `problem-solving` |
+| **Recognized terms** | `triz`, `deep-research` |
 
 ### Bundled Resources
 
-#### Scripts (`scripts/`)
+| Type | เมื่อไหร่ | โหลดเข้า context? |
+|------|----------|-----------------|
+| **scripts/** | Code ที่ใช้ซ้ำ, ต้อง deterministic | ไม่ (execute ตรง) |
+| **references/** | Docs ที่อ้างอิงระหว่างทำงาน | ใช่ (on demand) |
+| **assets/** | Templates, logos, boilerplate | ไม่ |
 
-Executable code for tasks requiring deterministic reliability.
+**ห้ามสร้าง:** README.md, CHANGELOG.md, INSTALLATION_GUIDE.md — skills สำหรับ AI ไม่ใช่คน
 
-- **When to include**: Same code rewritten repeatedly, or deterministic reliability needed
-- **Benefits**: Token efficient, deterministic, can execute without loading into context
+### Progressive Disclosure
 
-#### References (`references/`)
+| Level | When | Limit |
+|-------|------|-------|
+| Metadata | Always loaded | ~100 words |
+| SKILL.md body | When triggered | < 500 lines |
+| References | As needed | Unlimited |
 
-Documentation loaded as needed into context.
+**Details:** See [progressive-disclosure.md](references/progressive-disclosure.md)
 
-- **When to include**: Large documentation Claude should reference while working
-- **Best practice**: If files >10k words, include grep patterns in SKILL.md
-- **Avoid duplication**: Info lives in SKILL.md OR references, not both
+---
 
-#### Assets (`assets/`)
-
-Files used in output, not loaded into context.
-
-- **Examples**: Templates, logos, fonts, boilerplate code
-
-### What NOT to Include
-
-Do NOT create extraneous documentation:
-
-- README.md
-- INSTALLATION_GUIDE.md
-- QUICK_REFERENCE.md
-- CHANGELOG.md
-
-Skills are for AI agents, not humans. No auxiliary context about creation process.
-
-## Progressive Disclosure
-
-Skills use a three-level loading system:
-
-| Level | When Loaded | Size Limit |
-|-------|-------------|------------|
-| Metadata (name + description) | Always | ~100 words |
-| SKILL.md body | When triggered | <500 lines |
-| Bundled resources | As needed | Unlimited |
-
-### Progressive Disclosure Patterns
-
-See [references/progressive-disclosure.md](references/progressive-disclosure.md) for detailed patterns:
-
-- **Pattern 1**: High-level guide with references
-- **Pattern 2**: Domain-specific organization
-- **Pattern 3**: Conditional details
-
-**Key rules**:
-- Keep references **one level deep** from SKILL.md
-- For files >100 lines, include table of contents at top
-
-## Skill Creation Process
+## Creation Process
 
 ### Overview
 
-1. **Understand** — Gather concrete usage examples
-2. **Plan** — Identify reusable resources
-3. **Initialize** — Run `init_skill.py`
-4. **Edit** — Implement resources and SKILL.md
-5. **Package** — Run `package_skill.py`
-6. **Iterate** — Refine based on real usage
+```
+1. Understand → 2. Plan → 3. Init → 4. Edit → 5. Package → 6. Deploy → 7. Iterate
+```
 
-### Step 1: Understanding with Concrete Examples
+### Step 1: Understand
 
-Skip only when usage patterns are already clearly understood.
+**ถามผู้ใช้:**
+- "Skill นี้ต้องรองรับ functionality อะไรบ้าง?"
+- "ยกตัวอย่าง 2-3 scenarios ที่จะใช้"
+- "ผู้ใช้จะพูดอะไรที่ควร trigger skill นี้?"
 
-**Ask clarifying questions:**
-- "What functionality should this skill support?"
-- "Can you give examples of how this would be used?"
-- "What would a user say that should trigger this skill?"
+**Tip:** ใช้ `/extract-expertise` สำหรับ domain ที่ซับซ้อน
 
-**Related skill**: For extracting expertise from domain experts, consider using `/extract-expertise` — it provides structured conversations to capture mental models, workflows, and best practices that can inform skill development.
+### Step 2: Plan
 
-### Step 2: Planning Reusable Contents
+วิเคราะห์แต่ละ example:
 
-Analyze each example by:
-1. How would you execute this from scratch?
-2. What scripts/references/assets would help when doing this repeatedly?
+| Task | Repeatable? | Resource |
+|------|------------|----------|
+| Same code every time | Yes → script | `scripts/rotate_pdf.py` |
+| Same boilerplate | Yes → asset | `assets/template/` |
+| Rediscovering info | Yes → reference | `references/schema.md` |
 
-| Task Type | Analysis | Resource |
-|-----------|----------|----------|
-| PDF rotation | Same code each time | `scripts/rotate_pdf.py` |
-| Frontend webapp | Same boilerplate | `assets/hello-world/` |
-| BigQuery queries | Rediscovering schemas | `references/schema.md` |
-
-### Step 3: Initializing the Skill
-
-Always run `init_skill.py` for new skills:
+### Step 3: Initialize
 
 ```bash
 scripts/init_skill.py <skill-name> --path <output-directory>
 ```
 
-The script creates:
-- Skill directory with proper structure
-- SKILL.md template with frontmatter
-- Example `scripts/`, `references/`, `assets/` directories
+### Step 4: Edit
 
-### Step 4: Editing the Skill
+**Order:** resources first → test scripts → update SKILL.md last
 
-Remember: you're creating this for another Claude instance to use. Include non-obvious procedural knowledge.
+**Design pattern references:**
+- [workflows.md](references/workflows.md) — Sequential, conditional, loops
+- [output-patterns.md](references/output-patterns.md) — Templates, formatting
+- [anti-patterns.md](references/anti-patterns.md) — Common mistakes
 
-**Consult design patterns:**
-- **Multi-step processes**: See [references/workflows.md](references/workflows.md)
-- **Output formats**: See [references/output-patterns.md](references/output-patterns.md)
-- **Anti-patterns**: See [references/anti-patterns.md](references/anti-patterns.md)
-- **Evaluation**: See [references/evaluation.md](references/evaluation.md)
-
-**Implementation order:**
-1. Start with reusable resources (scripts, references, assets)
-2. Test scripts by actually running them
-3. Delete unused example files
-4. Update SKILL.md
-
-### Step 5: Packaging the Skill
+### Step 5: Package & Validate
 
 ```bash
 scripts/package_skill.py <path/to/skill-folder>
+scripts/quick_validate.py <path/to/skill-folder>
 ```
 
-The script validates then packages:
-- YAML frontmatter format
-- Naming conventions
-- Description quality
-- File organization
+### Step 6: Deploy (ThepExcel)
 
-### Step 6: Iteration
+```
+┌─ Skill ใหม่
+│   ├─ Public? (ใครก็ใช้ได้)  → /mnt/d/agent-skills/[skill-name]/
+│   └─ Private? (เฉพาะพี่ระ)  → /mnt/d/claude-private/skills/[skill-name]/
+│
+├─ Symlink ไป global
+│   └─ ln -s /mnt/d/[repo]/[skill-name] ~/.claude/skills/[skill-name]
+│
+├─ Update registry
+│   └─ เพิ่มใน /mnt/d/claude-master/CLAUDE.md → Skills Inventory
+│
+└─ Commit & Push
+    └─ git add → commit → push (ทั้ง skill repo + claude-master)
+```
 
-**Iteration workflow:**
-1. Use the skill on real tasks
-2. Observe struggles or inefficiencies
-3. Identify improvements
-4. Implement and test again
+### Step 7: Iterate
 
-See [references/evaluation.md](references/evaluation.md) for the Claude A/B iteration pattern.
+1. ใช้ skill กับงานจริง
+2. สังเกตจุดที่ติดขัด
+3. ปรับปรุง (ใช้ Enhancement Mode)
+
+See [evaluation.md](references/evaluation.md) for Claude A/B testing pattern.
+
+---
 
 ## Content Guidelines
 
 ### Avoid Time-Sensitive Information
 
-Don't include info that becomes outdated:
-
 ```markdown
 # Bad
 If you're doing this before August 2025, use the old API.
 
-# Good — use "old patterns" section
+# Good
 ## Current method
 Use the v2 API endpoint.
-
-## Old patterns
-<details>
-<summary>Legacy v1 API (deprecated 2025-08)</summary>
-The v1 API used: api.example.com/v1/messages
-</details>
 ```
 
 ### Use Consistent Terminology
 
-Choose one term and use it throughout:
+เลือกคำเดียว ใช้ตลอดทั้ง skill:
 
-| Good (consistent) | Bad (inconsistent) |
-|-------------------|-------------------|
-| Always "API endpoint" | Mix "endpoint", "URL", "route", "path" |
-| Always "field" | Mix "field", "box", "element", "control" |
-| Always "extract" | Mix "extract", "pull", "get", "retrieve" |
+| Good | Bad |
+|------|-----|
+| Always "API endpoint" | Mix "endpoint", "URL", "route" |
+| Always "extract" | Mix "extract", "pull", "get" |
+
+---
 
 ## Quality Checklist
 
-Before sharing a skill:
+### Core
+- [ ] Description: what + when, third person, specific triggers
+- [ ] SKILL.md body < 500 lines
+- [ ] No time-sensitive info, consistent terminology
+- [ ] Concrete examples (not abstract)
+- [ ] References one level deep
 
-### Core Quality
-- [ ] Description is specific with key terms
-- [ ] Description includes what + when (third person)
-- [ ] SKILL.md body under 500 lines
-- [ ] No time-sensitive information
-- [ ] Consistent terminology throughout
-- [ ] Examples are concrete, not abstract
-- [ ] File references one level deep
-- [ ] Workflows have clear steps
-
-### Code and Scripts
-- [ ] Scripts handle errors (don't punt to Claude)
-- [ ] No magic constants (all values justified)
-- [ ] Required packages listed and verified
-- [ ] No Windows-style paths (use forward slashes)
-- [ ] Validation steps for critical operations
+### Code
+- [ ] Scripts handle errors, no magic constants
+- [ ] Required packages listed
+- [ ] Forward slashes (no Windows paths)
 
 ### Testing
-- [ ] At least three evaluations created
-- [ ] Tested with target models (Haiku/Sonnet/Opus)
 - [ ] Tested with real usage scenarios
-
-## Integration Skills
-
-| When | Suggest |
-|------|---------|
-| Extract expertise from domain expert | `/extract-expertise` — structured conversations to capture mental models |
-| Research domain knowledge | `/deep-research` — gather facts before building skill |
-
-These skills are optional but highly valuable for skill development.
+- [ ] Tested with target models
 
 ---
 
 ## Enhancement Mode
 
-Use when **improving an existing skill** (not creating from scratch).
+ใช้เมื่อ **ปรับปรุง skill เดิม**
 
 ### Route Decision
 
 | Condition | Path |
 |-----------|------|
-| Quick fix (typo, missing example, small gap) | Direct edit → skip research |
-| Significant upgrade (coverage gaps, depth issues) | Full enhancement pipeline below |
+| Quick fix (typo, small gap) | Direct edit → skip audit |
+| Significant upgrade | Full pipeline below |
 
 ### Full Enhancement Pipeline
 
-1. **AUDIT** — Read target skill → score with [audit rubric](references/audit-rubric.md) (Coverage/Depth/Structure/Actionability/Examples, each 1-5) → identify gaps → confirm with user
-2. **RESEARCH** — Use `/deep-research` or `/extract-expertise` to fill knowledge gaps → save findings
-3. **INTEGRATE** — Classify findings → prioritize by impact → merge using [integration patterns](references/integration-patterns.md) → apply merge checklist
-4. **OPTIMIZE** — Apply skill-creator standards (progressive disclosure, conciseness, references/)
-5. **VALIDATE** — Before/after comparison → show diff summary → log in [enhancement log](references/enhancement-log.md) → suggest test
+```
+1. AUDIT → 2. RESEARCH → 3. INTEGRATE → 4. OPTIMIZE → 5. VALIDATE
+```
 
-### Rules
-- Research BEFORE writing — don't guess domain knowledge
-- Preserve what works — enhance, don't rewrite from scratch
-- One dimension at a time — don't try to fix everything at once
-- Show evidence — link findings to changes made
+#### Step 1: AUDIT
+
+อ่าน target skill → score ด้วย [audit rubric](references/audit-rubric.md):
+
+| Dimension | Score 1-5 |
+|-----------|-----------|
+| Coverage | ครอบคลุม domain แค่ไหน? |
+| Depth | Surface-level หรือ expert? |
+| Structure | Progressive disclosure ดีไหม? |
+| Actionability | Claude execute ได้เลยไหม? |
+| Examples | มี concrete examples ไหม? |
+
+**Present ผลแบบนี้:**
+
+```
+SKILL: [name]
+SCORES: Coverage [?] | Depth [?] | Structure [?] | Actionability [?] | Examples [?]
+TOTAL: [?]/25 → [Draft/Working/Solid/Production]
+
+จุดที่ควรปรับ:
+1. [ปัญหา + ผลกระทบ]
+2. [ปัญหา + ผลกระทบ]
+```
+
+→ **ถามผู้ใช้ก่อน:** "ปรับทั้งหมด หรือเลือกเฉพาะข้อ?"
+
+#### Step 2: RESEARCH
+
+ใช้ `/deep-research` หรือ `/extract-expertise` เพื่อเติม knowledge gaps
+
+#### Step 3: INTEGRATE
+
+Classify findings → prioritize by impact → merge ด้วย [integration patterns](references/integration-patterns.md)
+
+#### Step 4: OPTIMIZE
+
+Apply skill-creator standards: progressive disclosure, conciseness, references/
+
+#### Step 5: VALIDATE
+
+Before/after comparison:
+
+```
+| Dimension | Before | After | เปลี่ยนอะไร |
+|-----------|--------|-------|------------|
+```
+
+→ Log ใน [enhancement-log.md](references/enhancement-log.md)
+
+### Enhancement Rules
+
+- **Research BEFORE writing** — อย่าเดา domain knowledge
+- **Preserve what works** — enhance ไม่ใช่ rewrite
+- **Show evidence** — link findings to changes
+
+### Example: boost-intel Enhancement
+
+```
+BEFORE: 17/25 (Solid) — Examples 2/5, Actionability 3/5
+CHANGES:
+  1. +Quick Mode (30-sec sanity check)
+  2. +Facilitation Guide (how Claude walks through phases)
+  3. Move CAPTURE → reference (reduce bloat)
+  4. +Concrete example (WordPress vs CMS — full loop)
+  5. Expand REFLECT (deeper questions + pattern recognition)
+AFTER: 23/25 (Production) — all dimensions ≥ 4
+```
 
 ---
 
-**References:**
-- [workflows.md](references/workflows.md) — Sequential, conditional, feedback loops
-- [output-patterns.md](references/output-patterns.md) — Templates, examples, terminology
-- [anti-patterns.md](references/anti-patterns.md) — Common mistakes to avoid
-- [evaluation.md](references/evaluation.md) — Evaluation-driven development, Claude A/B pattern
-- [audit-rubric.md](references/audit-rubric.md) — Skill quality scoring (Coverage/Depth/Structure/Actionability/Examples)
-- [integration-patterns.md](references/integration-patterns.md) — How to merge research findings into skills
-- [enhancement-log.md](references/enhancement-log.md) — History of skill enhancements
+## Facilitation Guide
+
+### Create Mode
+
+```
+1. ถาม: "อยากสร้าง skill อะไรคะ? ช่วยยกตัวอย่าง 2-3 scenarios"
+2. วิเคราะห์: public หรือ private? simple หรือ complex?
+3. ถ้า complex → ใช้ /extract-expertise ก่อน
+4. Init → Edit → Test → Package → Deploy
+5. สรุป: "Skill [name] สร้างเสร็จแล้วค่ะ อยู่ที่ [path]"
+```
+
+### Enhance Mode
+
+```
+1. อ่าน SKILL.md + references ทั้งหมด
+2. Audit → present ผลเป็นตาราง
+3. ถาม: "ปรับทั้งหมด หรือเลือกข้อ?"
+4. ทำตามที่ user เลือก
+5. Before/after comparison → commit
+```
+
+### Key Behaviors
+
+- **ถามก่อนทำ** — ไม่ rewrite โดยไม่ถาม
+- **Show scores** — ผู้ใช้ต้องเห็นว่าอะไรดี อะไรไม่ดี
+- **ทำทีละ step** — ไม่ dump ทุกอย่างทีเดียว
+
+---
+
+## References
+
+| File | Content |
+|------|---------|
+| [progressive-disclosure.md](references/progressive-disclosure.md) | Loading patterns (high-level, domain, conditional) |
+| [workflows.md](references/workflows.md) | Sequential, conditional, feedback loops |
+| [output-patterns.md](references/output-patterns.md) | Templates, examples, terminology |
+| [anti-patterns.md](references/anti-patterns.md) | Common mistakes to avoid |
+| [evaluation.md](references/evaluation.md) | Claude A/B testing pattern |
+| [audit-rubric.md](references/audit-rubric.md) | Quality scoring (5 dimensions, 1-5 each) |
+| [integration-patterns.md](references/integration-patterns.md) | How to merge findings into skills |
+| [enhancement-log.md](references/enhancement-log.md) | History of skill enhancements |
 
 ---
 
 ## Related Skills
 
-- `/extract-expertise` — Extract expert knowledge for skills
-- `/deep-research` — Research domain for skill content
-- `/optimize-prompt` — Optimize skill system prompts
+- `/extract-expertise` — Extract expert knowledge to inform skill content
+- `/deep-research` — Research domain before building or enhancing skill
+- `/optimize-prompt` — Optimize skill descriptions and system prompts
