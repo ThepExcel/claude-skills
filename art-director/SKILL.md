@@ -317,6 +317,56 @@ WHY IT WORKS:
 
 ---
 
+## ⚠️ Generation Gotchas — บทเรียนจากการ Gen จริง
+
+### 1. Orientation ต้องตรงกับ Pose
+
+| Pose | Orientation | Size |
+|------|-------------|------|
+| ยืน / นั่ง / ท่าตั้ง | Portrait | 768x1344 |
+| นอน / คลาน / แนวนอน | **Landscape** | 1344x768 |
+| Close-up centered | Square | 1024x1024 |
+
+**Rule:** ก่อน gen ทุกรูป ถามตัวเอง **"ท่านี้แนวไหน?"** — ท่านอนใน portrait = ยืดยาวผิดปกติ
+
+### 2. มุมกล้อง ↔ Face Description ต้องสอดคล้อง
+
+| มุมกล้อง | Face description? | เหตุผล |
+|----------|-------------------|--------|
+| ถ่ายจากหลัง | **ห้ามใส่** | มองไม่เห็นหน้า — ใส่แล้ว model สับสน |
+| ถ่ายจากหลัง + หันหน้ากลับ | ใส่ได้ | เห็นหน้าบางส่วน |
+| ถ่ายจากหน้า/ข้าง | ใส่ได้ | เห็นหน้าชัด |
+
+**Rule:** prompt ที่ขัดกัน (บอกหน้าละเอียด + มุมหลัง) = ผลแปลก
+
+### 3. Close-up Level ↔ Character Elements
+
+| Framing | เห็นอะไร | เสีย |
+|---------|---------|------|
+| Extreme close-up | หน้าอย่างเดียว | ชุด, ปีก, อาวุธ หายหมด |
+| **Medium close-up (หัว→อก/เอว)** | **หน้า + ชุด + ปีก/cape** | **Sweet spot** |
+| Full body | ทุกอย่าง | หน้าเล็ก detail น้อย |
+
+**Rule:** ถ้า character มี costume elements สำคัญ → ใช้ medium close-up ไม่ใช่ extreme
+
+**Note:** Medium close-up ไม่ได้แปลว่า pose นิ่ง — เปลี่ยน pose ได้ (เอียงตัว, ก้ม, หันข้าง, โน้มตัว) และเปลี่ยนมุมกล้องได้ (low angle, high angle, Dutch angle, over-shoulder) เหมือน full body ทุกประการ แค่ **frame ตัดที่อก/เอว** เท่านั้น
+
+### 4. Batch Gen Strategy
+
+- เขียน shell script → `run_in_background: true` = ไม่ block user
+- หลาย scripts รัน parallel ได้ (ComfyUI queue ให้เอง)
+- `for` loop + same prompt = seed variants ง่ายกว่าเขียนทีละรูป
+
+### 5. Character Consistency ใน Set
+
+เมื่อทำ **set ตัวละคร** → ทุก prompt ต้อง keep costume elements เดิมเสมอ จนกว่าจะสั่งเปลี่ยน
+
+- กำหนด **character block** (ชุด, อาวุธ, cape, mask ฯลฯ) เป็นตัวแปรกลาง
+- ทุก prompt ต้องอ้างถึง costume elements นั้น — แม้จะ close-up ก็ต้องหาวิธีใส่เข้าเฟรม
+- ถ้า framing ตัดชุดออก → ดึง element เข้ามาเป็น collar/framing/background แทน
+
+---
+
 ## Mode 2: Critique & Edit
 
 ### GOAL → ANALYZE → PRESCRIBE
