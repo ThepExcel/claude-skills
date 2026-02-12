@@ -51,6 +51,40 @@ Create professional-quality AI visuals with an artist's eye.
 
 **Reference:** [master-mental-models.md](references/master-mental-models.md) — 10 Universal Principles
 
+### 🚫 Anti-Cliché Gate (MANDATORY สำหรับ themed shoots)
+
+> **เมื่อได้ theme/holiday/occasion** (Valentine, Christmas, Halloween, Wedding ฯลฯ)
+> ต้องผ่าน gate นี้ก่อนเขียน prompt — **ห้ามข้าม**
+
+**Step 1: List default props ของ theme**
+```
+Valentine → กุหลาบ, เทียน, แชมเปญ, ชุดแดง, เตียงขาว, หัวใจ
+Christmas → ต้นคริสต์มาส, หมวกแดง, ของขวัญ, หิมะ
+Halloween → ฟักทอง, ชุดแม่มด, ใยแมงมุม
+```
+
+**Step 2: ห้ามใช้ default props เป็นจุดเริ่มต้น**
+
+ถามตัวเอง: **"ถ้าไม่มี [default props] จะสื่อ theme นี้ยังไง?"**
+
+```
+❌ Valentine = กุหลาบ + เทียน + แชมเปญ
+✅ Valentine = ความใกล้ชิด, ความรู้สึกคิดถึง, tension ก่อนจูบแรก
+
+❌ Christmas = ต้นคริสต์มาส + หมวกแดง
+✅ Christmas = ความอบอุ่นในคืนหนาว, แสงไฟวนบนผนัง, กลิ่นโกโก้
+```
+
+**Step 3: ถ้าจะใช้ default prop → ต้องมีเหตุผล**
+
+ใช้ได้ถ้า prop มี **บทบาทใน story** (ไม่ใช่แค่ decoration):
+```
+❌ "กลีบกุหลาบโรยบนเตียง" (decoration)
+✅ "กลีบกุหลาบเหี่ยวร่วงจากแจกันข้างเตียง ที่ไม่มีใครเติมน้ำมาหลายวัน" (story)
+```
+
+**Rule:** Max 1 theme prop ต่อ prompt — และต้อง serve story ไม่ใช่ serve aesthetic
+
 ---
 
 ## 🎯 Core Behavior: Creative Director ไม่ใช่ Order Taker
@@ -221,16 +255,36 @@ sideways at camera with a tired half-smile. Shot on Canon EOS R5, 35mm f/1.4,
 with the flat clinical light of the tubes above."
 ```
 
-### Step 6: REVIEW — Self-Check ก่อนส่ง
+### Step 6: REVIEW — Self-Check ก่อนส่ง (⛔ HARD GATE)
+
+> **ต้องเขียนคำตอบออกมาจริงๆ** — ห้ามแค่ "check ในหัว"
+> ถ้า BORING CHECK หรือ STOCK CHECK ไม่ผ่าน → **ห้าม gen ต้อง rewrite**
 
 ```
 □ INTENT MATCH  — Prompt สื่ออารมณ์ที่ตั้งใจไว้ Step 1 ไหม?
+                   → ตอบ: [เขียนคำตอบ]
 □ LIGHT SOURCE  — แสงมี motivation (มาจากที่ไหน)? ไม่ใช่แค่ "nice lighting"
-□ BORING CHECK  — ถ้าเอา prompt ไปให้คนอื่น 10 คน จะได้ภาพคล้ายกันหมดไหม?
-                   ถ้าใช่ = ยังธรรมดาเกินไป
+                   → ตอบ: [เขียนคำตอบ]
+□ BORING CHECK  — ⛔ ถ้าเอา prompt ไปให้คนอื่น 10 คน จะได้ภาพคล้ายกันหมดไหม?
+                   → ตอบ: [ใช่/ไม่ใช่ + เหตุผล]
+                   → ถ้า "ใช่" = ❌ FAIL → ต้อง rewrite ห้าม gen
+□ STOCK CHECK   — ⛔ prompt นี้ stock photo มั้ย? Pinterest board มั้ย?
+                   → ตอบ: [ใช่/ไม่ใช่ + เหตุผล]
+                   → ถ้า "ใช่" = ❌ FAIL → ต้อง rewrite ห้าม gen
 □ SPECIFICITY   — มีคำกว้างๆ เหลืออยู่ไหม? (beautiful, high quality, nice)
 □ TENSION       — มีอะไรสักอย่างที่ขัดกัน/น่าสนใจ? (สวยแต่เศร้า, สงบแต่อันตราย)
-□ LESS IS MORE  — ตัดอะไรออกได้อีกไหม?
+□ LESS IS MORE  — ตัดอะไรออกได้อีกไหม? Props เกิน 2 ชิ้นไหม?
+```
+
+**ตัวอย่าง REVIEW ที่ถูกต้อง:**
+```
+□ INTENT MATCH  → ✅ "ร้อนแรง intimate" — prompt มี tension + skin + closeness
+□ LIGHT SOURCE  → ✅ แสงจากเตาผิงด้านซ้าย ตัดกับแสงจันทร์จากหน้าต่าง
+□ BORING CHECK  → ✅ ไม่ใช่ — มี "เสื้อผ้าที่ถอดแล้ววางบนเก้าอี้" เป็น story element
+□ STOCK CHECK   → ✅ ไม่ stock — ไม่มีกุหลาบ/เทียน/แชมเปญ ใช้ "ห้องนั่งเล่นหลังเลิกงาน"
+□ SPECIFICITY   → ✅ ไม่มีคำกว้าง
+□ TENSION       → ✅ "ยิ้มแต่ตาเหนื่อย" — contrast สวย/เหนื่อย
+□ LESS IS MORE  → ✅ props แค่ 1 (แก้วไวน์ครึ่งเดียว)
 ```
 
 ### Step 7: ENHANCE — ยกระดับ
