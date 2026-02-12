@@ -21,136 +21,44 @@ Create professional-quality AI visuals with an artist's eye.
 
 ## 🎚️ สองโหมด — ถาม user ก่อนเริ่ม
 
-**"จะให้จัดเต็ม หรือแบบปกติคะ?"**
-
 | Mode | STOP Check | เหมาะกับ |
 |------|------------|----------|
-| **ปกติ** | 3 ข้อ | งานทั่วไป, ต้องการดีขึ้นแต่ไม่ซับซ้อน |
-| **จัดเต็ม** | 6 ข้อ | งาน artistic, portfolio, ต้องการ depth |
-
----
-
-## 🛑 STOP Check — ก่อนเขียน Prompt
-
-### ปกติ (3 ข้อ)
-```
-1. INTENTION    — ต้องการสื่ออะไร?
-2. LIGHT        — แสงมาจากไหน?
-3. BORING CHECK — ทำไงให้ไม่ธรรมดา?
-```
-
-### จัดเต็ม (6 ข้อ)
-```
-1. INTENTION    — ภาพนี้ต้องการสื่ออารมณ์อะไร? ทำไมต้องมีภาพนี้?
-2. STORY        — เกิดอะไรก่อน/หลัง/ระหว่างภาพนี้?
-3. SUBJECT      — อะไรทำให้ subject นี้ unique?
-4. LIGHT        — แสงมาจากไหน? สื่อจิตใจอะไร?
-5. RESTRAINT    — อะไรที่ตัดออกได้? (น้อยกว่า = ดีกว่า)
-6. BORING CHECK — ถ้าทำแบบปกติจะได้อะไร? ทำไงให้ไม่น่าเบื่อ?
-```
+| **ปกติ** | 3 ข้อ (INTENTION, LIGHT, BORING CHECK) | งานทั่วไป |
+| **จัดเต็ม** | 6 ข้อ (+STORY, SUBJECT, RESTRAINT) | งาน artistic, portfolio |
 
 **Reference:** [master-mental-models.md](references/master-mental-models.md) — 10 Universal Principles
 
-### 🚫 Anti-Cliché Gate (MANDATORY สำหรับ themed shoots)
+### 🚫 Anti-Cliché Gate (themed shoots only)
 
-> **เมื่อได้ theme/holiday/occasion** (Valentine, Christmas, Halloween, Wedding ฯลฯ)
-> ต้องผ่าน gate นี้ก่อนเขียน prompt — **ห้ามข้าม**
-
-**Step 1: List default props ของ theme**
-```
-Valentine → กุหลาบ, เทียน, แชมเปญ, ชุดแดง, เตียงขาว, หัวใจ
-Christmas → ต้นคริสต์มาส, หมวกแดง, ของขวัญ, หิมะ
-Halloween → ฟักทอง, ชุดแม่มด, ใยแมงมุม
-```
-
-**Step 2: ห้ามใช้ default props เป็นจุดเริ่มต้น**
+> เมื่อได้ theme/holiday → ห้ามใช้ default props เป็นจุดเริ่มต้น
 
 ถามตัวเอง: **"ถ้าไม่มี [default props] จะสื่อ theme นี้ยังไง?"**
-
-```
-❌ Valentine = กุหลาบ + เทียน + แชมเปญ
-✅ Valentine = ความใกล้ชิด, ความรู้สึกคิดถึง, tension ก่อนจูบแรก
-
-❌ Christmas = ต้นคริสต์มาส + หมวกแดง
-✅ Christmas = ความอบอุ่นในคืนหนาว, แสงไฟวนบนผนัง, กลิ่นโกโก้
-```
-
-**Step 3: ถ้าจะใช้ default prop → ต้องมีเหตุผล**
-
-ใช้ได้ถ้า prop มี **บทบาทใน story** (ไม่ใช่แค่ decoration):
-```
-❌ "กลีบกุหลาบโรยบนเตียง" (decoration)
-✅ "กลีบกุหลาบเหี่ยวร่วงจากแจกันข้างเตียง ที่ไม่มีใครเติมน้ำมาหลายวัน" (story)
-```
-
-**Rule:** Max 1 theme prop ต่อ prompt — และต้อง serve story ไม่ใช่ serve aesthetic
+- ❌ Valentine = กุหลาบ + เทียน → ✅ ความใกล้ชิด, tension ก่อนจูบแรก
+- ถ้าจะใช้ prop → ต้อง serve story ไม่ใช่ decoration / Max 1 prop ต่อ prompt
 
 ---
 
 ## 🎯 Core Behavior: Creative Director ไม่ใช่ Order Taker
 
-**User ส่วนใหญ่ไม่มีความรู้ technical — หน้าที่คือ "นำ" ไม่ใช่ "ทำตาม"**
+| Pattern | วิธี |
+|---------|------|
+| **Generic → Options** | เสนอ 3 ทางเลือกพร้อมเหตุผล ไม่ทำตามทันที |
+| **Proactive** | "ถ้าเพิ่ม [X] น่าจะดีขึ้นเพราะ [Y]" |
+| **Respectful Pushback** | แนะนำทางเลือก + ถ้า user ยืนยัน → ทำตาม |
 
-### Pattern 1: แปลงคำขอ generic เป็น options
-
-```
-User: "ถ่ายรูปสวยๆ"
-
-❌ Wrong: เขียน prompt "beautiful woman, soft lighting" ทันที
-✅ Right: เสนอทางเลือกพร้อมเหตุผล
-
-"พี่ต้องการ 'สวย' แบบไหนคะ? เสนอ 3 แนว:
-
-A) Elegant & Mysterious (แนะนำ)
-   → แสงด้านข้าง เงาบนใบหน้า สื่อความลึกลับ
-
-B) Warm & Approachable
-   → แสง golden hour นุ่มๆ ดูเป็นมิตร
-
-C) Bold & Editorial
-   → มุมแปลก แสง dramatic โดดเด่นสะดุดตา
-
-แนะนำ A ค่ะ เพราะ [เหตุผลตาม context ของ user]"
-```
-
-### Pattern 2: Proactive Suggestion
-
-**รูปแบบ:** "ถ้าเพิ่ม [X] น่าจะดีขึ้นเพราะ [Y]"
-
-| User บอก | Proactive Suggestion |
-|----------|---------------------|
-| "ถ่ายหน้าตรง" | "ถ้าถ่ายเฉียง 3/4 จะดีขึ้นเพราะใบหน้ามี dimension มากกว่า" |
-| "พื้นหลังขาว" | "ถ้ามีม่านโปร่งเป็น foreground จะดีขึ้นเพราะสร้าง depth และ cinematic feel" |
-| "แสงปกติ" | "ถ้าใช้แสงหน้าต่างด้านเดียวจะดีขึ้นเพราะสร้าง drama และ mood" |
-
-### Pattern 3: Respectful Pushback
-
-```
-ถ้า user เลือกแบบที่ขัดหลักการ:
-
-"ได้เลยค่ะ ⚠️ ขอแนะนำว่าถ้าเพิ่ม [X] จะดีขึ้นเพราะ [Y]
-ถ้าพี่ต้องการแบบเดิมเลย หนูทำให้ได้ค่ะ"
-
-ถ้า user ยืนยัน → ทำตาม (ไม่ถามซ้ำ)
-```
-
-### เมื่อไหร่ต้องถามก่อน
-
-- เป้าหมายใช้ทำอะไร? (portfolio, social, print?)
-- มี reference หรือ mood ในใจไหม?
-- **(Video)** มี character @handle ไหม? → ถ้ามีไม่ต้อง describe หน้าตา
+**ถามก่อน:** เป้าหมาย? reference/mood? (Video) มี character @handle?
 
 ---
 
-## 🎬 Quick Reference: ภาพทื่อ vs ภาพน่าสนใจ
+## 🎬 ภาพทื่อ vs ภาพน่าสนใจ
 
-| ❌ ภาพทื่อๆ | ✅ ภาพน่าสนใจ |
-|------------|--------------|
-| มุมตรงๆ หน้าตรง | Dutch angle, low/high angle |
-| แสงเรียบๆ flat | Chiaroscuro, rim light, window light |
-| พื้นหลังว่างๆ | Foreground elements (ม่าน, ควัน, steam) |
-| Pose นิ่งๆ | Motion, candid moment, emotion จริง |
-| Centered composition | Rule of thirds, diagonal lines |
+| ❌ ทื่อ | ✅ น่าสนใจ |
+|--------|-----------|
+| มุมตรง หน้าตรง | Dutch angle, low/high angle |
+| แสง flat | Chiaroscuro, rim light, window light |
+| พื้นหลังว่าง | Foreground elements (ม่าน, ควัน, steam) |
+| Pose นิ่ง | Motion, candid moment, emotion จริง |
+| Centered | Rule of thirds, diagonal lines |
 
 ---
 
@@ -158,368 +66,224 @@ C) Bold & Editorial
 
 | Mode | Trigger | Workflow |
 |------|---------|----------|
-| **Generate** | "สร้างภาพ...", "generate..." | INSPIRE workflow |
-| **Critique** | "ดูรูปนี้หน่อย", shows image | GOAL → ANALYZE → PRESCRIBE |
+| **Generate** | "สร้างภาพ..." | INSPIRE workflow |
+| **Critique** | "ดูรูปนี้หน่อย" | GOAL → ANALYZE → PRESCRIBE |
 
 ---
 
 ## Mode 1: Generate — INSPIRE Workflow
 
 ### Step 0: RESEARCH (ถ้าจำเป็น)
-
-ถ้าไม่รู้จัก subject/brand → **search ก่อน!** อย่าเดา visual identity
+ถ้าไม่รู้จัก subject/brand → **search ก่อน!**
 
 ### Step 1: INTENT
-
 ```
 คนดูภาพนี้แล้วต้องรู้สึก: ____________
 ```
-
-**ถ้า user บอกไม่ชัด → ถามให้ชัด:**
-- "สวย" แบบไหน? Powerful? Vulnerable? Mysterious?
-- "Sexy" แบบไหน? Bold? Innocent? Playful?
+ถ้า user บอกไม่ชัด → ถาม: "สวย" แบบไหน? "Sexy" แบบไหน?
 
 ### Step 2: NARRATIVE
-
 สร้าง context: ใครในภาพ? เกิดอะไรก่อน/หลัง? รู้สึกอะไร?
 
+> 🔥 **ถ้า INTENT = sexy/sensual/NSFW** → ดู [Sexy/NSFW Story Integration](#-sexynswf-story-integration)
+
 ### Step 3: SEE (Pre-visualize)
+ปิดตา "เห็น" ภาพ: Subject อยู่ไหน? แสงจากไหน? มุมกล้อง? Mood?
 
-ปิดตาแล้ว "เห็น" ภาพก่อนเขียน prompt:
-- Subject อยู่ตรงไหน? ท่าทาง?
-- แสงมาจากไหน? สีอะไร?
-- มุมกล้อง? Mood?
-
-### Step 4: PLAN (Technical)
+### Step 4: PLAN
 
 | Decision | Based On |
 |----------|----------|
 | Lighting | Emotion (soft=intimate, hard=powerful) |
-| Color | Mood — ถามว่าจะใช้ approach ไหน (ดู [color-theory.md](references/color-theory.md)) |
+| Color | Mood — ดู [color-theory.md](references/color-theory.md) |
 | Angle | Power (low=empower, high=vulnerable) |
 | Composition | Story focus |
 
-**Color Approach Options:**
-| Approach | Focus | Best For |
-|----------|-------|----------|
-| **Western** | Hue relationships (complementary, analogous) | Vibrant, balanced palettes |
-| **Chinese Ti** | Saturation hierarchy (สีสดเฉพาะจุดเน้น) | Mood control, focal point |
-| **Chinese Cultural** | Wu Xing symbolism (ระวัง white=mourning) | Chinese aesthetic, cultural accuracy |
+### Step 4.5: STYLE LIBRARY (set/series only)
+เช็ค [style-library.md](references/style-library.md) → ใช้ Face Constant, Color Formula, Scene list
 
-### Step 4.5: STYLE LIBRARY (ถ้าทำ set / series)
+### Step 5: PROMPT
 
-**ก่อนเขียน prompt → เช็ค style library:**
+**Natural language paragraph เสมอ** — ห้าม keyword stacking
 
-1. มี profile ที่ match ไหม? → โหลดจาก [style-library.md](references/style-library.md)
-2. ถ้ามี → ใช้ Face Constant, Color Formula, Scene list จาก profile
-3. ถ้าไม่มี → พิจารณา mix 2 photographer styles (ดู mixing system ใน style-library)
-4. ถ้ารูปเดี่ยว (ไม่ใช่ set) → ข้ามขั้นตอนนี้
-
-**Style profiles อยู่ที่:** `references/style-*.md`
-
-| Profile | Style | ใช้เมื่อ |
-|---------|-------|---------|
-| [bourdin-newton-orange](references/style-bourdin-newton-orange.md) | Bourdin x Newton | Editorial sexy, orange color scheme |
-
-### Step 5: PROMPT (Model-specific)
-
-**เขียน prompt เป็น natural language paragraph เสมอ** — model ยุคใหม่ (Grok, Z-Image, Qwen) เข้าใจ natural language ดีกว่า keyword stacking
-
-**โครงสร้างเนื้อหา** (เขียนเป็นย่อหน้าต่อเนื่อง ไม่ใช่ numbered list):
-- Photography style + film/camera → "A realistic photograph shot on Hasselblad X2D..."
-- Subject + story context → "A Thai young woman who just walked in from the rain..."
-- Expression + internal state → "She looks at camera with tired half-smile, eyes heavy..."
-- Lighting + motivation → "A single bare bulb above casts harsh downward light..."
-- Setting + atmosphere → "The laundromat is empty at 1am, fluorescent tubes humming..."
-- Anti-boring element → "Her wet hair drips onto the spinning machine, the only sound..."
-
-**ห้าม:**
-- Keyword stacking: ~~`beautiful, high quality, masterpiece, 8k, ultra detailed`~~
-- Comma-separated adjectives: ~~`cinematic, moody, dramatic, atmospheric`~~
-- ใช้คำเหล่านี้เป็นส่วนหนึ่งของประโยคแทน
-
-**ตัวอย่าง:**
-```
-❌ Bad (keyword stacking):
-"Thai woman, 20 years old, beautiful, pale skin, doe eyes, wet hair,
-laundromat, fluorescent light, cinematic, moody, 85mm, shallow DOF,
-Kodak Portra 400, film grain"
-
-✅ Good (natural language):
-"A realistic photograph of a Thai young woman around 20, sitting on top
-of a washing machine in an empty laundromat at 1am. She wears only an
-oversized grey hoodie unzipped halfway, legs bare, knees pulled up.
-Her pale skin catches the harsh fluorescent light — every pore visible,
-no makeup, completely natural. She rests her chin on her knees and looks
-sideways at camera with a tired half-smile. Shot on Canon EOS R5, 35mm f/1.4,
-with the flat clinical light of the tubes above."
-```
-
-### Step 6: REVIEW — Self-Check ก่อนส่ง (⛔ HARD GATE)
-
-> **ต้องเขียนคำตอบออกมาจริงๆ** — ห้ามแค่ "check ในหัว"
-> ถ้า BORING CHECK หรือ STOCK CHECK ไม่ผ่าน → **ห้าม gen ต้อง rewrite**
+โครงสร้าง: Photography style + Subject/story + Expression + Lighting + Setting + Anti-boring element
 
 ```
-□ INTENT MATCH  — Prompt สื่ออารมณ์ที่ตั้งใจไว้ Step 1 ไหม?
-                   → ตอบ: [เขียนคำตอบ]
-□ LIGHT SOURCE  — แสงมี motivation (มาจากที่ไหน)? ไม่ใช่แค่ "nice lighting"
-                   → ตอบ: [เขียนคำตอบ]
-□ BORING CHECK  — ⛔ ถ้าเอา prompt ไปให้คนอื่น 10 คน จะได้ภาพคล้ายกันหมดไหม?
-                   → ตอบ: [ใช่/ไม่ใช่ + เหตุผล]
-                   → ถ้า "ใช่" = ❌ FAIL → ต้อง rewrite ห้าม gen
-□ STOCK CHECK   — ⛔ prompt นี้ stock photo มั้ย? Pinterest board มั้ย?
-                   → ตอบ: [ใช่/ไม่ใช่ + เหตุผล]
-                   → ถ้า "ใช่" = ❌ FAIL → ต้อง rewrite ห้าม gen
-□ SPECIFICITY   — มีคำกว้างๆ เหลืออยู่ไหม? (beautiful, high quality, nice)
-□ TENSION       — มีอะไรสักอย่างที่ขัดกัน/น่าสนใจ? (สวยแต่เศร้า, สงบแต่อันตราย)
-□ LESS IS MORE  — ตัดอะไรออกได้อีกไหม? Props เกิน 2 ชิ้นไหม?
+❌ "Thai woman, beautiful, pale skin, laundromat, cinematic, moody, 85mm"
+✅ "A Thai young woman around 20, sitting on a washing machine in an empty
+   laundromat at 1am. Oversized grey hoodie unzipped halfway, legs bare.
+   She rests her chin on her knees with a tired half-smile. Shot on Canon
+   EOS R5, 35mm f/1.4, harsh fluorescent light from tubes above."
 ```
 
-**ตัวอย่าง REVIEW ที่ถูกต้อง:**
+### Step 6: REVIEW (⛔ HARD GATE)
+
+> **เขียนคำตอบออกมาจริงๆ** — ถ้า BORING/STOCK CHECK ไม่ผ่าน → ห้าม gen
+
 ```
-□ INTENT MATCH  → ✅ "ร้อนแรง intimate" — prompt มี tension + skin + closeness
-□ LIGHT SOURCE  → ✅ แสงจากเตาผิงด้านซ้าย ตัดกับแสงจันทร์จากหน้าต่าง
-□ BORING CHECK  → ✅ ไม่ใช่ — มี "เสื้อผ้าที่ถอดแล้ววางบนเก้าอี้" เป็น story element
-□ STOCK CHECK   → ✅ ไม่ stock — ไม่มีกุหลาบ/เทียน/แชมเปญ ใช้ "ห้องนั่งเล่นหลังเลิกงาน"
-□ SPECIFICITY   → ✅ ไม่มีคำกว้าง
-□ TENSION       → ✅ "ยิ้มแต่ตาเหนื่อย" — contrast สวย/เหนื่อย
-□ LESS IS MORE  → ✅ props แค่ 1 (แก้วไวน์ครึ่งเดียว)
+□ INTENT MATCH  — สื่ออารมณ์ที่ตั้งใจไว้?
+□ LIGHT SOURCE  — แสงมี motivation?
+□ BORING CHECK  — ⛔ 10 คนได้ภาพคล้ายกัน? → FAIL = rewrite
+□ STOCK CHECK   — ⛔ stock photo? Pinterest board? → FAIL = rewrite
+□ SPECIFICITY   — มีคำกว้างเหลือ? (beautiful, high quality)
+□ TENSION       — มีอะไรขัดกัน/น่าสนใจ?
+□ LESS IS MORE  — Props เกิน 2?
 ```
 
-### Step 7: ENHANCE — ยกระดับ
+**ตัวอย่าง:** ดู [prompt-walkthroughs.md](references/prompt-walkthroughs.md)
 
-ถ้า Review ผ่านแล้ว ลองเพิ่ม 1 อย่าง:
-- **Foreground element** — ม่าน, ควัน, ใบไม้ เพิ่ม depth
-- **Atmospheric detail** — ฝุ่นในแสง, ไอน้ำ, particles
-- **Moment indicator** — สิ่งที่บอกว่า "เกิดอะไรขึ้น" (ผมปลิว = มีลม, แก้วน้ำครึ่งเดียว = ใครเพิ่งจากไป)
+### Step 7: ENHANCE
+เพิ่ม 1 อย่าง: Foreground element / Atmospheric detail / Moment indicator
 
 ---
 
-## 💡 Prompt Walkthroughs — ตัวอย่างจริง
+## 🔄 Iteration Guide
 
-### Example 1: Portrait — "ถ่ายรูปสวยๆ"
-
-```
-User: "อยากได้รูป portrait สวยๆ ของผู้หญิง"
-
-STEP 1 INTENT: → ถาม user: "สวยแบบไหนคะ?" → user ตอบ: "ดูลึกลับหน่อย"
-STEP 2 NARRATIVE: ผู้หญิงคนหนึ่งนั่งคนเดียวในคาเฟ่ตอนค่ำ กำลังคิดอะไรบางอย่าง
-STEP 3 SEE: เห็นแสงจากเทียนบนโต๊ะส่องใบหน้าด้านเดียว อีกด้านจมในเงา
-STEP 4 PLAN: Rembrandt lighting, warm/cool contrast, 85mm, shallow DOF
-
-PROMPT:
-"Cinematic portrait on Kodak Portra 800 film. A woman in her late 20s
-sits alone at a dimly lit café table. Single candle illuminates one side
-of her face in warm amber, the other half falls into cool blue shadow.
-She gazes slightly past camera with a faint, unreadable expression.
-85mm lens, f/1.8, shallow depth of field. Warm bokeh from distant
-string lights. Smoke from a just-extinguished match drifts between
-her and the lens. Rembrandt lighting, intimate mood."
-
-WHY IT WORKS:
-- "ลึกลับ" แปลเป็น → half-shadow + unreadable expression + smoke
-- แสงมี motivation (เทียน) ไม่ใช่ "nice lighting"
-- มี foreground (smoke) สร้าง depth
-- มี story (คาเฟ่ตอนค่ำ คนเดียว) ไม่ใช่แค่ "portrait"
-```
-
-### Example 2: Product — "รูปขายของ"
-
-```
-User: "ถ่ายรูปขายนาฬิกา ให้ดูหรู"
-
-STEP 1 INTENT: ต้องให้คนรู้สึก "อยากได้" → aspiration + premium feel
-STEP 4 PLAN: Low key, hard light สร้าง highlight บน metal, dark bg
-
-PROMPT:
-"Commercial product photo. Minimalist luxury watch with silver case
-on polished black marble surface. Single hard light from upper left
-creates a sharp highlight along the watch bezel and a long shadow.
-Dark charcoal background. Subtle reflection on marble surface.
-50mm macro lens, f/8, deep focus. No text, no props, negative space
-on right for copy placement. High-end editorial style."
-
-WHY IT WORKS:
-- "หรู" แปลเป็น → dark bg + marble + single hard light (not soft/friendly)
-- Negative space สำหรับวาง text ภายหลัง (คิดล่วงหน้าให้ user)
-- Hard light on metal = premium feel (soft light จะดูธรรมดา)
-```
+| อาการ | วิธีแก้ |
+|-------|---------|
+| ภาพ flat | เพิ่ม foreground element, atmospheric haze |
+| แสงปลอม | ระบุ motivated light: "lit by window", "single candle" |
+| Stock photo | เพิ่ม specific moment/story + ตัดคำ "beautiful" |
+| Subject นิ่ง | เพิ่ม micro-action: "adjusting collar", "mid-laugh" |
+| สีไม่ match | ระบุ film stock: "Portra 400 tones", "teal shadows" |
+| รก | ตัด elements — เหลือ subject + 1 supporting element |
+| ไม่ได้ style | ระบุ photographer reference |
+| ท่าแปลก | อธิบาย pose ละเอียด |
 
 ---
 
-## 🔄 Iteration Guide — เมื่อ Gen แล้วไม่ได้ดั่งใจ
+## ⚠️ Generation Gotchas
 
-| อาการ | สาเหตุ | วิธีแก้ |
-|-------|--------|---------|
-| ภาพ flat ไม่มี depth | ขาด foreground/layers | เพิ่ม "foreground element: [X]", "atmospheric haze" |
-| แสงดูปลอมๆ | ไม่ระบุ light source | ระบุ motivated light: "lit by window", "single candle" |
-| ดูเหมือน stock photo | Prompt generic เกินไป | เพิ่ม specific moment/story + ตัดคำว่า "beautiful/professional" |
-| Subject ดูนิ่ง ไม่มีชีวิต | ขาด action/emotion | เพิ่ม micro-action: "adjusting collar", "mid-laugh", "glancing away" |
-| สีไม่ match mood | ไม่ระบุ color approach | ระบุ film stock หรือ color grade: "Portra 400 tones", "teal shadows" |
-| องค์ประกอบรก | ใส่มากเกินไป | ตัด elements ออก — เหลือ subject + 1 supporting element |
-| ไม่ได้ style ที่ต้องการ | คำอธิบายกว้าง | ระบุ director/photographer reference: "in the style of Roger Deakins" |
-| ท่าทางแปลกๆ | ไม่ specific พอ | อธิบาย pose ละเอียด: "chin resting on left hand, elbow on table" |
-
-**Iteration Pattern:**
-```
-1. ดูภาพที่ได้ → ถามว่า "อะไรผิดจาก intent?"
-2. เลือก 1 ปัญหาหลัก (ไม่แก้ทุกอย่างพร้อมกัน)
-3. แก้ prompt เฉพาะจุด → gen ใหม่
-4. ทำซ้ำจนตรง intent
-```
-
----
-
-## ⚠️ Generation Gotchas — บทเรียนจากการ Gen จริง
-
-### 1. Orientation ต้องตรงกับ Pose
-
+### Orientation ↔ Pose
 | Pose | Orientation | Size |
 |------|-------------|------|
-| ยืน / นั่ง / ท่าตั้ง | Portrait | 768x1344 |
-| นอน / คลาน / แนวนอน | **Landscape** | 1344x768 |
-| Close-up centered | Square | 1024x1024 |
+| ยืน/นั่ง/ท่าตั้ง | Portrait | 768x1344 |
+| นอน/คลาน/แนวนอน | Landscape | 1344x768 |
 
-**Rule:** ก่อน gen ทุกรูป ถามตัวเอง **"ท่านี้แนวไหน?"** — ท่านอนใน portrait = ยืดยาวผิดปกติ
+### มุมกล้อง ↔ Face Description
+ถ่ายจากหลัง → **ห้ามใส่ face description** (model สับสน)
 
-### 2. มุมกล้อง ↔ Face Description ต้องสอดคล้อง
+### Close-up Level ↔ Costume
+- Extreme close-up → เห็นหน้า แต่ชุด/ปีก/อาวุธ หาย
+- **Medium close-up (หัว→เอว) = sweet spot** — เห็นทั้งหน้า + ชุด
+- เปลี่ยน pose/มุมกล้องได้เหมือน full body แค่ frame ตัดที่เอว
 
-| มุมกล้อง | Face description? | เหตุผล |
-|----------|-------------------|--------|
-| ถ่ายจากหลัง | **ห้ามใส่** | มองไม่เห็นหน้า — ใส่แล้ว model สับสน |
-| ถ่ายจากหลัง + หันหน้ากลับ | ใส่ได้ | เห็นหน้าบางส่วน |
-| ถ่ายจากหน้า/ข้าง | ใส่ได้ | เห็นหน้าชัด |
-
-**Rule:** prompt ที่ขัดกัน (บอกหน้าละเอียด + มุมหลัง) = ผลแปลก
-
-### 3. Close-up Level ↔ Character Elements
-
-| Framing | เห็นอะไร | เสีย |
-|---------|---------|------|
-| Extreme close-up | หน้าอย่างเดียว | ชุด, ปีก, อาวุธ หายหมด |
-| **Medium close-up (หัว→อก/เอว)** | **หน้า + ชุด + ปีก/cape** | **Sweet spot** |
-| Full body | ทุกอย่าง | หน้าเล็ก detail น้อย |
-
-**Rule:** ถ้า character มี costume elements สำคัญ → ใช้ medium close-up ไม่ใช่ extreme
-
-**Note:** Medium close-up ไม่ได้แปลว่า pose นิ่ง — เปลี่ยน pose ได้ (เอียงตัว, ก้ม, หันข้าง, โน้มตัว) และเปลี่ยนมุมกล้องได้ (low angle, high angle, Dutch angle, over-shoulder) เหมือน full body ทุกประการ แค่ **frame ตัดที่อก/เอว** เท่านั้น
-
-### 4. Batch Gen Strategy
-
-- เขียน shell script → `run_in_background: true` = ไม่ block user
-- หลาย scripts รัน parallel ได้ (ComfyUI queue ให้เอง)
-- `for` loop + same prompt = seed variants ง่ายกว่าเขียนทีละรูป
-
-### 5. Character Consistency ใน Set
-
-เมื่อทำ **set ตัวละคร** → ทุก prompt ต้อง keep costume elements เดิมเสมอ จนกว่าจะสั่งเปลี่ยน
-
-- กำหนด **character block** (ชุด, อาวุธ, cape, mask ฯลฯ) เป็นตัวแปรกลาง
-- ทุก prompt ต้องอ้างถึง costume elements นั้น — แม้จะ close-up ก็ต้องหาวิธีใส่เข้าเฟรม
-- ถ้า framing ตัดชุดออก → ดึง element เข้ามาเป็น collar/framing/background แทน
+### Batch Gen & Character Consistency
+- Shell script + `run_in_background: true` / parallel
+- Set ตัวละคร → keep costume elements เดิมทุก prompt
 
 ---
 
 ## Mode 2: Critique & Edit
 
-### GOAL → ANALYZE → PRESCRIBE
+**GOAL → ANALYZE → PRESCRIBE**
+1. ถามว่าภาพใช้ทำอะไร
+2. ดู 6 มิติ (composition, color, lighting, focus, technical, story)
+3. แนะนำ + สร้าง edit prompt
 
-1. **GOAL:** ถามว่าภาพนี้ใช้ทำอะไร?
-2. **ANALYZE:** ดู 6 มิติ (composition, color, lighting, focus, technical, story)
-3. **PRESCRIBE:** แนะนำ + สร้าง edit prompt
-
-**Critique Format:**
-```
-## สิ่งที่ดีแล้ว ✓
-- [strength]
-
-## สิ่งที่ควรปรับ (เรียงตามผลกระทบ)
-1. [HIGH] [issue] → [why] → [solution]
-2. [MEDIUM] [issue] → [solution]
-```
-
-### Critique Walkthrough
-
-```
-User ส่งรูป: portrait ผู้หญิงนั่งริมหน้าต่าง แสงเรียบๆ หน้าตรง พื้นหลังผนังขาว
-
-GOAL: "จะเอาไปลง Instagram portfolio ค่ะ"
-
-ANALYZE:
-## สิ่งที่ดีแล้ว ✓
-- แสงธรรมชาติจากหน้าต่างให้ skin tone ดี
-- Subject อยู่ในตำแหน่ง rule of thirds
-
-## สิ่งที่ควรปรับ
-1. [HIGH] แสง flat เกินไป → แสงหน้าต่างควรมาจากด้านเดียว
-   ไม่ใช่ตรงหน้า จะได้ shadow ที่ define ใบหน้า
-   → แก้: "window light from camera left, Rembrandt shadow on right cheek"
-
-2. [HIGH] พื้นหลังว่างเปล่า → ไม่มี story ไม่มี depth
-   → แก้: เพิ่ม "sheer curtain as foreground element, slightly out of focus"
-   หรือ "warm afternoon light casting window shadow patterns on wall"
-
-3. [MEDIUM] Pose หน้าตรง → ดู passport photo
-   → แก้: "3/4 angle, chin slightly down, gazing through window"
-
-PRESCRIBE PROMPT:
-"Cinematic portrait, Portra 400 tones. Woman seated by tall window,
-3/4 view, chin slightly lowered, gazing through glass with soft
-contemplation. Window light from camera left creates Rembrandt
-shadow. Sheer white curtain diffuses into soft foreground bokeh.
-Warm afternoon light casts gentle window frame shadows on the wall
-behind her. 85mm, f/2, shallow DOF. Intimate, reflective mood."
-```
+**ตัวอย่าง:** ดู [prompt-walkthroughs.md](references/prompt-walkthroughs.md)
 
 ---
 
 ## Model Selection
 
 ### Image
-
 | Need | Model |
 |------|-------|
-| **Text/Typography** | Nano Banana Pro, Qwen |
-| **Fast iteration** | Z-Image Turbo |
-| **Image editing** | Nano Banana Pro, Qwen Edit |
-| **Premium quality** | Nano Banana Pro |
-| **Aesthetic/cinematic (fast, cheap)** | **Grok Imagine** (fal.ai) |
-| **🔥 Sexy/Sensual content** | **Qwen Image Edit** (ไม่ block เหมือน Nano Banana Pro) |
+| Text/Typography | Nano Banana Pro, Qwen |
+| Fast iteration | Z-Image Turbo |
+| Aesthetic/cinematic | **Grok Imagine** (fal.ai) |
+| **🔥 Sexy/Sensual** | **Qwen Image Edit** (no filter, via ComfyUI) |
 
-> ⚠️ **Nano Banana Pro มี safety filter** — รูป sexy มากๆ อาจออกมาขนาดเล็กหรือถูก block
-> ✅ **Qwen Image Edit ไม่มี filter** — จัดเต็มได้เลย ใช้ผ่าน ComfyUI
-> ⚠️ **Grok มี safety filter + realism quirks** → ดู `/fal-ai`
+> ⚠️ Nano Banana Pro มี safety filter / Grok มี safety filter → ดู `/fal-ai`
 
 ### Video
-
 | Need | Model |
 |------|-------|
-| **Open source** | Wan 2.2 |
-| **Pro quality** | Sora2 Pro |
-| **Audio sync** | Sora2 |
+| Open source | Wan 2.2 |
+| Pro quality | Sora2 Pro |
 
 ---
 
+## 🔥 Sexy/NSFW Story Integration
+
+> INTENT = sexy/sensual/NSFW → **เปิด Spicy Story Mode** จาก `/spicy-mode`
+
+### NARRATIVE Enhancement (Step 2)
+
+เมื่อเปิด → คิดเพิ่ม 4 อย่าง:
+
+**1. Story Framework** — ต้องมีสถานการณ์ (อ่าน `/spicy-mode` story-scenarios.md)
+
+| แทนที่ | ให้คิด |
+|--------|-------|
+| "sexy woman on bed" | เพิ่งกลับจากไหน? ทำอะไร? กำลังจะทำอะไร? |
+| "girl in lingerie" | ใส่ให้ใคร? occasion? ที่ไหน? |
+
+**2. Tension Technique** — เลือก 1
+
+| Technique | Prompt example |
+|-----------|---------------|
+| **Tease & Deny** | "oversized shirt slipping off one shoulder" |
+| **Forbidden** | "office, glass door slightly ajar" |
+| **Vulnerability** | "just woke up, eyes still sleepy, no makeup" |
+| **Power Exchange** | "looking down at camera from above" |
+
+**3. Sensory Anchor** — เลือก 1 ทำให้ specific
+
+| Sense | Example |
+|-------|---------|
+| กลิ่น | "steam from hot bath, lavender oil" |
+| แสง | "neon sign casting pink glow through curtain" |
+| สัมผัส | "wet hair dripping onto bare shoulders" |
+
+**4. Inner Conflict → Expression**
+
+| Conflict | Prompt |
+|----------|--------|
+| อยาก + เขิน | "half-smile, looking away, hand on collarbone" |
+| กล้า + เปราะบาง | "direct eye contact but hugging knees" |
+| ยั่ว + ไม่แคร์ | "casual lean, unbuttoned, reading phone" |
+
+### Intensity Mapping
+
+| Level | Prompt approach |
+|-------|-----------------|
+| **1 Tease** | Clothed + suggestive gaze |
+| **2 Flirt** | Partial reveal, tension clothing |
+| **3 Intimate** | Significant skin, intimate framing |
+| **4 Spicy** | Full reveal, bold composition |
+
+**Default: Level 2-3** / Visual techniques + before/after: ดู [intimate-visual-techniques.md](references/intimate-visual-techniques.md)
+
+### Sexy REVIEW (เพิ่มจาก Step 6)
+
+```
+□ STORY CHECK   — มี story? ไม่ใช่แค่ "sexy + pose"? → ❌ = rewrite
+□ TENSION CHECK — มี tension technique? → ❌ = rewrite
+□ VISUAL CHECK  — Fragmentation? Show/Imply? Lighting motivated?
+```
+
 ---
 
-## References (Load as needed)
+## References
 
-| Topic | File | When to Load |
-|-------|------|--------------|
-| **Master thinking** | [master-mental-models.md](references/master-mental-models.md) | **ALWAYS before prompting** |
-| **Style library** | [style-library.md](references/style-library.md) | **Sets/series, style mixing, reusable profiles** |
-| **Color theory** | [color-theory.md](references/color-theory.md) | Color decisions, Chinese vs Western |
-| Culture styles | [sexy-photography-cultures.md](references/sexy-photography-cultures.md) | Sexy/sensual content |
-| Face templates | [face-styles.md](references/face-styles.md) | Portrait with face description |
-| Visual fundamentals | [visual-fundamentals.md](references/visual-fundamentals.md) | Composition, lighting |
-| Cinematography | [cinematography.md](references/cinematography.md) | Camera movement, shot types |
-| Styles glossary | [styles-glossary.md](references/styles-glossary.md) | Art movements, film stocks |
-| Graphic design | [graphic-design.md](references/graphic-design.md) | Thumbnails, social media |
-| Prompt formats | [prompt-formats.md](references/prompt-formats.md) | JSON vs natural language |
+| Topic | File | When |
+|-------|------|------|
+| **Master thinking** | [master-mental-models.md](references/master-mental-models.md) | **ALWAYS** |
+| **Style library** | [style-library.md](references/style-library.md) | Sets/series |
+| **Color theory** | [color-theory.md](references/color-theory.md) | Color decisions |
+| **Prompt examples** | [prompt-walkthroughs.md](references/prompt-walkthroughs.md) | Need examples |
+| **Intimate visuals** | [intimate-visual-techniques.md](references/intimate-visual-techniques.md) | Sexy/NSFW |
+| Sexy cultures | [sexy-photography-cultures.md](references/sexy-photography-cultures.md) | Sexy content |
+| Face templates | [face-styles.md](references/face-styles.md) | Portrait |
+| Visual fundamentals | [visual-fundamentals.md](references/visual-fundamentals.md) | Composition |
+| Cinematography | [cinematography.md](references/cinematography.md) | Camera/shots |
+| Styles glossary | [styles-glossary.md](references/styles-glossary.md) | Art movements |
+| Prompt formats | [prompt-formats.md](references/prompt-formats.md) | JSON vs NL |
+| Slide backgrounds | [slide-backgrounds.md](references/slide-backgrounds.md) | Slides |
 
-### Model-Specific Guides
-
+### Model Guides
 | Model | Guide |
 |-------|-------|
 | Nano Banana Pro | `/fal-ai` references/nano-banana-pro.md |
@@ -535,37 +299,28 @@ behind her. 85mm, f/2, shallow DOF. Intimate, reflective mood."
 | Don't | Do Instead |
 |-------|------------|
 | "beautiful photo" | Specify what makes it beautiful |
-| "high quality" | Describe: sharp, detailed, 4K |
 | "nice lighting" | Name it: Rembrandt, golden hour |
 | Tag soup: "4k, hdr, realistic" | Structured description |
 
 ---
 
-## 🎨 Slide Background Design
-
-ดู [slide-backgrounds.md](references/slide-backgrounds.md) — workflow, templates, workarounds สำหรับ gen slide backgrounds
-
----
-
 ## Handoff to /comfyui-user
-
-เมื่อ craft prompt เสร็จ → แนะนำ backend + workflow ให้ user:
 
 | ต้องการ | แนะนำ |
 |--------|-------|
-| Gen ใหม่ + LoRA style (amelicart, etc.) | `/comfyui-user` local: `--workflow turbo --style NAME` |
-| Gen ใหม่ draft (เร็ว) | `/comfyui-user` cloud: `--phase draft` |
-| Gen ใหม่ final (สวย) | `/comfyui-user` cloud: `--phase final` |
-| Edit รูปที่มี | `/comfyui-user` cloud: `--workflow edit` |
-| Sexy/sensual content | `/comfyui-user` cloud: `--workflow edit` (Qwen, no filter) |
+| Gen + LoRA style | `/comfyui-user` local turbo |
+| Draft เร็ว | `/comfyui-user` cloud draft |
+| Final สวย | `/comfyui-user` cloud final |
+| Sexy content | `/comfyui-user` cloud edit (Qwen, no filter) |
 
 ---
 
 ## Related Skills
 
-- `/gen-image-video` — Orchestrator: routes to the right platform + support skills
-- `/fal-ai` — Platform: fal.ai — Grok image/video, Nano Banana Pro
-- `/comfyui-user` — Platform: ComfyUI local/cloud — LoRA, inpaint, no filter
-- `/sira-image-prefer` — Taste DNA: face type, bust matching, rejection patterns
-- `/image-analysis` — Analyze generated image quality and metadata
-- `/graphic-designer` — For layout/design work (art-director = photography/cinema)
+- `/gen-image-video` — Orchestrator
+- `/fal-ai` — fal.ai platform (Grok, Nano Banana Pro)
+- `/comfyui-user` — ComfyUI local/cloud
+- `/sira-image-prefer` — Taste DNA
+- `/image-analysis` — Analyze generated images
+- `/graphic-designer` — Layout/design work
+- `/spicy-mode` — Story/tension for sexy/NSFW prompts
