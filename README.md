@@ -108,19 +108,20 @@ rm -rf agent-skills
 
 | Skill | Description |
 |-------|-------------|
-| `deep-research` | 8-phase research with citations and source verification |
-| `triz` | TRIZ innovation methodology for technical problem-solving |
-| `explain-concepts` | Educational explanations with Feynman, Socratic methods |
-| `problem-solving` | Systematic problem analysis with Polya method |
-| `generate-creative-ideas` | Creative ideation with SCAMPER and more |
-| `design-business-model` | Business Model Canvas and Lean Canvas |
-| `manage-business-strategy` | Strategic analysis frameworks |
-| `power-query-coaching` | Power Query M code coaching |
-| `optimize-prompt` | AI prompt optimization for various platforms |
-| `prompt-ai-image-video` | Image/video generation prompts |
-| `extract-expertise` | Extract domain knowledge from experts |
-| `create-visualization` | Diagrams and Manim animations |
-| `skill-creator-thepexcel` | Create new Claude skills |
+| `deep-research` | Web research with Graph-of-Thoughts, hypothesis testing, source triangulation, Red Team critique |
+| `triz` | TRIZ systematic innovation methodology for technical/physical contradictions and cross-industry solutions |
+| `explain-concepts` | Educational explanations using Feynman, Socratic, and Cognitive Load methodologies |
+| `problem-solving` | Systematic problem-solving with Good Teacher mode, inspired by Polya's "How to Solve It" |
+| `generate-creative-ideas` | Creative ideation using SCAMPER, First Principles, Random Word, and AI-optimized techniques |
+| `design-business-model` | Business model design with Business Model Canvas, Lean Canvas, and Value Proposition Canvas |
+| `manage-business-strategy` | Strategic analysis, decision making, goal setting, and organizational change frameworks |
+| `power-query-coaching` | Coaches data transformation in Power Query UI step-by-step |
+| `optimize-prompt` | Prompt optimization for Claude, OpenAI, Gemini, n8n, and other AI platforms |
+| `extract-expertise` | Extracts domain expertise from experts and transforms it into working Claude skills |
+| `create-visualization` | Diagrams and animations for STEM education using Matplotlib and Manim |
+| `graphic-designer` | Graphic design for thumbnails, social media, banners using CRAP and Gestalt principles |
+| `geometric-elements` | Decorative geometric elements (corners, lines, frames) with gradient and transparency control |
+| `skill-creator-thepexcel` | Guide for creating and enhancing Claude skills with audit rubric scoring |
 
 ---
 
