@@ -1,6 +1,6 @@
 ---
 name: manage-business-strategy
-description: Business management frameworks for strategic analysis, decision making, goal setting, growth strategy, and organizational change. Use when analyzing business situations or making strategic decisions.
+description: Structured business strategy frameworks — SWOT, OKR, Porter's Five Forces, McKinsey 7S, BCG Matrix, Blue Ocean, and change management models. Use when explicitly planning company/product strategy, setting measurable business goals, analyzing competitive positioning, or designing organizational change. Not for general business discussion — user should be asking for a framework or structured analysis.
 ---
 
 # Business Management Frameworks
