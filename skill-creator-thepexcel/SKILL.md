@@ -1,48 +1,45 @@
 ---
 name: skill-creator-thepexcel
-description: Guide for creating and enhancing skills. Use when users want to create a new skill, update/improve an existing skill, or audit skill quality. Supports both creation from scratch and enhancement of existing skills with audit rubric scoring.
+description: Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, update or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, optimize a skill's description for better triggering accuracy, or audit existing skill quality with a structured scoring rubric.
 license: Apache 2.0 (see LICENSE.txt)
 ---
 
 # Skill Creator (ThepExcel Edition)
 
-> Based on [Anthropic's official skill-creator](https://github.com/anthropics/skills) (Apache 2.0). Enhanced with ThepExcel deployment workflow and enhancement pipeline.
+> Based on [Anthropic's official skill-creator](https://github.com/anthropics/skills) (Apache 2.0). Enhanced with ThepExcel deployment workflow and structured audit/enhancement pipeline.
 
 ## Quick Start
 
-| ต้องการ | ใช้ Mode | ไปที่ |
-|---------|---------|------|
-| สร้าง skill ใหม่ | **Create** | → [Creation Process](#creation-process) |
-| ปรับปรุง skill เดิม | **Enhance** | → [Enhancement Mode](#enhancement-mode) |
-| ตรวจคุณภาพ | **Audit only** | → [Audit Rubric](references/audit-rubric.md) |
+| ต้องการ | Mode | ไปที่ |
+|---------|------|-------|
+| สร้าง skill ใหม่ | **Create** | → [Creating a Skill](#creating-a-skill) |
+| ทดสอบ skill ด้วย evals | **Eval** | → [Running and Evaluating](#running-and-evaluating-test-cases) |
+| ปรับปรุงตาม feedback | **Improve** | → [Improving the Skill](#improving-the-skill) |
+| ตรวจคุณภาพ + enhance อย่าง structured | **Enhance** | → [Enhancement Mode](#enhancement-mode) |
+| วัดผล regression / เทียบ versions | **Benchmark** | → [Benchmark & Description Opt.](#benchmark--description-optimization) |
+| Deploy ไป ThepExcel infrastructure | **Deploy** | → [Deploy](#deploy-thepexcel) |
+
+Figure out where the user is in this process and jump in. If they already have a draft, go straight to eval/iterate. If they say "just vibe with me", do that.
 
 ---
 
 ## Core Principles
 
-### Concise is Key
+**Concise is key** — Context window เป็นทรัพยากรที่แชร์กัน ทุกบรรทัดต้องจ่ายค่า token
 
-Context window เป็นทรัพยากรที่แชร์กัน — ทุกบรรทัดต้องจ่ายค่า token
+**Explain the why** — อธิบาย *ทำไม* ไม่ใช่แค่ *อะไร* Claude ฉลาดพอ generalize จาก reasoning ดีกว่า rule แข็งทื่อ ถ้าจะเขียน ALWAYS/NEVER all caps → yellow flag: reframe เป็น reasoning แทน
 
-**Claude ฉลาดอยู่แล้ว** → ใส่เฉพาะสิ่งที่ Claude ไม่รู้:
-- "Claude ต้องการคำอธิบายนี้จริงไหม?"
-- "ย่อหน้านี้คุ้มค่า token ไหม?"
+**Generalize, don't overfit** — Test cases คือตัวอย่าง ไม่ใช่ spec ทั้งหมด หา pattern ที่ work broadly
 
-### Degrees of Freedom
+**Keep the prompt lean** — อ่าน transcript จริง ถ้า skill ทำให้ waste time → ตัดออก
+
+**Degrees of Freedom**:
 
 | Level | เมื่อไหร่ | ตัวอย่าง |
 |-------|----------|---------|
-| **High** (text) | หลายวิธีถูกได้ | Code review guidelines |
-| **Medium** (pseudocode) | มี pattern ที่ prefer | Report template |
-| **Low** (scripts) | ต้องการ consistency | Database migrations |
-
-### Test with All Models
-
-| Model | Check |
-|-------|-------|
-| **Haiku** | ให้ guidance พอไหม? |
-| **Sonnet** | ชัดเจนและ efficient? |
-| **Opus** | ไม่ over-explain? |
+| High (text) | หลายวิธีถูกได้ | Code review guidelines |
+| Medium (pseudocode) | มี pattern ที่ prefer | Report template |
+| Low (scripts) | ต้องการ consistency | Database migrations |
 
 ---
 
@@ -50,90 +47,48 @@ Context window เป็นทรัพยากรที่แชร์กั�
 
 ```
 skill-name/
-├── SKILL.md (required)     ← < 500 lines
-│   ├── YAML frontmatter    ← name + description only
-│   └── Markdown body       ← loaded when triggered
-├── scripts/                ← deterministic code
-├── references/             ← loaded as needed (one level deep)
-└── assets/                 ← templates, not loaded into context
+├── SKILL.md (required)     ← < 500 lines ideal
+│   ├── YAML frontmatter    ← name + description (+ compatibility optional)
+│   └── Markdown body
+├── agents/                 ← subagent instructions (grader, comparator, analyzer)
+├── eval-viewer/            ← generate_review.py + viewer.html
+├── assets/                 ← eval_review.html template
+├── scripts/                ← deterministic code (execute without loading into context)
+├── references/             ← loaded on demand (one level deep only)
+└── evals/                  ← evals.json + test files
 ```
 
-### Frontmatter Rules
+**Progressive Disclosure** (3 levels):
+1. Metadata (name + description) — always in context (~100 words)
+2. SKILL.md body — when triggered (< 500 lines)
+3. Bundled resources — as needed
 
-| Field | Rules |
-|-------|-------|
-| `name` | Max 64 chars, lowercase + numbers + hyphens |
-| `description` | Max 1024 chars, third person, what + when |
+**Frontmatter**: `name` max 64 chars kebab-case, `description` max 1024 chars third person what + when
 
-### Description Best Practices
+**"When to use" in body = useless** — Claude sees description only when deciding to trigger. Put all trigger context there.
 
-```yaml
-# Good: what + when + triggers
-description: Extract text and tables from PDF files, fill forms, merge documents.
-  Use when working with PDF files or when the user mentions PDFs or document extraction.
+**Description tip**: Make it slightly "pushy" to combat undertriggering — include specific contexts even if not explicitly named.
 
-# Bad: first person, vague
-description: I can help you with PDFs.
-```
-
-**"When to Use" in body = useless** — Claude only sees description when deciding to trigger.
-
-### Naming Conventions
-
-| Pattern | Examples |
-|---------|----------|
-| **Verb-noun** | `design-business-model`, `create-visualization` |
-| **Noun-verb-ing** | `power-query-coaching`, `problem-solving` |
-| **Recognized terms** | `triz`, `deep-research` |
-
-### Bundled Resources
-
-| Type | เมื่อไหร่ | โหลดเข้า context? |
-|------|----------|-----------------|
-| **scripts/** | Code ที่ใช้ซ้ำ, ต้อง deterministic | ไม่ (execute ตรง) |
-| **references/** | Docs ที่อ้างอิงระหว่างทำงาน | ใช่ (on demand) |
-| **assets/** | Templates, logos, boilerplate | ไม่ |
-
-**ห้ามสร้าง:** README.md, CHANGELOG.md, INSTALLATION_GUIDE.md — skills สำหรับ AI ไม่ใช่คน
-
-### Progressive Disclosure
-
-| Level | When | Limit |
-|-------|------|-------|
-| Metadata | Always loaded | ~100 words |
-| SKILL.md body | When triggered | < 500 lines |
-| References | As needed | Unlimited |
-
-**Details:** See [progressive-disclosure.md](references/progressive-disclosure.md)
+For anti-patterns: [anti-patterns.md](references/anti-patterns.md)
 
 ---
 
-## Creation Process
+## Creating a Skill
 
-### Overview
+### Step 1: Capture Intent
 
-```
-1. Understand → 2. Plan → 3. Init → 4. Edit → 5. Package → 6. Deploy → 7. Iterate
-```
+ถามถ้าไม่ชัด หรือ extract จาก conversation ถ้ามีอยู่แล้ว:
 
-### Step 1: Understand
+1. Skill ควรทำอะไร?
+2. Trigger เมื่อไหร่? (user phrases/contexts)
+3. Expected output format?
+4. ต้องการ test cases ไหม? — Skills ที่มี objective output ควรมี (file transforms, data extraction, fixed workflows) / Subjective skills (writing style, art) ไม่จำเป็น
 
-**ถามผู้ใช้:**
-- "Skill นี้ต้องรองรับ functionality อะไรบ้าง?"
-- "ยกตัวอย่าง 2-3 scenarios ที่จะใช้"
-- "ผู้ใช้จะพูดอะไรที่ควร trigger skill นี้?"
+### Step 2: Interview & Research
 
-**Tip:** ใช้ `/extract-expertise` สำหรับ domain ที่ซับซ้อน
-
-### Step 2: Plan
-
-วิเคราะห์แต่ละ example:
-
-| Task | Repeatable? | Resource |
-|------|------------|----------|
-| Same code every time | Yes → script | `scripts/rotate_pdf.py` |
-| Same boilerplate | Yes → asset | `assets/template/` |
-| Rediscovering info | Yes → reference | `references/schema.md` |
+ถาม edge cases, input/output formats, example files, dependencies
+Check available MCPs — research via subagents ถ้าทำได้
+ใช้ `/extract-expertise` สำหรับ domain ที่ซับซ้อน
 
 ### Step 3: Initialize
 
@@ -141,123 +96,158 @@ description: I can help you with PDFs.
 scripts/init_skill.py <skill-name> --path <output-directory>
 ```
 
-### Step 4: Edit
+### Step 4: Write SKILL.md
 
-**Order:** resources first → test scripts → update SKILL.md last
+ใส่: name, description (primary trigger mechanism — all "when to use" goes here), instructions
 
-**Design pattern references:**
+**Writing style**: imperative form, explain *why* behind each instruction, not rigid rules. Use theory of mind.
+
+**Design references:**
 - [workflows.md](references/workflows.md) — Sequential, conditional, loops
 - [output-patterns.md](references/output-patterns.md) — Templates, formatting
 - [anti-patterns.md](references/anti-patterns.md) — Common mistakes
 
-### Step 5: Package & Validate
+### Step 5: Write Test Cases
 
-```bash
-scripts/package_skill.py <path/to/skill-folder>
-scripts/quick_validate.py <path/to/skill-folder>
+2-3 realistic prompts — the kind of thing a real user would actually say. Share with user for confirmation. Save to `evals/evals.json` (don't add assertions yet):
+
+```json
+{
+  "skill_name": "example-skill",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "User's task prompt",
+      "expected_output": "Description of expected result",
+      "files": [],
+      "expectations": []
+    }
+  ]
+}
 ```
 
-### Step 6: Deploy (ThepExcel)
-
-```
-┌─ Skill ใหม่
-│   ├─ Public? (ใครก็ใช้ได้)  → /mnt/d/agent-skills/[skill-name]/
-│   └─ Private? (เฉพาะพี่ระ)  → /mnt/d/claude-private/skills/[skill-name]/
-│
-├─ Symlink ไป global
-│   └─ ln -s /mnt/d/[repo]/[skill-name] ~/.claude/skills/[skill-name]
-│
-├─ Update registry
-│   └─ เพิ่มใน /mnt/d/claude-master/CLAUDE.md → Skills Inventory
-│
-└─ Commit & Push
-    └─ git add → commit → push (ทั้ง skill repo + claude-master)
-```
-
-### Step 7: Iterate
-
-1. ใช้ skill กับงานจริง
-2. สังเกตจุดที่ติดขัด
-3. ปรับปรุง (ใช้ Enhancement Mode)
-
-See [evaluation.md](references/evaluation.md) for Claude A/B testing pattern.
+See [references/schemas.md](references/schemas.md) for full schema including assertions field.
 
 ---
 
-## Content Guidelines
+## Running and Evaluating Test Cases
 
-### Avoid Time-Sensitive Information
+This is one continuous sequence — don't stop partway. Do NOT use any other testing skill.
 
-```markdown
-# Bad
-If you're doing this before August 2025, use the old API.
+Put results in `<skill-name>-workspace/` (sibling to skill directory), organized by `iteration-N/eval-name/`.
 
-# Good
-## Current method
-Use the v2 API endpoint.
+### Step 1: Spawn All Runs in the Same Turn
+
+For each test case, launch **two subagents simultaneously** — one with-skill, one baseline. Don't launch with-skill first and come back for baselines later.
+
+- **New skill**: baseline = no skill at all, save to `without_skill/outputs/`
+- **Improving existing skill**: baseline = old version snapshot (`cp -r <skill-path> <workspace>/skill-snapshot/`), save to `old_skill/outputs/`
+
+Write `eval_metadata.json` for each eval:
+```json
+{
+  "eval_id": 0,
+  "eval_name": "descriptive-name",
+  "prompt": "The task prompt",
+  "assertions": []
+}
 ```
 
-### Use Consistent Terminology
+### Step 2: While Runs Are in Progress, Draft Assertions
 
-เลือกคำเดียว ใช้ตลอดทั้ง skill:
+Don't wait idle. Draft objectively verifiable assertions with descriptive names (they appear in the viewer). Explain them to the user. Subjective skills → qualitative only, skip assertions.
 
-| Good | Bad |
-|------|-----|
-| Always "API endpoint" | Mix "endpoint", "URL", "route" |
-| Always "extract" | Mix "extract", "pull", "get" |
+Update `eval_metadata.json` and `evals/evals.json` with assertions.
+
+### Step 3: Capture Timing Data
+
+When each subagent completes, save immediately — this data exists only in the task notification:
+
+```json
+{"total_tokens": 84852, "duration_ms": 23332, "total_duration_seconds": 23.3}
+```
+
+Save to `timing.json` in the run directory.
+
+### Step 4: Grade → Aggregate → Analyze → Launch Viewer
+
+1. **Grade** — spawn grader subagent using `agents/grader.md`, save to `grading.json`. For assertions checkable programmatically, write a script rather than eyeballing.
+
+2. **Aggregate** — run from skill-creator directory:
+   ```bash
+   python -m scripts.aggregate_benchmark <workspace>/iteration-N --skill-name <name>
+   ```
+   Produces `benchmark.json` and `benchmark.md` with pass_rate, time, tokens (mean ± stddev + delta).
+
+3. **Analyst pass** — read `agents/analyzer.md` (Analyzing Benchmark Results section) to surface patterns aggregate stats hide: non-discriminating assertions, high-variance evals, time/token tradeoffs.
+
+4. **Launch viewer**:
+   ```bash
+   nohup python <skill-creator-path>/eval-viewer/generate_review.py \
+     <workspace>/iteration-N \
+     --skill-name "my-skill" \
+     --benchmark <workspace>/iteration-N/benchmark.json \
+     > /dev/null 2>&1 &
+   VIEWER_PID=$!
+   ```
+   Iteration 2+: add `--previous-workspace <workspace>/iteration-<N-1>`
+
+   Cowork/headless: use `--static <output_path>` instead. Feedback downloads as `feedback.json`.
+
+   ⚠️ **GENERATE THE EVAL VIEWER BEFORE evaluating inputs yourself.** Get results in front of the human first.
+
+5. **Tell the user**: "ผลอยู่ในเบราว์เซอร์แล้วค่ะ — tab Outputs ดู output แต่ละ test case, tab Benchmark ดู metrics เมื่อดูเสร็จแล้วกลับมาบอกหนูได้เลย"
+
+### Step 5: Read Feedback
+
+Read `feedback.json`. Empty feedback = satisfied. Focus on test cases with specific complaints.
+
+Kill viewer: `kill $VIEWER_PID 2>/dev/null`
 
 ---
 
-## Quality Checklist
+## Improving the Skill
 
-### Core
-- [ ] Description: what + when, third person, specific triggers
-- [ ] SKILL.md body < 500 lines
-- [ ] No time-sensitive info, consistent terminology
-- [ ] Concrete examples (not abstract)
-- [ ] References one level deep
+### How to Think About Improvements
 
-### Code
-- [ ] Scripts handle errors, no magic constants
-- [ ] Required packages listed
-- [ ] Forward slashes (no Windows paths)
+1. **Generalize** — หา pattern ที่ work broadly ไม่ใช่ fix specific test case
+2. **Keep lean** — อ่าน transcript จริง ถ้า skill ทำให้ waste time → ตัดออก
+3. **Explain the why** — ถ้าจะเขียน ALWAYS/NEVER → yellow flag: reframe เป็น reasoning แทน
+4. **Bundle repeated work** — ถ้า 3 test cases ล้วน write `create_docx.py` เอง → bundle ใน `scripts/`
 
-### Testing
-- [ ] Tested with real usage scenarios
-- [ ] Tested with target models
+### Iteration Loop
+
+1. Apply improvements to skill
+2. Rerun all test cases into `iteration-<N+1>/` (including baselines)
+3. Launch viewer with `--previous-workspace` pointing at previous iteration
+4. Wait for user review → read feedback → repeat
+
+Stop when: user satisfied / all feedback empty / not making meaningful progress.
+
+For quick fixes (typo, small gap): direct edit → skip eval loop.
+
+### Blind Comparison (Advanced)
+
+For rigorous version comparison, read `agents/comparator.md` + `agents/analyzer.md` for blind A/B judgment. Optional — the human review loop is usually sufficient.
 
 ---
 
 ## Enhancement Mode
 
-ใช้เมื่อ **ปรับปรุง skill เดิม**
+ใช้เมื่อต้องการปรับปรุง **skill เดิมที่มีอยู่แล้ว** แบบ structured — เหมาะเมื่อยังไม่รู้ว่า skill มีปัญหาตรงไหน หรืออยากยก quality ขึ้นเป็น systematic
 
-### Route Decision
+### Route
 
 | Condition | Path |
 |-----------|------|
-| Quick fix (typo, small gap) | Direct edit → skip audit |
+| Quick fix (typo, small gap) | Direct edit → done |
 | Significant upgrade | Full pipeline below |
 
-### Full Enhancement Pipeline
+### Full Pipeline: AUDIT → RESEARCH → INTEGRATE → OPTIMIZE → VALIDATE
 
-```
-1. AUDIT → 2. RESEARCH → 3. INTEGRATE → 4. OPTIMIZE → 5. VALIDATE
-```
+#### AUDIT
 
-#### Step 1: AUDIT
-
-อ่าน target skill → score ด้วย [audit rubric](references/audit-rubric.md):
-
-| Dimension | Score 1-5 |
-|-----------|-----------|
-| Coverage | ครอบคลุม domain แค่ไหน? |
-| Depth | Surface-level หรือ expert? |
-| Structure | Progressive disclosure ดีไหม? |
-| Actionability | Claude execute ได้เลยไหม? |
-| Examples | มี concrete examples ไหม? |
-
-**Present ผลแบบนี้:**
+อ่าน target skill ทั้งหมด → score ด้วย [audit-rubric.md](references/audit-rubric.md):
 
 ```
 SKILL: [name]
@@ -266,82 +256,102 @@ TOTAL: [?]/25 → [Draft/Working/Solid/Production]
 
 จุดที่ควรปรับ:
 1. [ปัญหา + ผลกระทบ]
-2. [ปัญหา + ผลกระทบ]
 ```
 
-→ **ถามผู้ใช้ก่อน:** "ปรับทั้งหมด หรือเลือกเฉพาะข้อ?"
+→ ถามผู้ใช้ก่อน: "ปรับทั้งหมด หรือเลือกเฉพาะข้อ?"
 
-#### Step 2: RESEARCH
+#### RESEARCH
 
 ใช้ `/deep-research` หรือ `/extract-expertise` เพื่อเติม knowledge gaps
 
-#### Step 3: INTEGRATE
+#### INTEGRATE
 
-Classify findings → prioritize by impact → merge ด้วย [integration patterns](references/integration-patterns.md)
+Classify findings → prioritize by impact → merge ด้วย [integration-patterns.md](references/integration-patterns.md)
 
-#### Step 4: OPTIMIZE
+#### OPTIMIZE
 
 Apply skill-creator standards: progressive disclosure, conciseness, references/
 
-#### Step 5: VALIDATE
+#### VALIDATE
 
 Before/after comparison:
-
 ```
 | Dimension | Before | After | เปลี่ยนอะไร |
 |-----------|--------|-------|------------|
 ```
 
-→ Log ใน [enhancement-log.md](references/enhancement-log.md)
+Log ใน [enhancement-log.md](references/enhancement-log.md) → จากนั้นรัน Eval loop เพื่อยืนยัน improvement จริง
 
-### Enhancement Rules
+---
 
-- **Research BEFORE writing** — อย่าเดา domain knowledge
-- **Preserve what works** — enhance ไม่ใช่ rewrite
-- **Show evidence** — link findings to changes
+## Benchmark & Description Optimization
 
-### Example: boost-intel Enhancement
+### Benchmark
+
+Rerun all evals 3x per configuration with `aggregate_benchmark.py`. Track pass rate, time, tokens across iterations/models. ใช้สำหรับ regression detection เมื่อ model อัปเดต หรือหลัง enhance
+
+### Description Optimization
+
+หลัง skill เสร็จ เสนอให้ optimize description สำหรับ triggering accuracy ที่ดีขึ้น
+
+**Step 1**: Generate 20 trigger eval queries (mix should/should-not trigger). Be realistic — personal context, file paths, casual speech, typos. Near-miss negatives are the most valuable test cases.
+
+Present via HTML template:
+1. Read `assets/eval_review.html`, fill: `__EVAL_DATA_PLACEHOLDER__`, `__SKILL_NAME_PLACEHOLDER__`, `__SKILL_DESCRIPTION_PLACEHOLDER__`
+2. Write to `/tmp/eval_review_<skill-name>.html` → open it
+3. User edits, clicks "Export Eval Set" → `~/Downloads/eval_set.json`
+
+**Step 2**: Run optimization loop (background):
+```bash
+python -m scripts.run_loop \
+  --eval-set <path-to-trigger-eval.json> \
+  --skill-path <path-to-skill> \
+  --model <model-id-powering-this-session> \
+  --max-iterations 5 \
+  --verbose
+```
+Splits 60/40 train/test, iterates up to 5x, returns `best_description` selected by test score to avoid overfitting.
+
+**Step 3**: Apply `best_description` to SKILL.md frontmatter. Show before/after + scores.
+
+Note: requires `claude -p` CLI → Claude Code only, not Claude.ai
+
+---
+
+## Deploy (ThepExcel)
 
 ```
-BEFORE: 17/25 (Solid) — Examples 2/5, Actionability 3/5
-CHANGES:
-  1. +Quick Mode (30-sec sanity check)
-  2. +Facilitation Guide (how Claude walks through phases)
-  3. Move CAPTURE → reference (reduce bloat)
-  4. +Concrete example (WordPress vs CMS — full loop)
-  5. Expand REFLECT (deeper questions + pattern recognition)
-AFTER: 23/25 (Production) — all dimensions ≥ 4
+┌─ Skill ใหม่
+│   ├─ Public?   → /mnt/d/agent-skills/[skill-name]/
+│   └─ Private?  → /mnt/d/claude-private/skills/[skill-name]/
+│
+├─ Symlink
+│   └─ ln -s /mnt/d/[repo]/[skill-name] ~/.claude/skills/[skill-name]
+│
+├─ Update registry
+│   └─ /mnt/d/claude-master/CLAUDE.md → Skills Inventory
+│
+└─ Commit & Push
+    └─ git add → commit → push (ทั้ง skill repo + claude-master)
+```
+
+Validate before deploy:
+```bash
+scripts/quick_validate.py <path/to/skill-folder>
+scripts/package_skill.py <path/to/skill-folder>
 ```
 
 ---
 
-## Facilitation Guide
+## Platform Notes
 
-### Create Mode
+| Platform | Subagents | Viewer | Description Opt |
+|----------|-----------|--------|-----------------|
+| **Claude Code** | ✅ Parallel | ✅ Browser | ✅ |
+| **Claude.ai** | ❌ → run serially | ❌ → show inline | ❌ |
+| **Cowork** | ✅ | `--static` flag | ✅ |
 
-```
-1. ถาม: "อยากสร้าง skill อะไรคะ? ช่วยยกตัวอย่าง 2-3 scenarios"
-2. วิเคราะห์: public หรือ private? simple หรือ complex?
-3. ถ้า complex → ใช้ /extract-expertise ก่อน
-4. Init → Edit → Test → Package → Deploy
-5. สรุป: "Skill [name] สร้างเสร็จแล้วค่ะ อยู่ที่ [path]"
-```
-
-### Enhance Mode
-
-```
-1. อ่าน SKILL.md + references ทั้งหมด
-2. Audit → present ผลเป็นตาราง
-3. ถาม: "ปรับทั้งหมด หรือเลือกข้อ?"
-4. ทำตามที่ user เลือก
-5. Before/after comparison → commit
-```
-
-### Key Behaviors
-
-- **ถามก่อนทำ** — ไม่ rewrite โดยไม่ถาม
-- **Show scores** — ผู้ใช้ต้องเห็นว่าอะไรดี อะไรไม่ดี
-- **ทำทีละ step** — ไม่ dump ทุกอย่างทีเดียว
+**Claude.ai**: skip baselines + benchmarking, run test cases yourself one at a time, show results + ask feedback inline.
 
 ---
 
@@ -349,14 +359,17 @@ AFTER: 23/25 (Production) — all dimensions ≥ 4
 
 | File | Content |
 |------|---------|
-| [progressive-disclosure.md](references/progressive-disclosure.md) | Loading patterns (high-level, domain, conditional) |
-| [workflows.md](references/workflows.md) | Sequential, conditional, feedback loops |
-| [output-patterns.md](references/output-patterns.md) | Templates, examples, terminology |
-| [anti-patterns.md](references/anti-patterns.md) | Common mistakes to avoid |
-| [evaluation.md](references/evaluation.md) | Claude A/B testing pattern |
-| [audit-rubric.md](references/audit-rubric.md) | Quality scoring (5 dimensions, 1-5 each) |
-| [integration-patterns.md](references/integration-patterns.md) | How to merge findings into skills |
-| [enhancement-log.md](references/enhancement-log.md) | History of skill enhancements |
+| [references/schemas.md](references/schemas.md) | JSON structures: evals.json, grading.json, benchmark.json, timing.json, etc. |
+| [references/progressive-disclosure.md](references/progressive-disclosure.md) | Loading patterns (high-level, domain, conditional) |
+| [references/workflows.md](references/workflows.md) | Sequential, conditional, feedback loops |
+| [references/output-patterns.md](references/output-patterns.md) | Templates, formatting, terminology |
+| [references/anti-patterns.md](references/anti-patterns.md) | Common mistakes to avoid |
+| [references/audit-rubric.md](references/audit-rubric.md) | Quality scoring 5 dimensions × 1-5 |
+| [references/integration-patterns.md](references/integration-patterns.md) | How to merge findings into skills |
+| [references/enhancement-log.md](references/enhancement-log.md) | History of skill enhancements |
+| [agents/grader.md](agents/grader.md) | Evaluate assertions against outputs |
+| [agents/comparator.md](agents/comparator.md) | Blind A/B comparison between two outputs |
+| [agents/analyzer.md](agents/analyzer.md) | Analyze benchmark patterns + why one version beat another |
 
 ---
 
